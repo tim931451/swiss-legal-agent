@@ -15,6 +15,10 @@ CITATION_CASES = [
     ("Gemäss Art. 336c Abs. 1 OR ist die Kündigung nichtig.", ["OR-336c"], True),
     ("Nach Art. 336c OR und Art. 999 OR gilt ...", ["OR-336c"], False),
     ("Siehe BGE 124 III 346.", ["OR-336c"], False),
+    # Real answer of gpt-oss-120b without sources (notebook 01, 13.10.2026): German law instead of Art. 335c OR
+    ("Die Frist beträgt vier Wochen zum 15. oder zum Monatsende (§ 622 Abs. 1 BGB).", ["OR-335c"], False),
+    ("Nach § 1159 ABGB gilt eine Frist von sechs Wochen.", ["OR-335c"], False),
+    ("Die Kündigungsfrist beträgt zwei Monate (Art. 335c Abs. 1 OR).", ["OR-335c"], True),
 ]
 
 
