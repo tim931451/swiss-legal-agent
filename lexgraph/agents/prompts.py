@@ -8,12 +8,18 @@ ROUTER_PROMPT = (
     "Ordne den folgenden Fall genau einem Rechtsgebiet zu. Antworte nur mit einem Wort: "
     "'arbeitsrecht', 'mietrecht' oder 'ausserhalb'.\n\nFall: {question}"
 )
+
+# T10: the notebook version asked for free text with the outline Normwahl, Subsumtion, Ergebnis, Quellen.
+# This version keeps that outline as JSON fields, see lexgraph/agents/schema.py.
 SPECIALIST_PROMPT = (
     "Du bist Fachperson für Schweizer {area}. Beantworte den Fall ausschliesslich gestützt auf die Quellen.\n"
-    "Gliederung: Normwahl, Subsumtion, Ergebnis, Quellen. Zitiere Artikel als 'Art. X OR'. "
-    "Erfinde keine Artikel und keine Bundesgerichtsentscheide.\n\n"
+    "Zitiere Artikel als 'Art. X OR'. Erfinde keine Artikel und keine Bundesgerichtsentscheide.\n"
+    "Antworte nur mit einem JSON-Objekt mit genau diesen Feldern: sachverhalt, rechtsfrage, normen (Liste der "
+    "zitierten Artikel), subsumtion, ergebnis, quellen (Liste der verwendeten Quellen-IDs aus den eckigen "
+    "Klammern, z. B. OR-335c). Format: {schema}\n\n"
     "Quellen:\n{sources}\n\nFall: {question}{feedback}"
 )
+
 REVIEWER_PROMPT = (
     "Prüfe den Entwurf streng. Stimmen Normwahl und Ergebnis mit den Quellen überein? "
     "Ist jeder zitierte Artikel in den Quellen enthalten? Fehlt etwas Wesentliches?\n"
