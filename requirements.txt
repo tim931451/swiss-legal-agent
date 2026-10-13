@@ -1,0 +1,32 @@
+# Swiss Legal Agent (Team LexGraph). Same tested set as the course notebooks: do not bump single packages.
+
+# Core: model access and orchestration
+langchain==1.4.0
+langchain-openai==1.6.2
+langgraph==1.2.11
+openai==3.14.0
+python-dotenv==1.2.3
+
+# Notebook kernel (local runs in PyCharm or Jupyter)
+ipykernel==7.3.0
+
+# Tools and MCP
+langchain-mcp-adapters==0.3.2
+mcp==1.30.0
+
+# Retrieval
+langchain-huggingface==1.2.2
+langchain-community==0.4.2
+pypdf==6.18.1
+bs4==0.0.2
+faiss-cpu==1.15.0
+rank_bm25==0.2.2
+sentence-transformers==6.0.1
+
+# User interface
+gradio==6.27.0
+ipywidgets==8.1.9
+
+# Analysis (preinstalled in Deepnote)
+pandas
+matplotlib

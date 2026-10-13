@@ -1,0 +1,13 @@
+# Code ownership follows the roles in docs/architecture.md (notebook 00).
+
+# Tim Rusch: Agent Orchestration & Safety Engineer
+/lexgraph/agents/      @tim931451
+/mcp_server/           @tim931451
+/lexgraph/guardrails/  @tim931451
+/lexgraph/config.py    @tim931451
+
+# Jack Ondoua: Product Lead & Knowledge Architect
+/lexgraph/rag/         @M245757
+/lexgraph/eval/        @M245757
+/lexgraph/ui/          @M245757
+/docs/                 @M245757
