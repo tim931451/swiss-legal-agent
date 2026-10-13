@@ -1,14 +1,7 @@
-# Geheimnisse
 .env
-.env.*
-!.env.example
-
-# Python
 __pycache__/
-*.py[cod]
-.venv/
-venv/
 .ipynb_checkpoints/
-
-# macOS
+index/
+*.pyc
+.venv/
 .DS_Store
