@@ -11,6 +11,7 @@ class LegalState(TypedDict, total=False):
     area: str  # arbeitsrecht | mietrecht | out_of_scope
     sources: list  # retrieved articles: id, title, text
     draft: str  # current answer draft
+    structured: dict  # draft as fields (sachverhalt ... quellen), None if the model gave no valid JSON (T10)
     review: str  # last reviewer verdict: "OK" or "REVISE: <reason>"
     revisions: int  # number of rounds the reviewer sent back
     needs_human: bool  # True if the case goes to a human
