@@ -56,6 +56,37 @@ def search_law(query: str, k: int = 4) -> list[dict]:
              "url": ARTICLES[i]["url"]} for i in ranked if scores[i] > 0]
 
 
+# SW5 task 2: a second tool with its own small table. Notice periods for employees after the probation
+# period, from Art. 335c para. 1 OR. Para. 2 allows other periods by written agreement, see the note.
+NOTICE_PERIODS = [  # (first service year, last service year or None, months)
+    (1, 1, 1),
+    (2, 9, 2),
+    (10, None, 3),
+]
+
+
+@mcp.tool()
+def notice_period(service_year: int) -> dict:
+    """Statutory notice period in months for an employment contract after the probation period.
+
+    service_year: the year of service the employee is in at the time of notice (1 = first year).
+    """
+    if service_year < 1:
+        return {"found": False, "message": "service_year must be 1 or higher."}
+    for first, last, months in NOTICE_PERIODS:
+        if service_year >= first and (last is None or service_year <= last):
+            return {
+                "found": True,
+                "service_year": service_year,
+                "months": months,
+                "to": "end of a month",
+                "source": "Art. 335c Abs. 1 OR",
+                "note": "Different periods are possible by written agreement (Art. 335c Abs. 2 OR); "
+                        "check the contract and Art. 335c before answering.",
+            }
+    return {"found": False, "message": "No entry for this service year."}
+
+
 @mcp.tool()
 def search_decisions(query: str, k: int = 3) -> list[dict]:
     """Search published Federal Supreme Court decisions (BGE). Not connected yet: returns an empty list."""
