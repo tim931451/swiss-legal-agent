@@ -32,8 +32,23 @@ ROUTER_PROMPT = (
 
 # T10: the notebook version asked for free text with the outline Normwahl, Subsumtion, Ergebnis, Quellen.
 # This version keeps that outline as JSON fields, see lexgraph/agents/schema.py.
+# T14: two specialist agents. They share SPECIALIST_PROMPT and differ in this guidance, so a change to the common
+# rules (jurisdiction, style, schema) applies to both. The checklists name only articles in our scope.
+AREA_GUIDANCE = {
+    "arbeitsrecht": (
+        "Prüfe insbesondere, soweit die Quellen es hergeben: Probezeit (Art. 335b OR), Kündigungsfristen "
+        "(Art. 335c OR), Kündigung zur Unzeit (Art. 336c OR) und fristlose Auflösung (Art. 337 OR)."
+    ),
+    "mietrecht": (
+        "Prüfe insbesondere, soweit die Quellen es hergeben: Zahlungsrückstand (Art. 257d OR), Mängel und "
+        "Mängelrechte (Art. 259a ff. OR), Kündigungsfristen und -termine (Art. 266a ff. OR) und die Form der "
+        "Kündigung (Art. 266l OR)."
+    ),
+}
+
 SPECIALIST_PROMPT = (
     "Du bist Fachperson für Schweizer {area}. Beantworte den Fall ausschliesslich gestützt auf die Quellen.\n"
+    "{guidance}\n"
     + JURISDICTION + "\n" + ANSWER_STYLE + "\n"
     "Zitiere Artikel als 'Art. X OR'. Erfinde keine Artikel und keine Bundesgerichtsentscheide.\n"
     "Antworte nur mit einem JSON-Objekt mit genau diesen Feldern: sachverhalt, rechtsfrage, normen (Liste der "
