@@ -56,7 +56,7 @@ Not yet wired together (see the `TODO (Txx)` markers in the code):
 
 - The graph uses the interim keyword retriever from notebook 04, not `retrieve()` or the MCP tools (T10).
 - `human_review` appends a note instead of using `interrupt()` with a checkpointer (T14).
-- `search_law` in the MCP server uses BM25 only, `search_decisions` returns an empty list (T13).
+- MCP server (T13, 16 Oct 2026): `search_law` uses the shared `retrieve()` (hybrid with `LITELLM_API_KEY`, BM25 without) and filters by area; `search_decisions` answers `found: False`, BGE stays optional. The graph does not call the MCP tools yet, it still uses the keyword retriever (T10).
 - The UI calls a placeholder `run_pipeline` instead of input guard, graph and citation check (T15).
 - The knowledge base holds six paraphrased placeholder records, not the Fedlex text (T11).
 
