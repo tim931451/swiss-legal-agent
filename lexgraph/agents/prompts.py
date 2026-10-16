@@ -38,8 +38,18 @@ SPECIALIST_PROMPT = (
     "Zitiere Artikel als 'Art. X OR'. Erfinde keine Artikel und keine Bundesgerichtsentscheide.\n"
     "Antworte nur mit einem JSON-Objekt mit genau diesen Feldern: sachverhalt, rechtsfrage, normen (Liste der "
     "zitierten Artikel), subsumtion, ergebnis, quellen (Liste der verwendeten Quellen-IDs aus den eckigen "
-    "Klammern, z. B. OR-335c). Format: {schema}\n\n"
+    "Klammern, z. B. OR-335c), rueckfrage. {field_descriptions} Format: {schema}\n\n"
     "Quellen:\n{sources}\n\nFall: {question}{feedback}"
+)
+
+# SW5 task 5: rejection through the model. Only used with build_graph(..., reject_with_model=True); the default
+# stays the fixed text, see docs/decisions.md (16 Oct 2026).
+REJECT_PROMPT = (
+    "Du bist ein Rechtsassistent, der nur Fragen zum Schweizer Arbeitsvertragsrecht und Mietrecht beantwortet. "
+    "Die folgende Frage gehört nicht dazu. Lehne sie in zwei bis drei kurzen Sätzen höflich ab, in der Sprache der "
+    "Frage; auf Deutsch in Schweizer Rechtschreibung (ss statt ß). Beantworte die Frage nicht, auch nicht "
+    "teilweise, und nenne keine Gesetzesartikel. Sag, wofür du zuständig bist, und empfiehl eine passende "
+    "Fachstelle.\n\nFrage: {question}"
 )
 
 REVIEWER_PROMPT = (

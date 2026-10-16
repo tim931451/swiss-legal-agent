@@ -20,7 +20,7 @@ ANSWER = {
 
 def test_parse_answer_reads_json_inside_text():
     parsed = parse_answer("Hier die Antwort:\n```json\n" + json.dumps(ANSWER, ensure_ascii=False) + "\n```")
-    assert parsed == ANSWER
+    assert parsed == {**ANSWER, "rueckfrage": None}
 
 
 def test_parse_answer_rejects_free_text_and_missing_fields():
@@ -38,4 +38,4 @@ def test_graph_keeps_structured_answer():
     llm = GenericFakeChatModel(messages=iter(["arbeitsrecht", json.dumps(ANSWER, ensure_ascii=False), "OK"]))
     sources = [{"id": "OR-335c", "title": "Kündigungsfristen", "text": "..."}]
     run = build_graph(llm, lambda q, a, k=3: sources).invoke({"question": "Kündigungsfrist im dritten Dienstjahr?"})
-    assert run["structured"] == ANSWER and "Normwahl: Art. 335c OR" in run["answer"]
+    assert run["structured"] == {**ANSWER, "rueckfrage": None} and "Normwahl: Art. 335c OR" in run["answer"]
