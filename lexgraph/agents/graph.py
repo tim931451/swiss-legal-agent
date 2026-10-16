@@ -9,12 +9,13 @@ from notebook 02 or the MCP tools from notebook 03 are wired in, `make_keyword_r
 from langgraph.graph import END, START, StateGraph
 from rank_bm25 import BM25Okapi
 
-from lexgraph.agents.prompts import REVIEWER_PROMPT, ROUTER_PROMPT, SPECIALIST_PROMPT
-from lexgraph.agents.schema import SCHEMA_HINT, parse_answer, render_answer
+from lexgraph.agents.prompts import REJECT_PROMPT, REVIEWER_PROMPT, ROUTER_PROMPT, SPECIALIST_PROMPT
+from lexgraph.agents.schema import FIELD_DESCRIPTIONS, SCHEMA_HINT, parse_answer, render_answer
 from lexgraph.agents.state import LegalState
 from lexgraph.rag.retrieval import tokenize
 
 MAX_REVISIONS = 2
+FIXED_REJECTION = "Dieser Fall liegt ausserhalb von Arbeits- und Mietrecht. Dafür ist der Agent nicht gebaut."
 
 
 def make_keyword_retriever(articles):
@@ -34,7 +35,8 @@ def format_sources(sources):
     return "\n".join(f"[{s['id']}] {s['title']}: {s['text']}" for s in sources)
 
 
-def build_graph(llm, retrieve):
+def build_graph(llm, retrieve, reject_with_model=False, field_descriptions=FIELD_DESCRIPTIONS):
+    """reject_with_model: SW5 task 5, out-of-scope cases get a model-written rejection instead of the fixed text."""
     def router(state):
         verdict = llm.invoke(ROUTER_PROMPT.format(question=state["question"])).content.lower()
         area = "mietrecht" if "miet" in verdict else "arbeitsrecht" if "arbeit" in verdict else "out_of_scope"
@@ -45,7 +47,7 @@ def build_graph(llm, retrieve):
         feedback = f"\n\nKritik am letzten Entwurf: {state['review']}" if state.get("review") else ""
         raw = llm.invoke(SPECIALIST_PROMPT.format(
             area=state["area"], sources=format_sources(sources), question=state["question"], feedback=feedback,
-            schema=SCHEMA_HINT,
+            schema=SCHEMA_HINT, field_descriptions=field_descriptions,
         )).content
         structured = parse_answer(raw)
         draft = render_answer(structured) if structured else raw
@@ -70,8 +72,10 @@ def build_graph(llm, retrieve):
         return {"answer": state["draft"] + note, "needs_human": True}
 
     def out_of_scope(state):
-        return {"answer": "Dieser Fall liegt ausserhalb von Arbeits- und Mietrecht. Dafür ist der Agent nicht gebaut.",
-                "needs_human": False}
+        if not reject_with_model:
+            return {"answer": FIXED_REJECTION, "needs_human": False}
+        text = llm.invoke(REJECT_PROMPT.format(question=state["question"])).content.strip()
+        return {"answer": text or FIXED_REJECTION, "needs_human": False}
 
     def after_router(state):
         return "specialist" if state["area"] in ("arbeitsrecht", "mietrecht") else "out_of_scope"
