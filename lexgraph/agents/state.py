@@ -15,4 +15,5 @@ class LegalState(TypedDict, total=False):
     review: str  # last reviewer verdict: "OK" or "REVISE: <reason>"
     revisions: int  # number of rounds the reviewer sent back
     needs_human: bool  # True if the case goes to a human
+    human_decision: str  # approved | edited | rejected, set when a person reviewed the draft (T14)
     answer: str  # final answer shown to the user
