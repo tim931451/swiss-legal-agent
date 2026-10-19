@@ -10,6 +10,7 @@ from langgraph.graph import END, START, StateGraph
 from rank_bm25 import BM25Okapi
 
 from lexgraph.agents.prompts import REVIEWER_PROMPT, ROUTER_PROMPT, SPECIALIST_PROMPT
+from lexgraph.agents.schema import SCHEMA_HINT, parse_answer, render_answer
 from lexgraph.agents.state import LegalState
 from lexgraph.rag.retrieval import tokenize
 
@@ -42,10 +43,13 @@ def build_graph(llm, retrieve):
     def specialist(state):
         sources = state.get("sources") or retrieve(state["question"], state["area"])
         feedback = f"\n\nKritik am letzten Entwurf: {state['review']}" if state.get("review") else ""
-        draft = llm.invoke(SPECIALIST_PROMPT.format(
+        raw = llm.invoke(SPECIALIST_PROMPT.format(
             area=state["area"], sources=format_sources(sources), question=state["question"], feedback=feedback,
+            schema=SCHEMA_HINT,
         )).content
-        return {"sources": sources, "draft": draft}
+        structured = parse_answer(raw)
+        draft = render_answer(structured) if structured else raw
+        return {"sources": sources, "draft": draft, "structured": structured}
 
     def reviewer(state):
         verdict = llm.invoke(REVIEWER_PROMPT.format(
