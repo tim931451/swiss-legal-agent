@@ -35,17 +35,22 @@ notebook 05 ("Your turn"). The diagram shows the variant from notebook 00 (uncer
 
 ## What the code implements today
 
-`lexgraph.agents.graph.build_graph` compiles this LangGraph graph (generated with `draw_mermaid()`, notebook 04
-section 7). The two specialist agents are one `specialist` node parametrised by `area`.
+`lexgraph.agents.graph.build_graph` compiles this LangGraph graph (generated with `draw_mermaid()`). Since T14
+(16 Oct 2026) there are two specialist nodes, one per area, sharing `SPECIALIST_PROMPT` and differing in
+`AREA_GUIDANCE`. With a checkpointer, `human_review` pauses with `interrupt()` until a person approves, edits or
+rejects the draft.
 
 ```mermaid
 graph TD;
     __start__([start]) --> router;
-    router -.-> specialist;
+    router -.-> specialist_arbeitsrecht;
+    router -.-> specialist_mietrecht;
     router -.-> out_of_scope;
-    specialist --> reviewer;
+    specialist_arbeitsrecht --> reviewer;
+    specialist_mietrecht --> reviewer;
     reviewer -.-> finalize;
-    reviewer -.-> specialist;
+    reviewer -.-> specialist_arbeitsrecht;
+    reviewer -.-> specialist_mietrecht;
     reviewer -.-> human_review;
     finalize --> __end__([end]);
     human_review --> __end__;
@@ -55,8 +60,8 @@ graph TD;
 Not yet wired together (see the `TODO (Txx)` markers in the code):
 
 - The graph uses the interim keyword retriever from notebook 04, not `retrieve()` or the MCP tools (T10).
-- `human_review` appends a note instead of using `interrupt()` with a checkpointer (T14).
-- `search_law` in the MCP server uses BM25 only, `search_decisions` returns an empty list (T13).
+- Human in the loop works in code and tests; the Gradio UI (T15) still has to show the paused draft and send the decision.
+- MCP server (T13, 16 Oct 2026): `search_law` uses the shared `retrieve()` (hybrid with `LITELLM_API_KEY`, BM25 without) and filters by area; `search_decisions` answers `found: False`, BGE stays optional. The graph does not call the MCP tools yet, it still uses the keyword retriever (T10).
 - The UI calls a placeholder `run_pipeline` instead of input guard, graph and citation check (T15).
 - The knowledge base holds six paraphrased placeholder records, not the Fedlex text (T11).
 
