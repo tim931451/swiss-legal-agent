@@ -19,17 +19,26 @@ COMMERCIAL_MODEL = "gpt-5.6-luna"  # commercial reference model for experiment F
 
 # Swiss AI Platform (CSCS), hosts Apertus
 SWISSAI_BASE_URL = "https://api.swissai.svc.cscs.ch/v1"
-# TODO (T08): set the Apertus model name found with list_models() in notebook 01, section 5.
-APERTUS_MODEL = None
+SWISSAI_PREFIXES = ("CSCS-Inference/", "RCP-AIaaS/", "SwissAI-Research/")  # model ids served by the Swiss AI Platform
+# T08 (13.10.2026): Apertus-70B-Instruct-2509 rejects the tools parameter (error 400 from its chat template),
+# Apertus-v1.5-70B and v1.5-8B return correct tool_calls. See docs/decisions.md.
+APERTUS_MODEL = "CSCS-Inference/swiss-ai/Apertus-v1.5-70B"
 
 # Embeddings (notebook 02)
 EMBED_MODEL = "andreasmartin/apertus-v1.1-swiss-embed-0.4b"  # Swiss embedding model on the FHNW proxy
 
 # Evaluation (notebook 06)
-CANDIDATE_MODELS = ["azure_ai/gpt-oss-120b", "gpt-5.6-luna"]  # add Apertus once notebook 01 found its name
+CANDIDATE_MODELS = ["azure_ai/gpt-oss-120b", "gpt-5.6-luna", APERTUS_MODEL]
 JUDGE_MODEL = "azure_ai/mistral-large-3"  # different model family than the candidates, to limit self-preference
 
 
-def make_llm(model="azure_ai/gpt-oss-120b", base_url=LLM_BASE_URL, key_env="LITELLM_API_KEY", temperature=0):
-    """Create a chat model. Only model, endpoint and key change between providers."""
+def make_llm(model=LLM_MODEL, base_url=None, key_env=None, temperature=0):
+    """Create a chat model. Only model, endpoint and key change between providers.
+
+    Without base_url the endpoint follows the model id: Swiss AI Platform ids go to SWISSAI_BASE_URL with
+    SWISSAI_API_KEY, everything else to the FHNW proxy with LITELLM_API_KEY.
+    """
+    on_swissai = model.startswith(SWISSAI_PREFIXES)
+    base_url = base_url or (SWISSAI_BASE_URL if on_swissai else LLM_BASE_URL)
+    key_env = key_env or ("SWISSAI_API_KEY" if on_swissai else "LITELLM_API_KEY")
     return ChatOpenAI(model=model, base_url=base_url, api_key=os.environ[key_env], temperature=temperature)
