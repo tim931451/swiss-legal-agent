@@ -11,9 +11,20 @@ import re
 
 FIELDS = ("sachverhalt", "rechtsfrage", "normen", "subsumtion", "ergebnis", "quellen")
 
+# SW5 task 4: own schema field. Optional, so older answers without it still parse. The model fills it only when a
+# fact is missing that decides the result (for a notice period, the year of service), otherwise null.
+OPTIONAL_FIELDS = ("rueckfrage",)
+
+# Field descriptions that go into the specialist prompt. They play the role of the pydantic `description` in the
+# notebook: without them the model sees only the field name (see scripts/schema_description.py).
+FIELD_DESCRIPTIONS = (
+    "rueckfrage: eine kurze Frage an die Person, wenn eine Angabe fehlt, die das Ergebnis ändert "
+    "(zum Beispiel das Dienstjahr bei einer Kündigungsfrist); sonst null."
+)
+
 SCHEMA_HINT = (
     '{"sachverhalt": "...", "rechtsfrage": "...", "normen": ["Art. 335c OR"], '
-    '"subsumtion": "...", "ergebnis": "...", "quellen": ["OR-335c"]}'
+    '"subsumtion": "...", "ergebnis": "...", "quellen": ["OR-335c"], "rueckfrage": null}'
 )
 
 _JSON_BLOCK = re.compile(r"\{.*\}", re.DOTALL)
@@ -33,7 +44,11 @@ def parse_answer(text):
     for field in ("normen", "quellen"):
         if isinstance(data[field], str):
             data[field] = [data[field]]
-    return {field: data[field] for field in FIELDS}
+    answer = {field: data[field] for field in FIELDS}
+    for field in OPTIONAL_FIELDS:
+        value = data.get(field)
+        answer[field] = value.strip() if isinstance(value, str) and value.strip() else None
+    return answer
 
 
 def render_answer(answer):
@@ -45,4 +60,5 @@ def render_answer(answer):
         f"Subsumtion: {answer['subsumtion']}\n"
         f"Ergebnis: {answer['ergebnis']}\n"
         f"Quellen: {', '.join(answer['quellen'])}"
+        + (f"\nRückfrage: {answer['rueckfrage']}" if answer.get("rueckfrage") else "")
     )
