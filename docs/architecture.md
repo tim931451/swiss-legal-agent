@@ -67,7 +67,7 @@ Not yet wired together (see the `TODO (Txx)` markers in the code):
 
 - The graph uses the interim keyword retriever from notebook 04, not `retrieve()` or the MCP tools (T10).
 - Human in the loop works in code and tests; the Gradio UI (T15) still has to show the paused draft and send the decision.
-- MCP server (T13, 16 Oct 2026): `search_law` uses the shared `retrieve()` (hybrid with `LITELLM_API_KEY`, BM25 without) and filters by area; `search_decisions` answers `found: False`, BGE stays optional. The graph does not call the MCP tools yet, it still uses the keyword retriever (T10).
+- MCP server (T13, 16 Oct 2026): `search_law` uses the shared `retrieve()` (hybrid with `LITELLM_API_KEY`, BM25 without) and filters by area; `search_decisions` answers `found: False`, BGE stays optional. Retrieval in the graph still uses the keyword retriever (T10). Since 30 Oct 2026 the reviewer can call `get_article` through the MCP server for cited articles the retriever missed (`lookup`, `lexgraph/agents/lookup.py`, T13); off by default.
 - The UI calls a placeholder `run_pipeline` instead of input guard, graph and citation check (T15).
 - The knowledge base holds six paraphrased placeholder records, not the Fedlex text (T11).
 

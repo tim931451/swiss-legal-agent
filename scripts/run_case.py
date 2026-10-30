@@ -2,17 +2,20 @@
 
 Usage:  python scripts/run_case.py            # the three demo cases below
         python scripts/run_case.py "Fall ..."  # one own case
+        python scripts/run_case.py --lookup mcp  # T13: cited articles are loaded via get_article
 
 Needs LITELLM_API_KEY (in .env or the environment). Retrieval uses the interim keyword search over
 data/or_articles.jsonl; until T11 these are paraphrased placeholders, so the run checks the pipeline,
 not the legal quality.
 """
 
+import argparse
 import json
 import sys
 import time
 
 from lexgraph.agents.graph import build_graph, make_keyword_retriever
+from lexgraph.agents.lookup import make_article_lookup, make_mcp_lookup
 from lexgraph.config import LLM_MODEL, make_llm
 from lexgraph.guardrails.citation_check import citation_check
 from lexgraph.rag.ingest import load_articles
@@ -35,6 +38,7 @@ def run(question, graph):
         "area": state.get("area"),
         "sources": ids,
         "revisions": state.get("revisions"),
+        "looked_up": state.get("looked_up", []),
         "needs_human": state.get("needs_human"),
         "structured": state.get("structured") is not None,
         "citation_check": citation_check(state.get("answer", ""), ids) if ids else None,
@@ -43,8 +47,20 @@ def run(question, graph):
     }
 
 
+def make_lookup(kind, articles):
+    """T13: none (strict citation check), kb (knowledge base directly) or mcp (tool get_article over stdio)."""
+    return {"none": lambda: None, "kb": lambda: make_article_lookup(articles), "mcp": make_mcp_lookup}[kind]()
+
+
 if __name__ == "__main__":
-    graph = build_graph(make_llm(LLM_MODEL), make_keyword_retriever(load_articles()))
+    parser = argparse.ArgumentParser(description="Run cases through the agent graph.")
+    parser.add_argument("cases", nargs="*", help="own cases; default: the three demo cases")
+    parser.add_argument("--lookup", choices=["none", "kb", "mcp"], default="none",
+                        help="T13: load cited articles the retriever did not fetch")
+    args = parser.parse_args()
+    articles = load_articles()
+    graph = build_graph(make_llm(LLM_MODEL), make_keyword_retriever(articles),
+                        lookup=make_lookup(args.lookup, articles))
     print(f"Tracing: {'LangSmith, masked' if tracing_requested() else 'off'}", file=sys.stderr)
-    for case in sys.argv[1:] or CASES:
+    for case in args.cases or CASES:
         print(json.dumps(run(case, graph), ensure_ascii=False, indent=2))

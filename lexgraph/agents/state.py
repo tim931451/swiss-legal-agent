@@ -15,6 +15,7 @@ class LegalState(TypedDict, total=False):
     structured: dict  # draft as fields (sachverhalt ... quellen), None if the model gave no valid JSON (T10)
     review: str  # last reviewer verdict: "OK" or "REVISE: <reason>"
     citation_check: dict  # T17: result of the deterministic check on the last draft (ok, unsupported, ...)
+    looked_up: list  # T13: article ids the reviewer tried to load because they were cited but not retrieved
     revisions: int  # number of rounds the reviewer sent back
     needs_human: bool  # True if the case goes to a human
     human_decision: str  # approved | edited | rejected, set when a person reviewed the draft (T14)
