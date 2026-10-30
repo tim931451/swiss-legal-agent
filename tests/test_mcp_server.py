@@ -29,7 +29,7 @@ def test_search_law_ranks_and_filters_by_area(server):
     ids = [a["id"] for a in server.search_law("Kündigung während Krankheit Sperrfrist", k=2)]
     assert ids and ids[0] == "OR-336c"
     tenancy = server.search_law("Kündigung Frist", k=5, area="mietrecht")
-    assert tenancy and all(a["id"] in {"OR-257d", "OR-259a", "OR-266c"} for a in tenancy)
+    assert tenancy and all(server.BY_ID[a["id"]]["area"] == "mietrecht" for a in tenancy)
 
 
 def test_search_law_falls_back_to_bm25_without_index(server, monkeypatch, caplog):
@@ -38,7 +38,8 @@ def test_search_law_falls_back_to_bm25_without_index(server, monkeypatch, caplog
 
     monkeypatch.setattr(server, "_shared_search", broken)
     with caplog.at_level("WARNING", logger="fedlex-mcp"):
-        assert server.search_law("Schimmel in der Wohnung", k=1)[0]["id"] == "OR-259a"
+        # T11: words of the legal text. Lay words such as "Schimmel" are not in the OR, BM25 alone misses them (T12).
+        assert server.search_law("Mangel beseitigen Mietzins herabsetzen", k=1)[0]["id"] == "OR-259a"
     assert "falling back to BM25" in caplog.text and "no embeddings" in caplog.text  # T39: no silent fallback
 
 

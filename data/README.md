@@ -1,31 +1,34 @@
 # Data
 
-## `or_articles.jsonl`: knowledge base (PLACEHOLDER)
+## `or_articles.jsonl`: knowledge base (Fedlex, T11)
 
-**The six records in this file are short paraphrases written for wiring tests. They are NOT the legal text of the
-Swiss Code of Obligations.** Every record carries `"placeholder": true` and its text starts with `Paraphrase:`.
-Do not use them for any evaluation or demo answer. Task T11 replaces this file with the real ingestion.
+The official German text of the Swiss Code of Obligations (OR, SR 220), consolidated version of 1 Oct 2026, for
+tenancy law (Art. 253 to 273c, 79 articles) and employment law (Art. 319 to 362, 137 articles). Repealed articles
+(274 to 274g, 332a, 343) are left out. Footnotes (amendment history) are removed.
 
-- Origin: notebook 02, section 2 (`SAMPLE`), written by `python -m lexgraph.rag.ingest` (never overwrites an
-  existing file).
-- Format: one JSON object per line, one record per article:
-  `{"id": "OR-335c", "law": "OR", "article": "335c", "title": ..., "area": "arbeitsrecht" | "mietrecht", "text": ..., "url": ..., "placeholder": true}`
-- Articles: OR 335c, 336c, 337 (employment law) and OR 257d, 259a, 266c (tenancy law).
+- Origin: `python -m lexgraph.rag.ingest` downloads the Akoma Ntoso XML from the Fedlex file store
+  (`FEDLEX_VERSION` in `lexgraph/rag/ingest.py`) and parses it with `parse_fedlex`. An optional argument takes a
+  local copy of the same XML instead of downloading it.
+- Format: one JSON object per line, one record per article (one chunk per article, see docs/decisions.md):
+  `{"id": "OR-335c", "law": "OR", "article": "335c", "area": "arbeitsrecht" | "mietrecht", "title": ..., "context": ..., "text": ..., "url": ..., "version": "2026-10-01"}`
+- `title` is the nearest margin heading ("nach Ablauf der Probezeit"), `context` the whole heading path
+  ("Beendigung des Arbeitsverhältnisses › Unbefristetes Arbeitsverhältnis › Kündigungsfristen › nach Ablauf der
+  Probezeit"). `text` keeps paragraph numbers and list letters, one per line.
+- `url` uses the real Fedlex anchor `#art_335_c` (checked in T11). The six paraphrased `SAMPLE` records in
+  `lexgraph/rag/ingest.py` stay for the offline retrieval tests and are not part of this file.
 
-Ingestion plan (T11, notebook 02): download the consolidated German version of the OR (SR 220) from Fedlex once,
-<https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de>, parse it into the records above for Art. 253 to 274g and
-319 to 362, and save the result here. Federal Supreme Court decisions (BGE) follow as a second file with the same
-structure.
-
-Note: the `url` field uses the anchor `#art_<article>` (for example `#art_335c`, notebook 02), while the UI
-placeholder in notebook 07 links `#art_336_c`. Check the real Fedlex anchor format during T11.
+Federal Supreme Court decisions (BGE) would follow as a second file with the same structure (optional since 12 Oct).
 
 ## `testset.jsonl`: evaluation test set
 
-Three example cases from notebook 06, section 2 (`AR-01`, `AR-02`, `MR-01`). Target: 10 cases by 18 Oct, 20 by
-1 Nov 2026 (notebook 06). Fields: `id`, `area`, `difficulty`, `source`, `question`, `expected_answer`,
-`gold_articles`. Every case must be checkable in the law and must note its source (own wording, textbook,
-published decision) so we know we may use it.
+Ten cases (T09): six in employment law (`AR-01` to `AR-06`), four in tenancy law (`MR-01` to `MR-04`). Target: 20
+by the evaluation runs (T18). Fields: `id`, `area`, `difficulty`, `source`, `question`, `expected_answer`,
+`gold_articles`. Every expected answer is checked against the Fedlex text in `or_articles.jsonl`, every gold
+article is in the knowledge base (`tests/test_ingest.py`).
+
+Two cases test the guardrails with findings from notebook 01 (19 Oct 2026): `AR-05` (the model answered with
+German law, § 622 BGB) and `AR-06` (the model invented a BGE reference). A correct answer cites the OR and no
+decision.
 
 ## Licence
 
@@ -33,5 +36,5 @@ Only public data is used: Fedlex (consolidated federal law) and published Federa
 client data.
 
 Under Art. 5 para. 1 of the Swiss Copyright Act (URG, SR 231.1), acts, ordinances and other official enactments
-(lit. a) as well as decisions of authorities (lit. c) are not protected by copyright. The paraphrased placeholder
-records and the test cases are the team's own wording.
+(lit. a) as well as decisions of authorities (lit. c) are not protected by copyright. This covers the Fedlex text in
+`or_articles.jsonl`. The paraphrased `SAMPLE` records and the test cases are the team's own wording.
