@@ -12,6 +12,7 @@ Client side (notebook 03, section 4):
     tools = await client.get_tools()
 """
 import json
+import logging
 import os
 import pathlib
 import re
@@ -29,6 +30,8 @@ sys.path.insert(0, str(ROOT))  # the server runs as a script (stdio), so make th
 SEARCH_MODE = os.environ.get("FEDLEX_SEARCH_MODE") or ("hybrid" if os.environ.get("LITELLM_API_KEY") else "bm25")
 
 mcp = FastMCP("fedlex-mcp")
+# T39: logging goes to stderr, never to stdout, which carries the MCP protocol over stdio.
+log = logging.getLogger("fedlex-mcp")
 
 
 def _tokenize(text):
@@ -75,7 +78,10 @@ def search_law(query: str, k: int = 4, area: str = "") -> list[dict]:
     k = max(1, min(int(k), 10))
     try:
         hits = _shared_search(query, k * 2, SEARCH_MODE)
-    except Exception:  # noqa: BLE001 - no key, no network or no index: the server must still answer
+    except Exception as exc:  # noqa: BLE001 - no key, no network or no index: the server must still answer
+        # T39: the fallback used to be silent; a hit list from BM25 instead of hybrid search must be visible.
+        log.warning("search_law: %s search failed (%s: %s), falling back to BM25", SEARCH_MODE,
+                    type(exc).__name__, exc)
         hits = _bm25_search(query, k * 2)
     if area:
         hits = [a for a in hits if a.get("area") == area.lower()]
