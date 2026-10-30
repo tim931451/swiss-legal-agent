@@ -36,6 +36,9 @@ REDACTED_TEXT = [
     ("Frau Keller will die Miete erhöhen.", "Frau [NAME] will die Miete erhöhen."),
     ("Mein Name ist Hans Muster, mein Lohn fehlt.", "Mein Name ist [NAME], mein Lohn fehlt."),
     ("Ich wohne an der Bruderholzstrasse 59.", "Ich wohne an der [ADRESSE]."),
+    # Review Jack (30.10.): role nouns stay, names are redacted
+    ("Frau Vermieterin will die Miete erhöhen.", "Frau Vermieterin will die Miete erhöhen."),
+    ("Herr Chef und Frau Keller streiten.", "Herr Chef und Frau [NAME] streiten."),
     ("geboren am 09.09.2004, gekündigt am 30.10.2026", "geboren am [GEBURTSDATUM], gekündigt am 30.10.2026"),
 ]
 CITATION_CASES = [
@@ -56,6 +59,10 @@ CITED = [
     ("Art. 336c Abs. 1 lit. a OR", {"OR-336c"}),
     ("Artikel 259a OR und Art. 2 ZGB", {"OR-259a", "ZGB-2"}),
     ("Art. 336c Abs. 1 und Art. 337 OR", {"OR-336c", "OR-337"}),
+    # Review Jack (30.10.): an article of another law in the same span is not read as OR
+    ("Art. 8 EMRK und das OR", set()),
+    ("Art. 8 EMRK und Art. 336c OR", {"OR-336c"}),
+    ("Art. 335b und 335c OR sowie Art. 2 ZGB", {"OR-335b", "OR-335c", "ZGB-2"}),
     ("Nach Art. 336c schützt 30 Tage lang die Sperrfrist (OR).", {"OR-336c"}),
 ]
 
