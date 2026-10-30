@@ -3,12 +3,12 @@
 Source: notebook 06, sections 3 and 6. No model needed, cheap and fully reproducible.
 """
 
-from lexgraph.guardrails.citation_check import CITATION
+from lexgraph.guardrails.citation_check import cited_articles as _cited_articles
 
 
 def cited_articles(answer):
-    """Cited articles as upper-case ids (OR-336C). Differs from the guardrail version, which keeps the case."""
-    return {f"{law}-{art.lower()}".upper() for art, law in CITATION.findall(answer)}
+    """Cited articles as upper-case ids (OR-336C). Same parsing as the guardrail (T17), which keeps the case."""
+    return {c.upper() for c in _cited_articles(answer)}
 
 
 def citation_scores(answer, gold_articles):

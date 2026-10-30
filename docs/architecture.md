@@ -30,19 +30,25 @@ flowchart TD
     CC -- unsupported citation --> H
 ```
 
-The routing back from the citation check (to the reviewer or straight to a human) is an open question in
-notebook 05 ("Your turn"). The diagram shows the variant from notebook 00 (uncertain goes to a human).
+The routing back from the citation check was an open question in notebook 05 ("Your turn"). Decided on
+30 Oct 2026 (T17): the check runs inside the reviewer before the model review. A failed check sends the draft back to
+the specialist as one revision round with the unsupported citations as feedback; after the last round the case goes
+to a human. The input guards block jailbreaks, empty and overlong inputs; off-topic is left to the router (T16).
 
 ## What the code implements today
 
 `lexgraph.agents.graph.build_graph` compiles this LangGraph graph (generated with `draw_mermaid()`). Since T14
 (16 Oct 2026) there are two specialist nodes, one per area, sharing `SPECIALIST_PROMPT` and differing in
 `AREA_GUIDANCE`. With a checkpointer, `human_review` pauses with `interrupt()` until a person approves, edits or
-rejects the draft.
+rejects the draft. Since T16 and T17 (30 Oct 2026) the `guard` node redacts personal data and ends blocked inputs
+before any model call, and the `reviewer` runs the citation check before the model review. With LangSmith
+switched on, every run is traced with personal data masked (T19, `lexgraph/tracing.py`).
 
 ```mermaid
 graph TD;
-    __start__([start]) --> router;
+    __start__([start]) --> guard;
+    guard -.-> __end__([end]);
+    guard -.-> router;
     router -.-> specialist_arbeitsrecht;
     router -.-> specialist_mietrecht;
     router -.-> out_of_scope;
@@ -52,7 +58,7 @@ graph TD;
     reviewer -.-> specialist_arbeitsrecht;
     reviewer -.-> specialist_mietrecht;
     reviewer -.-> human_review;
-    finalize --> __end__([end]);
+    finalize --> __end__;
     human_review --> __end__;
     out_of_scope --> __end__;
 ```
