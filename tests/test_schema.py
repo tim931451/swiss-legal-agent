@@ -28,6 +28,24 @@ def test_parse_answer_rejects_free_text_and_missing_fields():
     assert parse_answer(json.dumps({"ergebnis": "x"})) is None
 
 
+def test_parse_answer_with_braces_and_two_objects_around_the_answer():
+    """T39: the old greedy regex took everything from the first { to the last } and failed here."""
+    text = ('Vorbemerkung {siehe unten}. ' + json.dumps({"hinweis": "kein Antwortobjekt"}) + "\n"
+            + json.dumps(ANSWER, ensure_ascii=False) + "\nNachtrag {Ende}")
+    assert parse_answer(text) == {**ANSWER, "rueckfrage": None}
+
+
+def test_parse_answer_casts_types_and_catches_none():
+    """T39: str cast for text fields, lists of str for normen and quellen, None becomes empty."""
+    raw = {**ANSWER, "ergebnis": 2, "subsumtion": ["Satz 1.", "Satz 2."], "normen": None,
+           "quellen": "OR-335c", "rueckfrage": "  "}
+    parsed = parse_answer(json.dumps(raw))
+    assert parsed["ergebnis"] == "2" and parsed["subsumtion"] == "Satz 1. Satz 2."
+    assert parsed["normen"] == [] and parsed["quellen"] == ["OR-335c"] and parsed["rueckfrage"] is None
+    assert render_answer(parsed)  # renders without a TypeError
+    assert parse_answer(None) is None
+
+
 def test_rendered_answer_passes_citation_check():
     text = render_answer(ANSWER)
     assert all(f.capitalize() in text or f == "normen" for f in FIELDS)
