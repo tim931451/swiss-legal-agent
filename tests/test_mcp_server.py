@@ -32,12 +32,14 @@ def test_search_law_ranks_and_filters_by_area(server):
     assert tenancy and all(a["id"] in {"OR-257d", "OR-259a", "OR-266c"} for a in tenancy)
 
 
-def test_search_law_falls_back_to_bm25_without_index(server, monkeypatch):
+def test_search_law_falls_back_to_bm25_without_index(server, monkeypatch, caplog):
     def broken(*args, **kwargs):
         raise RuntimeError("no embeddings")
 
     monkeypatch.setattr(server, "_shared_search", broken)
-    assert server.search_law("Schimmel in der Wohnung", k=1)[0]["id"] == "OR-259a"
+    with caplog.at_level("WARNING", logger="fedlex-mcp"):
+        assert server.search_law("Schimmel in der Wohnung", k=1)[0]["id"] == "OR-259a"
+    assert "falling back to BM25" in caplog.text and "no embeddings" in caplog.text  # T39: no silent fallback
 
 
 def test_search_decisions_says_not_connected(server):

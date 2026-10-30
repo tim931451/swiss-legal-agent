@@ -27,28 +27,55 @@ SCHEMA_HINT = (
     '"subsumtion": "...", "ergebnis": "...", "quellen": ["OR-335c"], "rueckfrage": null}'
 )
 
-_JSON_BLOCK = re.compile(r"\{.*\}", re.DOTALL)
+TEXT_FIELDS = ("sachverhalt", "rechtsfrage", "subsumtion", "ergebnis")
+LIST_FIELDS = ("normen", "quellen")
+_DECODER = json.JSONDecoder()
+
+
+def _json_objects(text):
+    """Every JSON object in the text, in order. T39: raw_decode instead of a greedy regex, so prose with braces
+    before or after the answer, or a second object, no longer breaks parsing."""
+    for match in re.finditer(r"\{", text):
+        try:
+            obj, _ = _DECODER.raw_decode(text, match.start())
+        except json.JSONDecodeError:
+            continue
+        if isinstance(obj, dict):
+            yield obj
+
+
+def _as_text(value):
+    if value is None:
+        return ""
+    if isinstance(value, list):
+        return " ".join(_as_text(v) for v in value if v is not None).strip()
+    return str(value).strip()
+
+
+def _as_list(value):
+    if value is None:
+        return []
+    items = value if isinstance(value, list) else [value]
+    return [str(v).strip() for v in items if v is not None and str(v).strip()]
 
 
 def parse_answer(text):
-    """Return the answer as a dict with all FIELDS, or None if the text holds no valid answer object."""
-    match = _JSON_BLOCK.search(text or "")
-    if not match:
-        return None
-    try:
-        data = json.loads(match.group(0))
-    except json.JSONDecodeError:
-        return None
-    if not isinstance(data, dict) or not all(field in data for field in FIELDS):
-        return None
-    for field in ("normen", "quellen"):
-        if isinstance(data[field], str):
-            data[field] = [data[field]]
-    answer = {field: data[field] for field in FIELDS}
-    for field in OPTIONAL_FIELDS:
-        value = data.get(field)
-        answer[field] = value.strip() if isinstance(value, str) and value.strip() else None
-    return answer
+    """Return the answer as a dict with all FIELDS, or None if the text holds no valid answer object.
+
+    T39: the first object with all fields wins; text fields are cast to str, normen and quellen to lists of str,
+    None becomes "" or [].
+    """
+    for data in _json_objects(text if isinstance(text, str) else ""):
+        if not all(field in data for field in FIELDS):
+            continue
+        answer = {field: _as_text(data[field]) for field in TEXT_FIELDS}
+        answer.update({field: _as_list(data[field]) for field in LIST_FIELDS})
+        answer = {field: answer[field] for field in FIELDS}
+        for field in OPTIONAL_FIELDS:
+            value = _as_text(data.get(field))
+            answer[field] = value or None
+        return answer
+    return None
 
 
 def render_answer(answer):
