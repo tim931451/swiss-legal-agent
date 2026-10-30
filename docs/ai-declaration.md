@@ -9,7 +9,7 @@ to produce code, text, data or slides for the project.
 
 | Tool (name, version or model) | Purpose | Scope (which files, sections or slides) | Member | How the output was checked |
 |---|---|---|---|---|
-| | | | | |
+| Claude (Anthropic, Cowork) | Code and tests for T16, T17, T19 from Tim's task description; Tim decided scope and rules | `lexgraph/guardrails/`, `lexgraph/tracing.py`, guard node and reviewer in `lexgraph/agents/graph.py`, `tests/test_guardrails.py`, `tests/test_t16_t17.py`, `tests/test_tracing.py` | Tim | Offline tests and ruff, one live run with gpt-oss-120b (`scripts/run_case.py`), review by Tim before merge |
 | | | | | |
 | | | | | |
 
