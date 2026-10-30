@@ -16,6 +16,7 @@ from lexgraph.agents.graph import build_graph, make_keyword_retriever
 from lexgraph.config import LLM_MODEL, make_llm
 from lexgraph.guardrails.citation_check import citation_check
 from lexgraph.rag.ingest import load_articles
+from lexgraph.tracing import run_config, tracing_requested
 
 CASES = [
     "Ich arbeite seit gut zwei Jahren bei meiner Firma und möchte kündigen. Im Vertrag steht nichts zur "
@@ -27,7 +28,7 @@ CASES = [
 
 def run(question, graph):
     start = time.perf_counter()
-    state = graph.invoke({"question": question})
+    state = graph.invoke({"question": question}, run_config(tags=("run_case",), model=LLM_MODEL))
     ids = [s["id"] for s in state.get("sources") or []]
     return {
         "question": question,
@@ -44,5 +45,6 @@ def run(question, graph):
 
 if __name__ == "__main__":
     graph = build_graph(make_llm(LLM_MODEL), make_keyword_retriever(load_articles()))
+    print(f"Tracing: {'LangSmith, masked' if tracing_requested() else 'off'}", file=sys.stderr)
     for case in sys.argv[1:] or CASES:
         print(json.dumps(run(case, graph), ensure_ascii=False, indent=2))
