@@ -9,6 +9,7 @@ Tabelle: `f1_summary.md`, Chart: `f1_chart.png`, Rohdaten mit allen Antworten: `
 - Punkte: Judge `azure_ai/mistral-large-3` mit den fünf Ja/Nein-Kriterien aus Notebook 06 gegen die Musterlösung. Sobald T18 das 100-Punkte-Raster liefert, werden die Punkte neu gerechnet.
 - Kosten: Preise des FHNW-Proxys (`/v1/model/info`, 02.11.2026). Für Apertus auf der Swiss AI Platform gibt es keinen Tokenpreis, deshalb nur die Tokens.
 - Je ein Durchlauf pro Fall und Modell, Temperatur 0. Die Streuung zwischen Läufen ist nicht gemessen.
+- Gemessen auf main ohne #26 (der Reviewer lädt zitierte, nicht abgerufene Artikel per `get_article` nach) und mit dem Keyword-Retrieval vor T12. Beide betreffen genau die Unterschiede unten, deshalb nach dem Merge von #26 und T12 neu laufen lassen.
 
 ## Beobachtungen aus den Daten
 
