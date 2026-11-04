@@ -21,10 +21,16 @@ Federal Supreme Court decisions (BGE) would follow as a second file with the sam
 
 ## `testset.jsonl`: evaluation test set
 
-Ten cases (T09): six in employment law (`AR-01` to `AR-06`), four in tenancy law (`MR-01` to `MR-04`). Target: 20
-by the evaluation runs (T18). Fields: `id`, `area`, `difficulty`, `source`, `question`, `expected_answer`,
+Twenty cases (T09, T18): twelve in employment law (`AR-01` to `AR-12`), eight in tenancy law (`MR-01` to `MR-08`);
+8 easy, 8 medium, 4 hard. Fields: `id`, `area`, `difficulty`, `source`, `question`, `expected_answer`,
 `gold_articles`. Every expected answer is checked against the Fedlex text in `or_articles.jsonl`, every gold
-article is in the knowledge base (`tests/test_ingest.py`).
+article is in the knowledge base (`tests/test_ingest.py`, `tests/test_t18_judge.py`).
+
+The ten cases added in T18 (`AR-07` to `AR-12`, `MR-05` to `MR-08`) keep the proportions of the first ten (areas 6:4,
+difficulty 2:2:1). They are in the team's own wording, and each expected answer follows directly from the text of the
+articles named in `source`. No case is taken from bar exams (usage rights unclear). Topics already used as
+development cases in #26 (overtime, summary dismissal, rent increase, replacement tenant) are left out, so that the
+test set stays separate from what was tried out during development.
 
 Two cases test the guardrails with findings from notebook 01 (19 Oct 2026): `AR-05` (the model answered with
 German law, § 622 BGB) and `AR-06` (the model invented a BGE reference). A correct answer cites the OR and no
