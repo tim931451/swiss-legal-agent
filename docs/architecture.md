@@ -99,5 +99,5 @@ Code ownership on GitHub follows this table, see `.github/CODEOWNERS`.
 ## Stack
 
 LangGraph and LangChain · FHNW LiteLLM proxy (OpenAI-compatible) for commercial and open models · Swiss AI
-Platform for Apertus · Apertus Swiss embeddings · FAISS and BM25 · MCP (FastMCP server, `langchain-mcp-adapters`
-client) · Gradio · LangSmith tracing.
+Platform for Apertus · Harrier embeddings on the FHNW proxy (Apertus Swiss embeddings compared in T12) · FAISS
+and BM25, LLM reranking · MCP (FastMCP server, `langchain-mcp-adapters` client) · Gradio · LangSmith tracing.

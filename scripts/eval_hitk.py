@@ -24,7 +24,7 @@ from lexgraph.eval.tokens import CountingLLM
 from lexgraph.rag import retrieval
 from lexgraph.rag.ingest import load_articles
 
-FILTERS = {"none": "alle 216 Artikel", "area": "nur Rechtsgebiet des Falls"}
+FILTERS = {"none": "Suche über alle 216 Artikel", "area": "Suche nur im Rechtsgebiet des Falls"}
 
 
 def _fmt(value):
@@ -39,7 +39,7 @@ def to_markdown(summary, note):
         part = summary[summary["filter"] == key]
         if part.empty:
             continue
-        lines += [f"## Suche über {label}", "",
+        lines += [f"## {label}", "",
                   "| Verfahren | Fälle | " + " | ".join(f"Hit@{k}" for k in KS) + " | Recall@5 | MRR@10 |",
                   "|---|" + "---|" * (len(KS) + 3)]
         for _, row in part.iterrows():
