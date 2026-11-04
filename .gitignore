@@ -5,3 +5,4 @@ index/
 *.pyc
 .venv/
 .DS_Store
+runs/
