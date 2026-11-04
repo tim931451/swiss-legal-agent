@@ -27,7 +27,7 @@ APERTUS_MODEL = "CSCS-Inference/swiss-ai/Apertus-v1.5-70B"
 # Embeddings (notebook 02). The FHNW proxy serves two embedding models, both compared in T12 (docs/eval/retrieval).
 SWISS_EMBED_MODEL = "andreasmartin/apertus-v1.1-swiss-embed-0.4b"  # Swiss embedding model (notebook 02)
 HARRIER_EMBED_MODEL = "leoipulsar/harrier-0.6b:latest"  # Ollama build of Microsoft harrier-oss-v1-0.6b
-EMBED_MODEL = SWISS_EMBED_MODEL  # used by retrieve()
+EMBED_MODEL = HARRIER_EMBED_MODEL  # used by retrieve(); T12: Hit@1 0.9 against 0.4 for the Swiss model (10 cases)
 # T12: the proxy offers no reranker model, so a chat model reranks the first-stage hits (lexgraph/rag/retrieval.py).
 RERANK_MODEL = LLM_MODEL
 
