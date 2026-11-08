@@ -42,22 +42,51 @@ def baseline_answer(model, question):
     return reply.content, time.perf_counter() - start, usage.get("input_tokens", 0), usage.get("output_tokens", 0)
 
 
-def make_graph_answer(articles=None, retrieve=None):
+def make_embedding_retriever(articles=None, mode="hybrid"):
+    """Adapter from `retrieve()` of lexgraph.rag.retrieval (T12) to the signature `build_graph` expects.
+
+    The graph calls `retrieve(question, area, k=3)` and wants dicts with id, title and text; `retrieve()` returns
+    Documents and takes the area as a keyword. Embedding model and reranking follow the defaults of T12 (EMBED_MODEL,
+    USE_RERANKER); the embedding cache lives in index/. k=3 as in the keyword retriever, so only the search changes.
+    """
+    from lexgraph.agents.graph import AREAS
+    from lexgraph.rag import retrieval
+    from lexgraph.rag.ingest import load_articles
+
+    by_id = {a["id"]: a for a in (articles if articles is not None else load_articles())}
+
+    def retrieve(question, area, k=3):
+        docs = retrieval.retrieve(question, k=k, mode=mode, area=area if area in AREAS else None)
+        return [{"id": by_id[d.metadata["id"]]["id"], "title": by_id[d.metadata["id"]]["title"],
+                 "text": by_id[d.metadata["id"]]["text"]} for d in docs if d.metadata["id"] in by_id]
+
+    return retrieve
+
+
+def make_graph_answer(articles=None, retrieve=None, retriever="embedding"):
     """answer_fn for run_experiment that runs the full graph (guard, router, specialist, reviewer) with one model.
 
-    Retrieval is the keyword search over data/or_articles.jsonl, the same for every model. The graph is built without
-    a checkpointer, so the human-in-the-loop step does not pause (decision T14) and the run never blocks.
+    retriever: "embedding" (default) uses `retrieve()` of T12 through make_embedding_retriever, "keyword" the keyword
+    search of notebook 04 over data/or_articles.jsonl. Either way the retrieval is the same for every model. The
+    lookup of T13 stays off (`lookup=None`). The graph is built without a checkpointer, so the human-in-the-loop step
+    does not pause (decision T14) and the run never blocks.
     """
     from lexgraph.agents.graph import build_graph, make_keyword_retriever
     from lexgraph.guardrails.citation_check import citation_check
     from lexgraph.rag.ingest import load_articles
     from lexgraph.tracing import run_config
 
-    retrieve = retrieve or make_keyword_retriever(articles if articles is not None else load_articles())
+    if retrieve is None:
+        if retriever == "keyword":
+            retrieve = make_keyword_retriever(articles if articles is not None else load_articles())
+        elif retriever == "embedding":
+            retrieve = make_embedding_retriever(articles)
+        else:
+            raise ValueError(f"unknown retriever {retriever!r}: 'embedding' or 'keyword'")
 
     def graph_answer(model, question):
         llm = CountingLLM(make_llm(model))
-        graph = build_graph(llm, retrieve)
+        graph = build_graph(llm, retrieve, lookup=None)
         start = time.perf_counter()
         state = graph.invoke({"question": question}, run_config(tags=("eval_f1",), model=model))
         seconds = time.perf_counter() - start
@@ -206,7 +235,8 @@ def plot_f1(summary, path, labels=None):
     for ax in axes.flat:
         ax.set_xticks(list(x))
         ax.set_xticklabels(names, fontsize=8)
-    fig.suptitle("F1: Apertus gegen kommerzielles Modell (10 Fälle, gleiche Pipeline)")
+    cases = int(summary["cases"].max()) if summary["cases"].notna().any() else 0
+    fig.suptitle(f"F1: Apertus gegen kommerzielles Modell ({cases} Fälle, gleiche Pipeline)")
     fig.tight_layout()
     fig.savefig(path, dpi=150)
     plt.close(fig)
