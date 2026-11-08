@@ -32,6 +32,10 @@ JAILBREAK_PATTERNS = [
     r"\bsystem ?prompt\b",
 ]
 
+ROLE_NOUNS = (r"(?:Vermieter(?:in)?|Mieter(?:in)?|Arbeitgeber(?:in)?|Arbeitnehmer(?:in)?|Chef(?:in)?|"
+              r"Anwält(?:in)?|Anwalt|Rechtsanwält(?:in)?|Rechtsanwalt|Doktor|Kollegin|Kollege|Nachbar(?:in)?|"
+              r"Verwalter(?:in)?|Vorgesetzte[rn]?|Präsident(?:in)?|Direktor(?:in)?)")
+
 # Order matters: AHV and IBAN before the phone number, the address before the name rules.
 PII_PATTERNS = [
     ("EMAIL", r"\b[\w.+-]+@[\w-]+\.[\w.-]+\b", None),
@@ -44,8 +48,9 @@ PII_PATTERNS = [
      None),
     ("GEBURTSDATUM", r"\b((?i:geb\.|geboren(?: am)?|geburtsdatum:?))\s*\d{1,2}\.\s?\d{1,2}\.\s?\d{2,4}",
      r"\1 [GEBURTSDATUM]"),
-    ("NAME", r"\b(Herr|Frau|Hr\.|Fr\.)\s+(?:Dr\.\s+)?[A-ZÄÖÜ][a-zäöüéèà]+(?:[- ][A-ZÄÖÜ][a-zäöüéèà]+)?",
-     r"\1 [NAME]"),
+    # Review Jack (30.10.): role nouns after a title ("Frau Vermieterin") are not names and stay.
+    ("NAME", r"\b(Herr|Frau|Hr\.|Fr\.)\s+(?:Dr\.\s+)?(?!" + ROLE_NOUNS + r"\b)[A-ZÄÖÜ][a-zäöüéèà]+"
+             r"(?:[- ][A-ZÄÖÜ][a-zäöüéèà]+)?", r"\1 [NAME]"),
     ("NAME", r"\b((?i:ich heisse|ich heiße|mein name ist))\s+[A-ZÄÖÜ]\w+(?:\s+[A-ZÄÖÜ]\w+)?", r"\1 [NAME]"),
 ]
 
