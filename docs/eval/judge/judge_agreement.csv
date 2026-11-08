@@ -1,0 +1,7 @@
+criterion,points,pairs,agreement,kappa,true_run_a,true_run_b,max_abs_diff
+correct_norm,20,60,1.0,1.0,40.0,40.0,
+correct_result,30,60,1.0,1.0,41.0,41.0,
+no_invented_sources,20,60,0.933,0.866,27.0,29.0,
+complete,20,60,1.0,1.0,40.0,40.0,
+clear_structure,10,60,0.95,0.64,56.0,55.0,
+score,100,60,0.9,,,,20.0
