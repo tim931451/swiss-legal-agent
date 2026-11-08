@@ -6,6 +6,7 @@ langchain-openai==1.6.2
 langgraph==1.2.11
 openai==3.14.0
 python-dotenv==1.2.3
+langsmith==0.14.8  # T19 tracing (lexgraph/tracing.py); already a dependency of langchain, pinned explicitly
 
 # Notebook kernel (local runs in PyCharm or Jupyter)
 ipykernel==7.3.0
