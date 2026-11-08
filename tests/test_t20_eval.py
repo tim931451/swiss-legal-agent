@@ -78,7 +78,28 @@ def test_summary_and_chart(tmp_path):
     assert path.exists() and path.stat().st_size > 1000
 
 
-def test_testset_has_ten_cases_with_gold_articles():
+def test_testset_has_twenty_cases_with_gold_articles():
     cases = load_cases()
-    assert len(cases) == 10
+    assert len(cases) == 20
     assert all(c["gold_articles"] and c["question"] and c["expected_answer"] for c in cases)
+
+
+def test_embedding_retriever_adapts_retrieve_to_graph_signature(monkeypatch):
+    from langchain_core.documents import Document
+
+    from lexgraph.eval.experiment import make_embedding_retriever
+    from lexgraph.rag import retrieval
+
+    calls = []
+
+    def fake_retrieve(query, k=4, mode="hybrid", rerank=None, area=None):
+        calls.append({"k": k, "mode": mode, "area": area})
+        return [Document(page_content="Art. 336c OR ...", metadata={"id": "OR-336c"})]
+
+    monkeypatch.setattr(retrieval, "retrieve", fake_retrieve)
+    articles = [{"id": "OR-336c", "title": "Kündigung zur Unzeit", "text": "Text", "area": "arbeitsrecht"}]
+    retrieve = make_embedding_retriever(articles)
+    assert retrieve("Krank gekündigt?", "arbeitsrecht") == [
+        {"id": "OR-336c", "title": "Kündigung zur Unzeit", "text": "Text"}]
+    retrieve("Erbrecht?", "out_of_scope")
+    assert calls == [{"k": 3, "mode": "hybrid", "area": "arbeitsrecht"}, {"k": 3, "mode": "hybrid", "area": None}]
