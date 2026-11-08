@@ -25,3 +25,8 @@ def cohens_kappa(a, b):
     p_a, p_b = sum(a) / n, sum(b) / n
     expected = p_a * p_b + (1 - p_a) * (1 - p_b)
     return 1.0 if expected == 1 else round((observed - expected) / (1 - expected), 3)
+
+
+def agreement(a, b):
+    """Share of equal verdicts and Cohen's kappa for two runs of the same yes/no criterion (T18, reproducibility)."""
+    return {"agreement": round(sum(x == y for x, y in zip(a, b, strict=True)) / len(a), 3), "kappa": cohens_kappa(a, b)}
