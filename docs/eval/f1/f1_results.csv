@@ -1,0 +1,151 @@
+run_at,model,case,area,difficulty,citation_precision,citation_recall,citations_backed,seconds,model_calls,input_tokens,output_tokens,cost_usd,revisions,needs_human,error,judge_score,c_correct_norm,c_correct_result,c_no_invented_sources,c_complete,c_clear_structure,answer
+02.11.2026 09:37,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,AR-01,arbeitsrecht,easy,1.0,1.0,True,3.5,3,3020,200,,0,False,,100,True,True,True,True,True,"Sachverhalt: Eine Person fragt nach der gesetzlichen Kündigungsfrist im dritten Dienstjahr, wenn keine abweichende Vereinbarung zwischen Arbeitgeber und Arbeitnehmer besteht.
+Rechtsfrage: Wie lange ist die Kündigungsfrist im dritten Dienstjahr nach Schweizer Obligationenrecht, wenn nichts anderes vereinbart ist?
+Normwahl: Art. 335c OR
+Subsumtion: Nach Art. 335c OR beträgt die Kündigungsfrist nach Ablauf der Probezeit im zweiten bis und mit dem neunten Dienstjahr zwei Monate. Das dritte Dienstjahr fällt in diesen Zeitraum.
+Ergebnis: Im dritten Dienstjahr beträgt die gesetzliche Kündigungsfrist zwei Monate auf das Ende eines Monats.
+Quellen: OR-335c"
+02.11.2026 09:37,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,AR-02,arbeitsrecht,medium,1.0,1.0,True,15.2,7,7657,939,,3,True,,100,True,True,True,True,True,"Sachverhalt: Eine Arbeitnehmerin befindet sich im dritten Dienstjahr und ist seit zwei Wochen krank. Der Arbeitgeber kündigt ihr das Arbeitsverhältnis.
+Rechtsfrage: Ist die Kündigung während einer Krankheit im dritten Dienstjahr gültig?
+Normwahl: OR-336c
+Subsumtion: Nach Art. 336c OR darf der Arbeitgeber nach Ablauf der Probezeit nicht kündigen, wenn die Arbeitnehmerin ohne eigenes Verschulden durch Krankheit an der Arbeitsleistung verhindert ist. Im zweiten bis fünften Dienstjahr beträgt die Sperrfrist 90 Tage. Da die Arbeitnehmerin erst zwei Wochen krank ist, befindet sie sich innerhalb dieser Sperrfrist.
+Ergebnis: Die Kündigung ist ungültig.
+Quellen: OR-336c
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]"
+02.11.2026 09:37,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,AR-03,arbeitsrecht,easy,0.0,0.0,True,155.2,7,8752,1060,,3,True,,40,False,False,True,False,True,"Sachverhalt: Eine Person hat vor drei Wochen eine neue Stelle angetreten. Im Arbeitsvertrag ist keine Probezeit vereinbart. Es ist unklar, wie lange die Person bereits im Arbeitsverhältnis steht.
+Rechtsfrage: Mit welcher Kündigungsfrist kann die Person das Arbeitsverhältnis kündigen, wenn im Vertrag keine Probezeit vereinbart ist?
+Normwahl: OR-335c
+Subsumtion: Da im Vertrag keine Probezeit vereinbart ist, gilt gemäss Art. 335c OR die ordentliche Kündigungsfrist. Diese hängt vom bereits absolvierten Dienstjahr ab. Ohne Angabe der bereits geleisteten Dienstjahre lässt sich die konkrete Frist nicht bestimmen.
+Ergebnis: Die Kündigungsfrist richtet sich nach Art. 335c OR und hängt vom bereits absolvierten Dienstjahr ab. Ohne Angabe der Anzahl der absolvierten Dienstjahre kann die konkrete Frist nicht berechnet werden.
+Quellen: OR-335c
+Rückfrage: Wie viele Dienstjahre haben Sie bereits absolviert?
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]"
+02.11.2026 09:37,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,AR-04,arbeitsrecht,easy,1.0,1.0,True,50.8,3,1856,199,,0,False,,100,True,True,True,True,True,"Sachverhalt: Eine 19-jährige Person arbeitet Vollzeit und möchte wissen, wie viele Wochen Ferien ihr pro Jahr mindestens zustehen.
+Rechtsfrage: Wie viele Wochen Ferien stehen einer 19-jährigen Person, die Vollzeit arbeitet, pro Jahr mindestens zu?
+Normwahl: OR-329a
+Subsumtion: Gemäss Art. 329a Abs. 1 OR hat der Arbeitgeber dem Arbeitnehmer bis zum vollendeten 20. Altersjahr für jedes Dienstjahr wenigstens fünf Wochen Ferien zu gewähren. Da die Person 19 Jahre alt ist, fällt sie unter diese Bestimmung.
+Ergebnis: Ihnen stehen pro Jahr mindestens fünf Wochen Ferien zu.
+Quellen: OR-329a"
+02.11.2026 09:37,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,AR-05,arbeitsrecht,hard,0.0,0.0,True,31.3,5,5155,806,,3,True,,40,False,False,True,False,True,"Sachverhalt: Eine Arbeitnehmerin arbeitet seit drei Jahren in Basel. Der Arbeitgeber kündigt mit einer Frist von vier Wochen auf den 15. oder Monatsende.
+Rechtsfrage: Ist die Kündigungsfrist von vier Wochen rechtmässig?
+Normwahl: OR-329a, OR-335c
+Subsumtion: Nach Art. 329a OR richtet sich die Kündigungsfrist nach der Dauer des Arbeitsverhältnisses. Bei drei Dienstjahren beträgt die Mindestfrist vier Wochen. Art. 336c OR regelt Sperrfristen, in denen nicht gekündigt werden darf. Im vorliegenden Fall liegen keine Sperrfristen vor, die die Kündigung ausschliessen würden.
+Ergebnis: Die Kündigungsfrist von vier Wochen ist rechtmässig.
+Quellen: OR-329a, OR-336c
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]"
+02.11.2026 09:37,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,AR-06,arbeitsrecht,hard,1.0,1.0,False,11.4,4,2859,732,,3,True,,80,True,True,True,False,True,"Sachverhalt: Eine Person erkundigt sich nach der Dauer des Kündigungsschutzes bei Krankheit und verlangt einen Bundesgerichtsentscheid als Fundstelle.
+Rechtsfrage: Wie lange darf der Arbeitgeber bei Krankheit des Arbeitnehmers nicht kündigen, und welcher Bundesgerichtsentscheid regelt dies?
+Normwahl: Art. 336c OR
+Subsumtion: Die Frage nach dem Kündigungsschutz bei Krankheit wird in Art. 336c OR geregelt. Dieser Artikel bestimmt, dass der Arbeitgeber während einer bestimmten Zeit nach Beginn der Arbeitsunfähigkeit nicht kündigen darf. Die genauen Fristen hängen von der Dauer des Arbeitsverhältnisses ab.
+Ergebnis: Die Quellenlage reicht nicht aus, um einen spezifischen Bundesgerichtsentscheid mit Fundstelle zu nennen. Art. 336c OR regelt den Kündigungsschutz bei Krankheit, enthält aber keine Gerichtsentscheide.
+Quellen: OR-336c
+Rückfrage: Wie lange sind Sie bereits bei Ihrem Arbeitgeber beschäftigt?
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]"
+02.11.2026 09:37,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,MR-01,mietrecht,medium,1.0,1.0,True,20.4,5,3966,616,,1,False,,100,True,True,True,True,True,"Sachverhalt: Der Mieter hat zwei Monatsmieten nicht bezahlt und befindet sich im Zahlungsrückstand.
+Rechtsfrage: Welche Möglichkeiten hat der Vermieter, wenn der Mieter zwei Monatsmieten nicht bezahlt hat?
+Normwahl: OR-257d
+Subsumtion: Gemäss Art. 257d OR kann der Vermieter dem Mieter schriftlich eine Zahlungsfrist von mindestens 30 Tagen setzen. Bezahlt der Mieter innert dieser Frist nicht, darf der Vermieter das Mietverhältnis fristlos kündigen, bei Wohn- und Geschäftsräumen jedoch erst nach einer zusätzlichen Kündigungsfrist von mindestens 30 Tagen auf Ende eines Monats.
+Ergebnis: Der Vermieter muss dem Mieter zunächst eine schriftliche Zahlungsfrist von mindestens 30 Tagen setzen. Erst nach unbenütztem Ablauf dieser Frist kann der Vermieter das Mietverhältnis kündigen, wobei bei Wohn- und Geschäftsräumen eine Kündigungsfrist von mindestens 30 Tagen auf Ende eines Monats einzuhalten ist.
+Quellen: OR-257d"
+02.11.2026 09:37,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,MR-02,mietrecht,medium,1.0,1.0,False,20.1,5,3942,845,,3,True,,60,True,False,True,False,True,"Sachverhalt: Im Schlafzimmer des Mieters hat sich Schimmel gebildet, den der Mieter nicht verursacht hat.
+Rechtsfrage: Welche Rechte stehen dem Mieter gegenüber dem Vermieter bei einem erheblichen Mangel wie Schimmel zu?
+Normwahl: Art. 259a OR, Art. 259d OR
+Subsumtion: Bei einem erheblichen Mangel wie Schimmel hat der Mieter gemäss Art. 259a OR das Recht auf Mängelbeseitigung. Zudem kann der Mieter bei einer Beeinträchtigung der Gebrauchstauglichkeit eine Mietzinsherabsetzung verlangen, wenn der Vermieter den Mangel nicht behebt (Art. 259d OR). Vor einer Herabsetzung ist in der Regel eine Mängelrüge und eine angemessene Frist zur Behebung erforderlich.
+Ergebnis: Der Mieter kann vom Vermieter die Beseitigung des Schimmels verlangen und bei ausbleibender Behebung eine angemessene Mietzinsherabsetzung fordern.
+Quellen: OR-259a, OR-259d
+Rückfrage: Hat der Mieter den Schimmel bereits schriftlich gerügt und eine angemessene Frist zur Behebung gesetzt?
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]"
+02.11.2026 09:37,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,MR-03,mietrecht,medium,0.5,0.5,False,12.7,4,3234,838,,3,True,,60,True,False,True,False,True,"Sachverhalt: Eine Person möchte ihre Mietwohnung kündigen und fragt nach der geltenden Kündigungsfrist und der erforderlichen Form der Kündigung.
+Rechtsfrage: Welche Kündigungsfrist und welche Form sind bei der Kündigung einer Mietwohnung in der Schweiz einzuhalten?
+Normwahl: Art. 266a OR, Art. 266l OR
+Subsumtion: Für die Kündigungsfrist gilt grundsätzlich Art. 266a OR, wonach die Parteien das unbefristete Mietverhältnis unter Einhaltung der gesetzlichen Fristen und Termine kündigen können. Die Form der Kündigung ist in Art. 266l OR geregelt, der vorschreibt, dass die Kündigung schriftlich zu erfolgen hat.
+Ergebnis: Die Kündigung muss schriftlich erfolgen (Art. 266l OR) und die gesetzliche Kündigungsfrist eingehalten werden (Art. 266a OR). Die konkrete Frist hängt von der Dauer des Mietverhältnisses ab.
+Quellen: OR-266a, OR-266l
+Rückfrage: Wie lange dauert Ihr Mietverhältnis bereits?
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]"
+02.11.2026 09:37,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,MR-04,mietrecht,easy,1.0,1.0,False,175.0,4,2774,834,,3,True,,100,True,True,True,True,True,"Sachverhalt: Der Vermieter verlangt eine Kaution in Höhe von vier Monatsmieten und möchte das Geld auf sein eigenes Konto überwiesen haben.
+Rechtsfrage: Ist es zulässig, dass der Vermieter eine Kaution von vier Monatsmieten verlangt und diese auf sein eigenes Konto überwiesen werden muss?
+Normwahl: OR-257e
+Subsumtion: Nach Art. 257e OR darf die Kaution höchstens drei Monatsmieten betragen. Zudem muss die Kaution auf einem Sparkonto hinterlegt werden, das auf den Namen des Mieters lautet und vom Vermieter getrennt ist. Eine Überweisung auf das private Konto des Vermieters ist nicht zulässig.
+Ergebnis: Die Forderung des Vermieters ist unzulässig. Die Kaution darf höchstens drei Monatsmieten betragen und muss auf ein separates Konto des Mieters eingezahlt werden.
+Quellen: OR-257e, OR-266l
+Rückfrage: Wie hoch ist die aktuelle Monatsmiete und wurde bereits eine Kaution geleistet?
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]"
+02.11.2026 09:37,gpt-5.6-luna,AR-01,arbeitsrecht,easy,1.0,1.0,True,7.6,3,2630,440,0.00105,0,False,,100,True,True,True,True,True,"Sachverhalt: Die Person befindet sich im dritten Dienstjahr. Es wurde keine abweichende Kündigungsfrist vereinbart.
+Rechtsfrage: Wie lange beträgt die gesetzliche Kündigungsfrist im dritten Dienstjahr?
+Normwahl: Art. 335c OR
+Subsumtion: Nach Ablauf der Probezeit gilt im zweiten bis und mit dem neunten Dienstjahr eine Kündigungsfrist von zwei Monaten. Die Kündigung ist jeweils auf das Ende eines Monats möglich. Da keine abweichende Vereinbarung besteht, gilt diese gesetzliche Frist.
+Ergebnis: Die Kündigungsfrist beträgt im dritten Dienstjahr zwei Monate auf das Ende eines Monats.
+Quellen: OR-335c"
+02.11.2026 09:37,gpt-5.6-luna,AR-02,arbeitsrecht,medium,0.5,1.0,True,32.2,5,4850,3510,0.00518,2,False,,100,True,True,True,True,True,"Sachverhalt: Du bist im dritten Dienstjahr und seit zwei Wochen krank. Dein Arbeitgeber hat während dieser Krankheit gekündigt. Ob die Krankheit ohne eigenes Verschulden eingetreten ist und ob ordentlich oder fristlos gekündigt wurde, ist nicht angegeben.
+Rechtsfrage: Ist die Kündigung während der Krankheit gültig?
+Normwahl: Art. 336c OR, Art. 335c OR
+Subsumtion: Nach Ablauf der Probezeit darf der Arbeitgeber während einer unverschuldeten Krankheit nicht kündigen. Im zweiten bis und mit fünften Dienstjahr gilt diese Sperrfrist während 90 Tagen. Du bist im dritten Dienstjahr und seit zwei Wochen krank. Damit liegt die Kündigung grundsätzlich innerhalb dieser Sperrfrist. Eine Kündigung während der Sperrfrist ist nichtig. Das bedeutet: Sie gilt rechtlich nicht. Art. 335c OR sieht nach der Probezeit im zweiten bis und mit dem neunten Dienstjahr grundsätzlich eine Kündigungsfrist von zwei Monaten auf das Ende eines Monats vor. Diese Frist ist hier aber nicht entscheidend, weil eine während der Sperrfrist ausgesprochene Kündigung nichtig ist. Die bereitgestellten Quellen enthalten keine Regel zur Probezeit und keine Regel zur fristlosen Auflösung. Eine fristlose Auflösung kann deshalb anhand dieser Quellen nicht geprüft werden.
+Ergebnis: Die Kündigung ist grundsätzlich nicht gültig, wenn du ohne eigenes Verschulden krank bist und dein Chef während der Krankheit ordentlich gekündigt hat. Die Kündigung ist dann nichtig. Wenn die Krankheit selbst verschuldet ist oder eine fristlose Auflösung vorliegt, reicht die Quellenlage für eine abschliessende Beurteilung nicht aus.
+Quellen: OR-336c, OR-335c
+Rückfrage: Ist deine Krankheit ohne eigenes Verschulden entstanden, und hat dein Chef ordentlich oder fristlos gekündigt?"
+02.11.2026 09:37,gpt-5.6-luna,AR-03,arbeitsrecht,easy,0.0,0.0,True,36.1,6,6811,4293,0.00651,3,True,,40,False,False,True,False,True,"Sachverhalt: Ergebnis: Mit den vorliegenden Quellen lässt sich die Kündigungsfrist nach drei Wochen nicht abschliessend bestimmen. Falls es sich um einen Lehrvertrag handelt, gilt mangels Regelung eine Probezeit von drei Monaten.
+Rechtsfrage: Welche Kündigungsfrist gilt, wenn die neue Stelle vor drei Wochen begonnen wurde und der Vertrag keine Probezeit nennt?
+Normwahl: Art. 344a OR, Art. 335c OR
+Subsumtion: Art. 344a OR betrifft den Lehrvertrag. Er verlangt eine schriftliche Vereinbarung und legt fest: Fehlt eine Regelung zur Probezeit, gilt eine Probezeit von drei Monaten. Die Quelle regelt aber nicht, mit welcher Frist die lernende Person während dieser Probezeit kündigen kann. Art. 335c OR regelt nur die Kündigungsfrist nach Ablauf der Probezeit. Im ersten Dienstjahr beträgt sie grundsätzlich einen Monat auf das Ende eines Monats. Ob diese Regel nach der Probezeit hier anwendbar ist, lässt sich aus den vorliegenden Angaben nicht abschliessend beurteilen. Die Quellen enthalten zudem keine Regel zu einer fristlosen Auflösung oder zur Kündigung durch die Arbeitnehmerin beziehungsweise den Arbeitnehmer während der Probezeit.
+Ergebnis: Wenn es ein Lehrvertrag ist, besteht mangels anderer Regelung eine dreimonatige Probezeit. Die konkrete Kündigungsfrist während dieser Probezeit ergibt sich aus den bereitgestellten Quellen nicht. Bei einer gewöhnlichen Anstellung reicht die Quellenlage ebenfalls nicht aus. Bitte klären Sie dies mit einer Fachperson für Schweizer Arbeitsrecht.
+Quellen: OR-344a, OR-335c
+Rückfrage: Handelt es sich um einen Lehrvertrag im Sinn von Art. 344a OR oder um eine gewöhnliche Anstellung?
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]"
+02.11.2026 09:37,gpt-5.6-luna,AR-04,arbeitsrecht,easy,1.0,1.0,True,5.4,3,1521,366,0.00074,0,False,,100,True,True,True,True,True,"Sachverhalt: Die Person ist 19 Jahre alt und arbeitet Vollzeit.
+Rechtsfrage: Wie viele Ferienwochen stehen einer 19-jährigen Arbeitnehmerin oder einem 19-jährigen Arbeitnehmer pro Jahr mindestens zu?
+Normwahl: Art. 329a OR
+Subsumtion: Nach Art. 329a OR beträgt der gesetzliche Mindestanspruch für Arbeitnehmerinnen und Arbeitnehmer bis zum vollendeten 20. Altersjahr fünf Wochen Ferien pro Dienstjahr. Die Vollzeitbeschäftigung ändert daran nichts.
+Ergebnis: Es stehen mindestens fünf Wochen Ferien pro Jahr zu.
+Quellen: OR-329a"
+02.11.2026 09:37,gpt-5.6-luna,AR-05,arbeitsrecht,hard,0.0,0.0,True,20.7,4,3439,2198,0.00333,1,False,,40,False,False,True,False,True,"Sachverhalt: Du arbeitest seit drei Jahren in Basel. Dein Arbeitgeber möchte mit einer Frist von vier Wochen auf den 15. oder auf das Monatsende kündigen.
+Rechtsfrage: Ist eine Kündigungsfrist von vier Wochen auf den 15. oder auf das Monatsende zulässig?
+Normwahl: Art. 336c OR
+Subsumtion: Die vorgelegten Quellen enthalten keine Regel zur Probezeit und keine Regel zur ordentlichen Kündigungsfrist. Deshalb kann nicht geprüft werden, ob vier Wochen oder ein bestimmter Kündigungstermin gilt. Art. 336c OR betrifft Kündigungen zur Unzeit. Das bedeutet, dass eine Kündigung nach Ablauf der Probezeit während bestimmter Sperrfristen, zum Beispiel bei unverschuldeter Krankheit oder Unfall, nichtig sein kann oder sich die Kündigungsfrist verlängert. Dazu fehlen Angaben.
+Ergebnis: Ob die Frist von vier Wochen stimmt, lässt sich anhand der vorgelegten Quellen nicht feststellen. Prüfe den Arbeitsvertrag und allfällige anwendbare Gesamtarbeitsverträge. Wegen der fehlenden Quellenlage empfiehlt sich eine Fachperson.
+Quellen: OR-336c
+Rückfrage: Was steht im Arbeitsvertrag oder in einem anwendbaren Gesamtarbeitsvertrag zur Kündigungsfrist und zum Kündigungstermin?"
+02.11.2026 09:37,gpt-5.6-luna,AR-06,arbeitsrecht,hard,0.0,0.0,True,20.9,5,3039,2117,0.00315,3,True,,40,False,False,True,False,True,"Sachverhalt: Die Frage betrifft den Schutz vor einer Kündigung während einer Krankheit. Die bereitgestellten Quellen enthalten dazu keine Regelung und keinen Bundesgerichtsentscheid.
+Rechtsfrage: Welcher Bundesgerichtsentscheid legt fest, wie lange der Arbeitgeber während einer Krankheit nicht kündigen darf?
+Normwahl: 
+Subsumtion: Die Quellen nennen weder eine Bestimmung zur Kündigung zur Unzeit noch einen Bundesgerichtsentscheid mit einer Fundstelle. Deshalb kann die Dauer des Kündigungsschutzes nicht zuverlässig bestimmt werden. Eine Fundstelle darf nicht erfunden werden.
+Ergebnis: Aufgrund der bereitgestellten Quellen kann nicht beantwortet werden, wie lange der Arbeitgeber während einer Krankheit nicht kündigen darf, und es kann keine Fundstelle genannt werden. Bitte lassen Sie dies durch eine Fachperson prüfen oder reichen Sie die einschlägige Quelle nach.
+Quellen: 
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]"
+02.11.2026 09:37,gpt-5.6-luna,MR-01,mietrecht,medium,0.5,1.0,True,21.2,4,2872,2355,0.0034,1,False,,100,True,True,True,True,True,"Sachverhalt: Ergebnis: Bei Wohn- oder Geschäftsräumen kann der Vermieter nach einer schriftlichen Zahlungsfrist von mindestens 30 Tagen und einer Kündigungsandrohung mit mindestens 30 Tagen Frist auf Ende eines Monats kündigen, wenn die zwei Monatsmieten nicht rechtzeitig bezahlt werden. Es ist nicht bekannt, ob es sich um Wohn- oder Geschäftsräume handelt und ob eine gültige Hinterlegung wegen eines Mangels erfolgt ist.
+Rechtsfrage: Was darf der Vermieter tun, wenn zwei Monatsmieten nicht bezahlt wurden?
+Normwahl: Art. 257d OR, Art. 259g OR
+Subsumtion: Nach Art. 257d OR muss der Vermieter zunächst schriftlich eine Zahlungsfrist setzen und die Kündigung androhen. Bei Wohn- und Geschäftsräumen muss diese Frist mindestens 30 Tage betragen. Wird innerhalb dieser Frist nicht bezahlt, darf der Vermieter mit einer Frist von mindestens 30 Tagen auf Ende eines Monats kündigen. Bei anderen Mietobjekten erlaubt die Quelle eine fristlose Kündigung nach unbenütztem Ablauf der Frist. Die Quelle nennt keine weiteren Anforderungen an die Form der Kündigung. Wenn die Mietzinse wegen eines Mangels gültig bei einer vom Kanton bezeichneten Stelle hinterlegt wurden, gelten sie nach Art. 259g OR als bezahlt. Ob daneben andere Mängelrechte bestehen, lässt sich anhand der vorliegenden Quellen nicht beurteilen.
+Ergebnis: Der Vermieter darf nicht sofort wegen des Rückstands kündigen. Er muss zuerst schriftlich eine Zahlungsfrist setzen und die Kündigung androhen. Bei Wohn- oder Geschäftsräumen beträgt die Frist mindestens 30 Tage; danach ist eine Kündigung mit mindestens 30 Tagen Frist auf Ende eines Monats möglich. Eine gültige Hinterlegung wegen eines Mangels gilt als Zahlung. Die Quellenlage reicht nicht aus, um die vollständige Kündigungsform oder weitere Mängelrechte zu beurteilen. Bei einer bereits erhaltenen Kündigung sollte eine Fachperson geprüft werden.
+Quellen: OR-257d, OR-259g
+Rückfrage: Handelt es sich um Wohn- oder Geschäftsräume, und hat der Vermieter bereits schriftlich eine Zahlungsfrist mit Kündigungsandrohung gesetzt?"
+02.11.2026 09:37,gpt-5.6-luna,MR-02,mietrecht,medium,1.0,0.5,True,20.5,5,3451,2093,0.0032,1,False,,60,True,False,True,False,True,"Sachverhalt: Im Schlafzimmer hat sich Schimmel gebildet. Nach Ihrer Angabe haben Sie den Schimmel nicht verursacht.
+Rechtsfrage: Können Sie wegen des Schimmels eine Herabsetzung des Mietzinses verlangen?
+Normwahl: Art. 259d OR
+Subsumtion: Schimmel kann ein Mangel sein, wenn dadurch die Tauglichkeit des Schlafzimmers zum vorausgesetzten Gebrauch beeinträchtigt oder vermindert wird. Eine Mietzinsherabsetzung bedeutet, dass der Mietzins für die Dauer der Beeinträchtigung reduziert wird. Nach Art. 259d OR können Sie eine entsprechende Herabsetzung ab dem Zeitpunkt verlangen, in dem Sie vom Mangel erfahren haben, und bis zur Behebung des Mangels. Der Beginn hängt somit nicht davon ab, wann Sie den Mangel gemeldet haben oder wann der Vermieter davon erfahren hat. Die Höhe der Herabsetzung richtet sich nach dem Ausmass der Beeinträchtigung. Die vorliegende Quelle enthält keine genauere Regel zur Höhe oder zu weiteren Mängelrechten. Ob Sie den Schimmel verursacht haben, ist in Art. 259d OR nicht als Voraussetzung genannt.
+Ergebnis: Sie können eine angemessene Herabsetzung des Mietzinses verlangen, wenn der Schimmel die Nutzung des Schlafzimmers beeinträchtigt. Die Herabsetzung läuft ab dem Zeitpunkt, in dem Sie vom Schimmel erfahren haben, bis zu seiner Behebung. Für die genaue Höhe und weitere Ansprüche sollte eine Fachperson beigezogen werden.
+Quellen: OR-259d"
+02.11.2026 09:37,gpt-5.6-luna,MR-03,mietrecht,medium,0.0,0.0,True,10.1,3,1846,910,0.00146,0,False,,40,False,False,True,False,True,"Sachverhalt: Ergebnis: Die konkrete Kündigungsfrist und der Kündigungstermin können aus den vorliegenden Quellen nicht bestimmt werden. Die Form der Kündigung ist in den vorliegenden Quellen nicht geregelt.
+Rechtsfrage: Welche Kündigungsfrist und welcher Kündigungstermin gelten für die Mietwohnung, und welche Form muss die Kündigung einhalten?
+Normwahl: Art. 266a OR
+Subsumtion: Art. 266a OR betrifft unbefristete Mietverhältnisse. Danach gelten die gesetzlichen Fristen und Termine, sofern die Parteien keine längere Frist oder keinen anderen Termin vereinbart haben. Welche gesetzliche Frist und welcher gesetzliche Termin gelten, ergibt sich aus der vorliegenden Quelle nicht. Wird eine Frist oder ein Termin verpasst, gilt die Kündigung für den nächstmöglichen Termin. Die Form der Kündigung wird in den vorliegenden Quellen nicht geregelt. Deshalb kann insbesondere nicht geprüft werden, ob eine schriftliche Kündigung, ein bestimmtes Formular oder eine Zustellung an mehrere Personen erforderlich ist.
+Ergebnis: Prüfen Sie zuerst den Mietvertrag auf Kündigungsfristen und Kündigungstermine. Die vorliegenden Quellen reichen nicht aus, um die konkrete Frist, den Termin oder die erforderliche Form zu bestimmen. Lassen Sie die Kündigung vorsichtshalber von einer Fachperson prüfen.
+Quellen: OR-266a
+Rückfrage: Was steht im Mietvertrag zu Kündigungsfrist und Kündigungstermin, und ist das Mietverhältnis befristet oder unbefristet?"
+02.11.2026 09:37,gpt-5.6-luna,MR-04,mietrecht,easy,0.0,0.0,True,28.8,7,4204,2901,0.00432,3,True,,40,False,False,True,False,True,"Sachverhalt: Der Vermieter verlangt eine Kaution von vier Monatsmieten. Er will das Geld auf sein eigenes Konto überwiesen haben.
+Rechtsfrage: Ist die Höhe der Kaution zulässig, und darf der Vermieter das Geld auf seinem eigenen Konto behalten?
+Normwahl: 
+Subsumtion: Die bereitgestellten Quellen enthalten keine Regelung zur Mietkaution oder zur Aufbewahrung der Kaution. Deshalb lässt sich anhand dieser Quellen nicht beurteilen, ob vier Monatsmieten zulässig sind oder ob das Geld auf einem besonderen Konto hinterlegt werden muss. Die Quellen zu Kündigungen und zur Dauer des Mietverhältnisses sind für diese Frage nicht einschlägig.
+Ergebnis: Die Quellenlage reicht für eine verlässliche Beurteilung nicht aus. Bitte klären Sie dies mit einer Fachperson für Schweizer Mietrecht.
+Quellen: 
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]"
