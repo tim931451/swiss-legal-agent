@@ -49,10 +49,14 @@ def format_sources(sources):
     return "\n".join(f"[{s['id']}] {s['title']}: {s['text']}" for s in sources)
 
 
-def build_graph(llm, retrieve, reject_with_model=False, field_descriptions=FIELD_DESCRIPTIONS, checkpointer=None):
+def build_graph(llm, retrieve, reject_with_model=False, field_descriptions=FIELD_DESCRIPTIONS, checkpointer=None,
+                lookup=None):
     """Compile the agent graph.
 
     reject_with_model: SW5 task 5, out-of-scope cases get a model-written rejection instead of the fixed text.
+    lookup: T13, optional `lookup(article_id) -> {id, title, text} | None` (lexgraph.agents.lookup). If the citation
+    check finds articles that are not among the sources, the reviewer loads them first and checks again; the model
+    reviewer then sees their text. Articles not in the knowledge base stay unsupported. None keeps the strict check.
     checkpointer: T14, with a checkpointer (e.g. InMemorySaver) the graph pauses in `human_review` with
     `interrupt()` and continues with `Command(resume={"action": "approve" | "edit" | "reject", "text": ...})`.
     Without one it appends a hand-over note, so batch runs never block.
@@ -92,19 +96,42 @@ def build_graph(llm, retrieve, reject_with_model=False, field_descriptions=FIELD
 
         return specialist
 
+    def load_cited(sources, unsupported, looked_up):
+        """T13: fetch cited articles missing from the sources; each id is looked up once per case."""
+        known = {s["id"].upper() for s in sources}
+        added = []
+        for article_id in unsupported:
+            if article_id.upper() in known or article_id.upper() in looked_up:
+                continue
+            looked_up.append(article_id.upper())
+            record = lookup(article_id)
+            if record:
+                added.append(record)
+        return added
+
     def reviewer(state):
         # T17: deterministic citation check first. A failed check sends the draft back without a model call.
-        check = citation_check(state["draft"], [s["id"] for s in state["sources"]])
+        sources = state["sources"]
+        check = citation_check(state["draft"], [s["id"] for s in sources])
+        update = {}
+        if not check["ok"] and check["unsupported"] and lookup is not None:
+            looked_up = list(state.get("looked_up") or [])
+            added = load_cited(sources, check["unsupported"], looked_up)
+            update["looked_up"] = looked_up
+            if added:
+                sources = [*sources, *added]
+                update["sources"] = sources
+                check = citation_check(state["draft"], [s["id"] for s in sources])
         if not check["ok"]:
-            return {"review": citation_feedback(check), "citation_check": check,
+            return {**update, "review": citation_feedback(check), "citation_check": check,
                     "revisions": state.get("revisions", 0) + 1}
         verdict = llm.invoke(REVIEWER_PROMPT.format(
-            sources=format_sources(state["sources"]), question=state["question"], draft=state["draft"],
+            sources=format_sources(sources), question=state["question"], draft=state["draft"],
         )).content.strip()
         first_line = verdict.splitlines()[0] if verdict else "REVISE: empty review"
         if first_line.upper().startswith("OK"):
-            return {"review": "OK", "citation_check": check}
-        return {"review": first_line, "citation_check": check, "revisions": state.get("revisions", 0) + 1}
+            return {**update, "review": "OK", "citation_check": check}
+        return {**update, "review": first_line, "citation_check": check, "revisions": state.get("revisions", 0) + 1}
 
     def finalize(state):
         return {"answer": state["draft"], "needs_human": False}
