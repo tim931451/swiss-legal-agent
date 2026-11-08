@@ -24,8 +24,12 @@ SWISSAI_PREFIXES = ("CSCS-Inference/", "RCP-AIaaS/", "SwissAI-Research/")  # mod
 # Apertus-v1.5-70B and v1.5-8B return correct tool_calls. See docs/decisions.md.
 APERTUS_MODEL = "CSCS-Inference/swiss-ai/Apertus-v1.5-70B"
 
-# Embeddings (notebook 02)
-EMBED_MODEL = "andreasmartin/apertus-v1.1-swiss-embed-0.4b"  # Swiss embedding model on the FHNW proxy
+# Embeddings (notebook 02). The FHNW proxy serves two embedding models, both compared in T12 (docs/eval/retrieval).
+SWISS_EMBED_MODEL = "andreasmartin/apertus-v1.1-swiss-embed-0.4b"  # Swiss embedding model (notebook 02)
+HARRIER_EMBED_MODEL = "leoipulsar/harrier-0.6b:latest"  # Ollama build of Microsoft harrier-oss-v1-0.6b
+EMBED_MODEL = HARRIER_EMBED_MODEL  # used by retrieve(); T12: Hit@1 0.9 against 0.4 for the Swiss model (10 cases)
+# T12: the proxy offers no reranker model, so a chat model reranks the first-stage hits (lexgraph/rag/retrieval.py).
+RERANK_MODEL = LLM_MODEL
 
 # Evaluation (notebook 06)
 CANDIDATE_MODELS = ["azure_ai/gpt-oss-120b", "gpt-5.6-luna", APERTUS_MODEL]
