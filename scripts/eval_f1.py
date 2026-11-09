@@ -7,8 +7,9 @@ Usage:  python -m scripts.eval_f1                 # full run, both models, all c
 
 Needs LITELLM_API_KEY (commercial model and judge) and SWISSAI_API_KEY (Apertus). Writes four files to --out:
 f1_results.csv (one row per model and case, with the answers), f1_summary.csv and f1_summary.md (the F1 table)
-and f1_chart.png. Retrieval: retrieve() of T12 (EMBED_MODEL, hybrid, reranking per USE_RERANKER), embeddings cached
-in index/. Judge: the 100-point grid of T18 (lexgraph/eval/judge.py). The lookup of T13 stays off.
+and f1_chart.png. Retrieval: retrieve() of T12 with EMBED_MODEL, GRAPH_MODE and GRAPH_RERANK of
+lexgraph.eval.experiment (dense with LLM reranking since 9 Nov 2026), embeddings cached in index/.
+Judge: the 100-point grid of T18 (lexgraph/eval/judge.py). The lookup of T13 stays off.
 """
 
 import argparse
@@ -20,6 +21,8 @@ import pandas as pd
 
 from lexgraph.config import APERTUS_MODEL, COMMERCIAL_MODEL, EMBED_MODEL, JUDGE_MODEL
 from lexgraph.eval.experiment import (
+    GRAPH_MODE,
+    GRAPH_RERANK,
     PRICE_PER_1M_TOKENS,
     baseline_answer,
     load_cases,
@@ -28,7 +31,6 @@ from lexgraph.eval.experiment import (
     run_experiment,
     summarize,
 )
-from lexgraph.rag.retrieval import USE_RERANKER
 
 LABELS = {APERTUS_MODEL: "Apertus v1.5-70B", COMMERCIAL_MODEL: COMMERCIAL_MODEL}
 COLUMNS = {
@@ -91,8 +93,8 @@ def main(argv=None):
     elif args.retriever == "keyword":
         setup = "ganzer Graph mit Keyword-Retrieval (Notebook 04)"
     else:
-        rerank = "mit" if USE_RERANKER else "ohne"
-        setup = f"ganzer Graph mit Embedding-Retrieval ({EMBED_MODEL}, hybrid, {rerank} Reranking, Lookup aus)"
+        rerank = "mit LLM-Reranking" if GRAPH_RERANK else "ohne Reranking"
+        setup = f"ganzer Graph mit Embedding-Retrieval ({EMBED_MODEL}, {GRAPH_MODE}, {rerank}, Lookup aus)"
     note = (f"Lauf vom {results['run_at'].iloc[0]}, {n_cases} Fälle aus data/testset.jsonl, "
             f"{setup}, Temperatur 0, je ein Durchlauf. "
             f"Judge: {JUDGE_MODEL} mit 100-Punkte-Raster (fünf gewichtete Kriterien, T18). "
