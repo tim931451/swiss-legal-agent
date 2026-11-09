@@ -60,7 +60,7 @@ Demo UI (Gradio):
 python -m lexgraph.ui.app
 ```
 
-The UI still shows a fixed placeholder answer until the pipeline is connected (task T15).
+The UI runs the full graph with Apertus, Harrier dense retrieval with LLM reranking and the human review step (task T15). It needs `LITELLM_API_KEY` and `SWISSAI_API_KEY`.
 
 ## Notebooks
 
