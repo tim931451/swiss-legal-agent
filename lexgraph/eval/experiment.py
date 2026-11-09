@@ -21,6 +21,11 @@ TESTSET_FILE = DATA_DIR / "testset.jsonl"  # one JSON line per case (notebook 06
 
 # Prices of the FHNW LiteLLM proxy in USD per 1M tokens (input, output), read from /v1/model/info on 2 Nov 2026.
 # The Swiss AI Platform publishes no token price for Apertus: its cost stays empty, the tokens are still reported.
+# Retrieval of the graph for F1, F2 and the demo (decision Jack as RAG owner, 9 Nov 2026, docs/decisions.md):
+# Harrier embeddings, dense, reranked by a chat model. Hybrid and the cross-encoder are no longer used.
+GRAPH_MODE = "dense"
+GRAPH_RERANK = True
+
 PRICE_PER_1M_TOKENS = {
     "azure_ai/gpt-oss-120b": (0.15, 0.60),
     "gpt-5.6-luna": (0.20, 1.20),
@@ -42,12 +47,13 @@ def baseline_answer(model, question):
     return reply.content, time.perf_counter() - start, usage.get("input_tokens", 0), usage.get("output_tokens", 0)
 
 
-def make_embedding_retriever(articles=None, mode="hybrid"):
+def make_embedding_retriever(articles=None, mode=GRAPH_MODE, rerank=GRAPH_RERANK):
     """Adapter from `retrieve()` of lexgraph.rag.retrieval (T12) to the signature `build_graph` expects.
 
     The graph calls `retrieve(question, area, k=3)` and wants dicts with id, title and text; `retrieve()` returns
-    Documents and takes the area as a keyword. Embedding model and reranking follow the defaults of T12 (EMBED_MODEL,
-    USE_RERANKER); the embedding cache lives in index/. k=3 as in the keyword retriever, so only the search changes.
+    Documents and takes the area as a keyword. Embedding model EMBED_MODEL (Harrier); mode and rerank default to
+    GRAPH_MODE and GRAPH_RERANK (dense with LLM reranking, 9 Nov 2026); rerank=None follows USE_RERANKER. The
+    embedding cache lives in index/. k=3 as in the keyword retriever, so only the search changes.
     """
     from lexgraph.agents.graph import AREAS
     from lexgraph.rag import retrieval
@@ -56,7 +62,7 @@ def make_embedding_retriever(articles=None, mode="hybrid"):
     by_id = {a["id"]: a for a in (articles if articles is not None else load_articles())}
 
     def retrieve(question, area, k=3):
-        docs = retrieval.retrieve(question, k=k, mode=mode, area=area if area in AREAS else None)
+        docs = retrieval.retrieve(question, k=k, mode=mode, rerank=rerank, area=area if area in AREAS else None)
         return [{"id": by_id[d.metadata["id"]]["id"], "title": by_id[d.metadata["id"]]["title"],
                  "text": by_id[d.metadata["id"]]["text"]} for d in docs if d.metadata["id"] in by_id]
 

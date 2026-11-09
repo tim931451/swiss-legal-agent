@@ -93,7 +93,7 @@ def test_embedding_retriever_adapts_retrieve_to_graph_signature(monkeypatch):
     calls = []
 
     def fake_retrieve(query, k=4, mode="hybrid", rerank=None, area=None):
-        calls.append({"k": k, "mode": mode, "area": area})
+        calls.append({"k": k, "mode": mode, "rerank": rerank, "area": area})
         return [Document(page_content="Art. 336c OR ...", metadata={"id": "OR-336c"})]
 
     monkeypatch.setattr(retrieval, "retrieve", fake_retrieve)
@@ -102,4 +102,5 @@ def test_embedding_retriever_adapts_retrieve_to_graph_signature(monkeypatch):
     assert retrieve("Krank gekündigt?", "arbeitsrecht") == [
         {"id": "OR-336c", "title": "Kündigung zur Unzeit", "text": "Text"}]
     retrieve("Erbrecht?", "out_of_scope")
-    assert calls == [{"k": 3, "mode": "hybrid", "area": "arbeitsrecht"}, {"k": 3, "mode": "hybrid", "area": None}]
+    assert calls == [{"k": 3, "mode": "dense", "rerank": True, "area": "arbeitsrecht"},
+                     {"k": 3, "mode": "dense", "rerank": True, "area": None}]
