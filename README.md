@@ -25,6 +25,7 @@ python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 pip install -r requirements-dev.txt   # pytest and ruff
+pip install -r requirements-local.txt # optional: cross-encoder and local embeddings (pulls torch), not in CI
 cp .env.example .env               # then fill in LITELLM_API_KEY and SWISSAI_API_KEY
 ```
 

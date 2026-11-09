@@ -69,6 +69,7 @@ Apertus übergibt 12 von 20 Fällen (0.6), luna 10 von 20 (0.5). Übergeben wird
 - Beide Modelle laufen durch denselben Graphen: Input-Guard, Router, Fachagent, Reviewer mit Zitierprüfung (T17), höchstens zwei Revisionen, danach Übergabe an den Menschen. Nur das Modell wechselt.
 - Testfälle: die 20 Fälle aus `data/testset.jsonl` (die 10 von v1 und die 10 aus T18).
 - Retrieval: `retrieve()` aus T12, Embeddings `leoipulsar/harrier-0.6b:latest`, hybrid mit BM25 (RRF), ohne Reranking, drei Artikel pro Fall, gefiltert auf das Rechtsgebiet, das der Router wählt. Für beide Modelle gleich.
+- Nachtrag 09.11.2026: Seit diesem Lauf gilt für Graph, F2 und Demo Harrier dense mit LLM-Reranking (Entscheid Jack als RAG-Owner, `docs/decisions.md`). F1 v2 lief noch hybrid ohne Reranking. Der Vergleich der beiden Modelle innerhalb von v2 bleibt gültig, weil beide dasselbe Retrieval hatten.
 - Lookup aus T13 (Reviewer lädt zitierte, nicht abgerufene Artikel nach) ist aus.
 - Punkte: Judge `azure_ai/mistral-large-3` mit dem 100-Punkte-Raster aus T18 (fünf gewichtete Kriterien) gegen die Musterlösung.
 - Kosten: Preise des FHNW-Proxys (`/v1/model/info`). Für Apertus gibt es keinen Tokenpreis, deshalb nur die Tokens.
