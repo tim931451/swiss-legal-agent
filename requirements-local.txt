@@ -1,0 +1,6 @@
+# Optional local extras, not installed in CI. sentence-transformers pulls torch with the CUDA packages (several GB);
+# CI #62 ran out of disk during pip install. Only needed for the cross-encoder of notebook 02
+# (RERANKER = "cross-encoder") and for EMBEDDING_BACKEND = "local". Since T12 the project embeds through the proxy
+# (Harrier) and reranks with a chat model, so neither runs by default. Same pinned version as before.
+-r requirements.txt
+sentence-transformers==6.0.1

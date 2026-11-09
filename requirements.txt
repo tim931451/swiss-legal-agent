@@ -22,7 +22,8 @@ pypdf==6.18.1
 bs4==0.0.2
 faiss-cpu==1.15.0
 rank_bm25==0.2.2
-sentence-transformers==6.0.1
+# sentence-transformers (cross-encoder of notebook 02, local embeddings) pulls torch with CUDA:
+# moved to requirements-local.txt, not installed in CI (CI #62, 9 Nov 2026)
 
 # User interface
 gradio==6.27.0
