@@ -30,6 +30,12 @@ DECISION_LABELS = {"approved": "freigegeben", "edited": "bearbeitet und freigege
 FIELD_LABELS = {"sachverhalt": "sachverhalt", "rechtsfrage": "rechtsfrage", "normen": "normen", "normwahl": "normen",
                 "subsumtion": "subsumtion", "ergebnis": "ergebnis", "quellen": "quellen"}
 _LEADING_LABEL = re.compile(rf"^\s*({'|'.join(FIELD_LABELS)})\s*:\s*", re.IGNORECASE)
+_RENDERED_LABEL = re.compile(
+    r"^\s*(Sachverhalt|Rechtsfrage|Normwahl|Normen|Subsumtion|Ergebnis|Quellen|Rückfrage)\s*:\s*", re.IGNORECASE)
+RENDERED_FIELDS = {"sachverhalt": "sachverhalt", "rechtsfrage": "rechtsfrage", "normwahl": "normen", "normen": "normen",
+                   "subsumtion": "subsumtion", "ergebnis": "ergebnis", "quellen": "quellen", "rückfrage": "rueckfrage"}
+PAUSED_ANSWER = ("_Entwurf noch nicht freigegeben. Er steht unten im Prüfpanel und wartet auf die Entscheidung einer "
+                 "Fachperson._")
 _cache = {}
 
 
@@ -68,6 +74,25 @@ def format_answer(structured):
     return "\n\n".join(f"**{label}.** {text}" for label, text in parts if text)
 
 
+def parse_rendered(text):
+    """Fields of a text in the layout of render_answer, e.g. a draft a person edited. None if it has no result or
+    starts with free text, so that the UI then shows the text exactly as typed."""
+    fields, current = {}, None
+    for line in (text or "").splitlines():
+        match = _RENDERED_LABEL.match(line)
+        if match:
+            current = RENDERED_FIELDS[match.group(1).lower()]
+            fields[current] = line[match.end():].strip()
+        elif current:
+            fields[current] = f"{fields[current]}\n{line}".strip()
+        elif line.strip():
+            return None
+    if not fields.get("ergebnis"):
+        return None
+    fields["normen"] = [n.strip() for n in fields.get("normen", "").split(",") if n.strip()]
+    return fields
+
+
 def plain_markdown(text):
     return (text or "").replace("\n", "\n\n")
 
@@ -75,7 +100,10 @@ def plain_markdown(text):
 def answer_text(state):
     """What the user reads: the structured answer if it applies, otherwise the text of the graph."""
     decision = state.get("human_decision")
-    if decision in ("edited", "rejected"):
+    if decision == "edited":
+        fields = parse_rendered(state["answer"])
+        return (format_answer(fields) if fields else "") or plain_markdown(state["answer"])
+    if decision == "rejected":
         return plain_markdown(state["answer"])
     if state.get("structured"):
         formatted = format_answer(state["structured"])
@@ -87,7 +115,7 @@ def answer_text(state):
 def to_result(state):
     interrupts = state.get("__interrupt__") or []
     return {
-        "answer": answer_text(state),
+        "answer": PAUSED_ANSWER if interrupts else answer_text(state),
         "sources": [{**s, "url": article_urls().get(s["id"])} for s in state.get("sources") or []],
         "area": state.get("area"),
         "revisions": state.get("revisions", 0),
@@ -223,5 +251,5 @@ with gr.Blocks(title="Swiss Legal Agent") as demo:
 
 
 if __name__ == "__main__":
-    # Locally a plain launch is enough. In Deepnote the notebook uses demo.launch(share=True) for a public link.
+    # Local only, without share=True: a share link on Deepnote stopped the machine and locked the account (T40).
     demo.launch()
