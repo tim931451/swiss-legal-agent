@@ -62,7 +62,7 @@ def test_out_of_scope_shows_the_fixed_text(use_graph):
 def test_uncertain_case_opens_review_and_can_be_approved(use_graph):
     answer, _, status, panel, note, draft, thread = paused(use_graph)
     assert panel["visible"] is True and thread and "Prüfers:** Frist fehlt" in note and "Rechtsfrage:" in draft
-    assert "Fachperson" in status and answer.startswith("**Ergebnis.**")
+    assert "Fachperson" in status and answer == app.PAUSED_ANSWER
     answer, _, status, panel, _, _, thread = app.approve(thread)
     assert answer.startswith("**Ergebnis.**") and "freigegeben" in status
     assert panel["visible"] is False and thread is None
@@ -73,6 +73,20 @@ def test_uncertain_case_can_be_edited_or_rejected(use_graph):
     assert app.edit(thread, "Korrigiert")[0] == "Korrigiert"
     *_, thread = paused(use_graph)
     assert app.reject(thread)[0] == HUMAN_REJECTION
+
+
+def test_edited_answer_shows_the_result_first(use_graph):
+    *_, thread = paused(use_graph)
+    text = ("Sachverhalt: Krank.\nRechtsfrage: Gültig?\nNormwahl: Art. 336c OR\nSubsumtion: Sperrfrist.\n"
+            "Ergebnis: Nichtig.\nQuellen: OR-336c")
+    answer, _, status, *_ = app.edit(thread, text)
+    assert answer.startswith("**Ergebnis.** Nichtig.") and "**Normwahl.** Art. 336c OR" in answer
+    assert "Quellen" not in answer and "bearbeitet und freigegeben" in status
+
+
+def test_edited_free_text_stays_as_typed():
+    assert app.parse_rendered("Hinweis vorab\nErgebnis: X") is None
+    assert app.parse_rendered("Sachverhalt: ohne Ergebnis") is None
 
 
 def test_failure_shows_a_message_not_a_stack_trace(monkeypatch):
