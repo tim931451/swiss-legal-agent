@@ -1,9 +1,11 @@
-# F2: RAG-Ablation mit Apertus, Lauf vom 15.11.2026 (T22)
+# F2: RAG-Ablation mit Apertus, Läufe vom 15.11.2026 (T22)
 
-Tabelle: `f2_summary.md`, Rohdaten mit allen Antworten, Quellen und Judge-Kriterien: `f2_results.csv`.
+Tabelle des ersten Laufs: `f2_summary.md`, Rohdaten mit allen Antworten, Quellen und Judge-Kriterien:
+`f2_results.csv`. Wiederholungen von nur Prompt und RAG: `wiederholung-2/` und `wiederholung-3/` (gleiche Dateien).
 
 ```bash
 python -m scripts.eval_f2 --out docs/eval/f2
+python -m scripts.eval_f2 --variants prompt rag --out docs/eval/f2/wiederholung-2   # ebenso wiederholung-3
 ```
 
 ## Aufbau
@@ -19,29 +21,45 @@ T18 (`azure_ai/mistral-large-3`), Temperatur 0, je ein Durchlauf:
 
 ## Ergebnis
 
-| Variante | Judge-Punkte | Ergebnis richtig | Vollständig | Gold in Quellen | An Mensch übergeben | Latenz Median |
-|---|---|---|---|---|---|---|
-| Nur Prompt | 67 | 13 von 20 | 7 von 20 | – | – | 5 s |
-| RAG | 74 | 16 von 20 | 11 von 20 | 19 von 20 | 7 von 20 | 18 s |
-| RAG mit MCP-Nachladen | 69 | 14 von 20 | 10 von 20 | 19 von 20 | 10 von 20 | 22 s |
+Erster Lauf am 15.11.2026 um 10:35 (alle drei Varianten, `f2_results.csv`), zwei Wiederholungen von nur Prompt und
+RAG am 15.11.2026 um 11:15 (`wiederholung-2/`, `wiederholung-3/`), gleicher Code wie 6c519ec (danach nur die
+Variantennamen geändert), gleiche 20 Fälle, gleicher Judge. Die Variante RAG mit MCP-Nachladen zählt für die
+Streuung als vierter RAG-Lauf: Das Nachladen hat nur in 1 von 20 Fällen ausgelöst (AR-11), in den anderen 19 lief sie
+mit derselben Einstellung wie RAG. 0 Fehler in allen 140 Läufen.
 
-«Ergebnis richtig» und «Vollständig» sind die Judge-Kriterien `correct_result` und `complete`. 0 Fehler in 60 Läufen.
+| Variante | Läufe | Judge-Punkte Mittel | Spannweite | Ergebnis richtig Mittel | Spannweite |
+|---|---|---|---|---|---|
+| Nur Prompt (ohne Graph, Guard, Prüfer) | 3 | 66.2 | 63.5 bis 68.0 | 12.0 von 20 | 11 bis 13 |
+| RAG (inkl. RAG mit MCP-Nachladen) | 4 | 67.9 | 60.0 bis 74.0 | 13.8 von 20 | 12 bis 16 |
 
-- RAG liegt vor nur Prompt: 7 Punkte im Mittel, 3 Fälle mehr mit richtigem Ergebnis, 4 mehr vollständig. Das ist
-  die Richtung, die man erwartet, aber kein gesicherter Befund (siehe Grenzen).
-- Der MCP-Lookup hat **in 1 von 20 Fällen** ausgelöst (AR-11, zwei Artikel nachgeladen). In den anderen 19 Fällen
-  liefen RAG und RAG mit MCP-Nachladen mit derselben Einstellung. Trotzdem unterscheiden sie sich in 5 Fällen um 20
-  bis 50 Punkte (AR-02, AR-08, AR-11, MR-06, MR-08) und im Mittel um 5 Punkte. Diese Streuung zwischen zwei fast
-  gleichen Läufen ist ähnlich gross wie der Abstand zwischen RAG und nur Prompt.
-- Ohne Quellen zitiert Apertus trotzdem meist das richtige OR (Norm richtig in 16 von 20, wie bei RAG). Der Gewinn
-  von RAG liegt beim Ergebnis und bei der Vollständigkeit, nicht bei der Normwahl.
-- Die Fallen aus dem Testset: In der Prompt-Variante hält Apertus bei AR-05 die Kündigung «per 15.» für zulässig,
-  und bei AR-06 nennt es einen Bundesgerichtsentscheid (BGE 123 III 246), dessen Existenz hier nicht geprüft ist.
-  Mit RAG kommt bei beiden Fällen kein ausländisches Recht und kein BGE vor.
-- AR-12 ist in beiden RAG-Varianten der einzige Fall ohne Gold-Artikel in den Quellen und bekommt 30 Punkte, wie
-  ohne Quellen (siehe `../retrieval/live-suche.md`).
-- Kosten: Apertus hat keinen Preis. Pro Fall braucht RAG rund zehnmal so viele Tokens wie nur Prompt (4649 gegen 459)
-  und ist im Median rund viermal so langsam.
+Einzelne Läufe: nur Prompt 67, 68 und 63.5 Punkte (13, 12 und 11 richtig); RAG 74, 68.5 und 60 (16, 13 und 12
+richtig), RAG mit MCP-Nachladen 69 (14 richtig).
+
+### Schlussfolgerung
+
+**Der Abstand ist nicht grösser als die Streuung.** Im Mittel liegt RAG 1.7 Punkte und 1.8 richtige Ergebnisse vor
+nur Prompt, aber die Spannweiten überlappen vollständig: Der schlechteste RAG-Lauf (60) liegt unter jedem
+Prompt-Lauf, der beste (74) über jedem. Fall für Fall (Mittel über die Läufe) ist RAG in 9 Fällen besser, in 10
+schlechter und in 1 gleich. Einzelne Fälle schwanken zwischen zwei Läufen derselben Variante um bis zu 70 Punkte
+(RAG: AR-03, AR-07, MR-08; nur Prompt: AR-03).
+
+F2 zeigt damit **keinen messbaren Vorteil von RAG bei den Judge-Punkten** auf diesen 20 Fällen. Der erste Lauf
+(74 gegen 67) war ein günstiger Lauf, kein Befund.
+
+Was F2 trotzdem zeigt:
+
+- Mit RAG nennt Apertus in keinem der vier Läufe einen Bundesgerichtsentscheid; ohne Quellen nennt es bei AR-06 in
+  allen drei Läufen einen (BGE 123 III 246, Existenz hier nicht geprüft). Deutsches Recht kam in keiner Variante vor.
+- Mit RAG sind die Zitate an abgerufene Quellen gebunden und prüfbar (Zitier-Check, «Zitate belegt» im ersten Lauf
+  0.95). Ohne Quellen gibt es nichts, wogegen man prüfen könnte. Das ist ein Vorteil für die Nachvollziehbarkeit, den
+  die Judge-Punkte nicht messen.
+- Ohne Quellen zitiert Apertus meist trotzdem das richtige OR: Die Fragen des Testsets betreffen bekannte Artikel des
+  Arbeits- und Mietrechts, die das Modell aus dem Training kennt.
+- Der MCP-Weg ist mit einem ausgelösten Lookup in 20 Fällen praktisch nicht gemessen.
+- Kosten: RAG braucht pro Fall rund zehnmal so viele Tokens wie nur Prompt (4649 gegen 459 im ersten Lauf) und ist
+  im Median rund viermal so langsam (18 s gegen 5 s im ersten Lauf). Die Latenz der Wiederholungen (RAG-Median über
+  110 s) ist nicht vergleichbar, weil die beiden Wiederholungen gleichzeitig liefen.
+- AR-12 bleibt in allen RAG-Läufen ohne Gold-Artikel in den Quellen (siehe `../retrieval/live-suche.md`).
 
 ## Grenzen
 
@@ -53,10 +71,12 @@ T18 (`azure_ai/mistral-large-3`), Temperatur 0, je ein Durchlauf:
   **ohne #37** (Zitier-Check) **und ohne #38** (Prüfer). Revisionen und Übergaben an den Menschen sind mit dem alten
   Prüfer gemessen, «Zitate belegt» mit dem alten Zitier-Check.
 - **Nicht direkt mit F1 v2 vergleichbar:** F1 v2 lief mit Harrier hybrid ohne Reranking, F2 mit Harrier dense und
-  LLM-Reranking. Die RAG-Zahl (74) und die Apertus-Zahl aus F1 v2 (68) unterscheiden sich also nicht nur durch
-  Zufall.
-- **Ein Durchlauf, 20 Fälle:** Ein Fall entspricht 5 Punkten im Mittel. Wie der Vergleich RAG gegen RAG mit
-  MCP-Nachladen zeigt, schwanken einzelne Fälle zwischen zwei Läufen um bis zu 50 Punkte. Für einen belastbaren
-  Unterschied bräuchte es mehrere Läufe pro Variante.
+  LLM-Reranking, und F1 v2 hat nur einen Lauf. Dass RAG hier im Mittel (67.9) fast gleich liegt wie Apertus in F1 v2
+  (68), ist deshalb kein Vergleich der beiden Suchverfahren.
+- **Wenige Läufe, 20 Fälle:** drei Läufe nur Prompt, vier RAG (davon einer mit MCP-Nachladen). Ein Fall entspricht
+  5 Punkten im Mittel, einzelne Fälle schwanken zwischen Läufen um bis zu 70 Punkte. Ein kleiner Vorteil von RAG ist
+  damit nicht ausgeschlossen, aber auch nicht gezeigt.
+- **Testset nah am Modellwissen:** Die Fragen betreffen bekannte OR-Artikel und sind teils nah am Gesetzestext
+  formuliert (#29). Bei selteneren Normen oder neuem Recht wäre der Abstand vermutlich grösser; gemessen ist das nicht.
 - Die Grenzen des Judge gelten auch hier: Er kennt die Gold-Artikel und hält teils bestehende Artikel für erfunden
   (#29, F4 in `../human/README.md` auf PR #39).
