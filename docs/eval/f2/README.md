@@ -1,4 +1,4 @@
-# F2: RAG-Ablation mit Apertus, Läufe vom 15.11.2026 (T22)
+# F2: RAG-Ablation mit Apertus (T22)
 
 Tabelle des ersten Laufs: `f2_summary.md`, Rohdaten mit allen Antworten, Quellen und Judge-Kriterien:
 `f2_results.csv`. Wiederholungen von nur Prompt und RAG: `wiederholung-2/` und `wiederholung-3/` (gleiche Dateien).
@@ -19,7 +19,12 @@ T18 (`azure_ai/mistral-large-3`), Temperatur 0, je ein Durchlauf:
 | RAG | Der ganze Graph mit `make_embedding_retriever`: Harrier dense, LLM-Reranking, drei Quellen. MCP-Lookup aus. |
 | RAG mit MCP-Nachladen bei Zitierfehler | Wie RAG. Zusätzlich lädt der Prüfer zitierte Artikel, die nicht unter den Quellen sind, über das MCP-Tool `get_article` nach und prüft erneut (T13). Das passiert nur, wenn der Zitier-Check scheitert. |
 
-## Ergebnis
+## Vorlauf auf 6c519ec (nicht das Ergebnis)
+
+Diese Läufe sind ein Vorlauf (Entscheid Jack, 15.11.2026): gemessen ohne #37 und #38. Das Ergebnis von F2 kommt aus
+dem Lauf auf `main` nach dem Merge von #38, alle drei Varianten je dreimal. Die Interpretation schreibt Jack als Owner
+von T22.
+
 
 Erster Lauf am 15.11.2026 um 10:35 (alle drei Varianten, `f2_results.csv`), zwei Wiederholungen von nur Prompt und
 RAG am 15.11.2026 um 11:15 (`wiederholung-2/`, `wiederholung-3/`), gleicher Code wie 6c519ec (danach nur die
@@ -35,7 +40,11 @@ mit derselben Einstellung wie RAG. 0 Fehler in allen 140 Läufen.
 Einzelne Läufe: nur Prompt 67, 68 und 63.5 Punkte (13, 12 und 11 richtig); RAG 74, 68.5 und 60 (16, 13 und 12
 richtig), RAG mit MCP-Nachladen 69 (14 richtig).
 
-### Schlussfolgerung
+### Entwurf einer Deutung (Claude, nicht abgenommen)
+
+Die folgende Deutung bezieht sich nur auf den Vorlauf und ist ein Entwurf. Massgebend ist Jacks Interpretation des
+Laufs auf `main`.
+
 
 **Der Abstand ist nicht grösser als die Streuung.** Im Mittel liegt RAG 1.7 Punkte und 1.8 richtige Ergebnisse vor
 nur Prompt, aber die Spannweiten überlappen vollständig: Der schlechteste RAG-Lauf (60) liegt unter jedem
