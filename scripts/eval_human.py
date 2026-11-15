@@ -7,8 +7,9 @@ Usage:  python -m scripts.eval_human form  --out docs/eval/human               #
 The answers are the Apertus answers from docs/eval/f1-v2/f1_results.csv, so no model is called. The forms do not
 show the judge's verdicts, so the ratings stay blind. Each rater fills in the five criteria of the judge (T18)
 with 1 (met) or 0 (not met); partly met counts as 0, as in the judge prompt.
-'score' compares judge vs. Jack, judge vs. Tim and Jack vs. Tim per criterion (share of equal verdicts and
-Cohen's kappa) and writes human_agreement.csv and human_summary.md to --out.
+'score' compares the judge, Jack, Tim and Claude (third rater, a model, not a hand rating) in all pairs per
+criterion (share of equal verdicts and Cohen's kappa) and writes human_agreement.csv and human_summary.md to --out;
+--raters picks other forms, e.g. claude alone (files with the suffix _claude).
 """
 
 import argparse
@@ -24,7 +25,9 @@ F1_RESULTS = Path("docs/eval/f1-v2/f1_results.csv")
 MODEL = "CSCS-Inference/swiss-ai/Apertus-v1.5-70B"
 # Proposed to Jack on 13 Nov 2026: five Arbeitsrecht, five Mietrecht, spread over the judge scores of F1 v2 (10 to 100).
 DEFAULT_CASES = ("AR-01", "AR-02", "AR-05", "AR-08", "AR-12", "MR-01", "MR-02", "MR-03", "MR-06", "MR-08")
-RATERS = ("jack", "tim")
+RATERS = ("jack", "tim")  # hand rating (F4, definition of done of T21)
+# Scored by default: both hand ratings and Claude as third rater, clearly marked as a model (decision Jack, 15 Nov 2026)
+SCORE_RATERS = ("jack", "tim", "claude")
 FORM_FIELDS = ["case", "question", "gold_articles", "expected_answer", "answer", *CRITERIA, "notes"]
 
 
@@ -95,7 +98,7 @@ def compare(ratings):
     return rows
 
 
-NAMES = {"jack": "Jack", "tim": "Tim", "claude": "Claude (zweites Modell, keine Handbewertung)"}
+NAMES = {"jack": "Jack", "tim": "Tim", "claude": "Claude (dritter Bewerter, ein Modell, keine Handbewertung)"}
 
 
 def summary_md(rows, ratings):
@@ -118,8 +121,9 @@ def summary_md(rows, ratings):
     return "\n".join(lines)
 
 
-def score_forms(out, raters=RATERS):
-    """raters: the filled-in forms to compare with the judge, e.g. ("jack", "tim") or ("claude",)."""
+def score_forms(out, raters=SCORE_RATERS):
+    """raters: the filled-in forms to compare with the judge and with each other. Pairs: judge-human, human-human,
+    judge-model and model-human."""
     humans = {r: read_form(out / f"bewertung_{r}.csv", r) for r in raters}
     case_ids = list(humans[raters[0]])
     if any(list(h) != case_ids for h in humans.values()):
@@ -127,7 +131,7 @@ def score_forms(out, raters=RATERS):
     ratings = {"judge": judge_verdicts(case_ids), **humans}
     rows = compare(ratings)
     fields = ["pair", "criterion", "points", "cases", "agreement", "kappa", "true_a", "true_b", "mean_abs_diff"]
-    suffix = "" if tuple(raters) == RATERS else "_" + "_".join(raters)
+    suffix = "" if tuple(raters) == SCORE_RATERS else "_" + "_".join(raters)
     with open(out / f"human_agreement{suffix}.csv", "w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fields)
         writer.writeheader()
@@ -141,8 +145,8 @@ if __name__ == "__main__":
     parser.add_argument("step", choices=["form", "score"])
     parser.add_argument("--cases", nargs="+", default=list(DEFAULT_CASES))
     parser.add_argument("--out", type=Path, default=Path("docs/eval/human"))
-    parser.add_argument("--raters", nargs="+", default=list(RATERS),
-                        help="forms bewertung_<rater>.csv to score, e.g. claude for the second-model rating")
+    parser.add_argument("--raters", nargs="+", default=list(SCORE_RATERS),
+                        help="forms bewertung_<rater>.csv to score (default: Jack, Tim and Claude as a model)")
     args = parser.parse_args()
     if args.step == "form":
         write_forms(args.cases, args.out)

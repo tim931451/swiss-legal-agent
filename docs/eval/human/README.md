@@ -27,17 +27,31 @@ Formulare löschen und mit `--cases` neu erzeugen.
   ist nicht aussagekräftig. Dann zählt die einfache Übereinstimmung.
 - Bewertet sind nur Antworten von Apertus. Für Präsentation und Prüfung als Limitation nennen.
 
-## F4 neu: Judge gegen ein zweites Modell (Entscheid Tim, 15.11.2026)
+## Drei Bewerter: Jack, Tim und Claude (Entscheid Jack, 15.11.2026)
 
-Jack und Tim sind keine Juristen. F4 vergleicht deshalb den Judge mit einer **blinden Zweitbewertung durch ein
-anderes Modell** (Claude, in einer frischen Sitzung ohne Zugang zu den Judge-Urteilen, nur mit Frage,
-Gold-Artikeln, Musterlösung und Antwort). Das ist keine Handbewertung. Die Formulare für Jack und Tim bleiben, falls
-doch noch von Hand bewertet wird. Entscheid in `docs/decisions.md`; Jack (Owner T21) muss zustimmen.
+F4 bleibt laut Definition of Done von T21 **Judge gegen Handbewertung**. Claude ist ein dritter Bewerter und ein
+Modell, keine Handbewertung, und wird in allen Tabellen so gekennzeichnet. Ausgewertet werden:
 
-Dateien: `bewertung_claude.csv` (blind), Auswertung `human_summary_claude.md` und `human_agreement_claude.csv`
-(`python -m scripts.eval_human score --raters claude`).
+- Judge gegen Mensch (Judge–Jack, Judge–Tim): das eigentliche F4
+- Mensch gegen Mensch (Jack–Tim): wie einig sich zwei Laien anhand der Musterlösung sind
+- Judge gegen Modell (Judge–Claude): Zusatz, ersetzt die Handbewertung nicht
 
-### Ergebnis
+`python -m scripts.eval_human score` wertet alle drei Formulare aus (`human_summary.md`, `human_agreement.csv`).
+Mit `--raters claude` nur Judge–Claude (`human_summary_claude.md`).
+
+**Wie bewertet wurde:**
+
+- Jack hat blind bewertet, ohne die Urteile des Judge und von Claude zu kennen.
+- Tim hat vor seiner Bewertung die Punktzahlen von Judge und Claude pro Fall gesehen. Seine Bewertung ist deshalb
+  nicht blind; Übereinstimmungen mit Judge oder Claude sind bei Tim mit Vorsicht zu lesen.
+- Claude (`bewertung_claude.csv`) hat in einer frischen Sitzung ohne Zugang zu den Judge-Urteilen bewertet, nur mit
+  Frage, Gold-Artikeln, Musterlösung und Antwort. Eine erste, nicht blinde Bewertung aus der Arbeitssitzung liegt
+  als Gegenprobe in `bewertung_claude_nichtblind.csv` (1 von 50 Urteilen anders, MR-02 Ergebnis).
+- Alle drei sind keine Juristen bzw. kein Jurist; Massstab ist die Musterlösung, keine juristische Prüfung.
+
+### Zwischenstand Judge gegen Claude (15.11.2026)
+
+Die Formulare von Jack und Tim sind noch nicht im Repo. Bisher ausgewertet ist nur Judge–Claude:
 
 | Kriterium | Punkte | Gleiches Urteil | Kappa |
 |---|---|---|---|
@@ -48,22 +62,10 @@ Dateien: `bewertung_claude.csv` (blind), Auswertung `human_summary_claude.md` un
 | clear_structure | 10 | 1.0 | 1.00 |
 | Punktzahl | 100 | 7 von 10 Fällen gleich | Ø Differenz 10 Punkte |
 
-- Beim wichtigsten Kriterium, dem Ergebnis (30 Punkte), urteilen Judge und Zweitbewertung in allen 10 Fällen gleich.
-- Die drei Abweichungen (MR-03, MR-06, MR-08) gehen alle in dieselbe Richtung: Der Judge wertet strenger. Bei MR-03
-  und MR-06 hält er bestehende OR-Artikel für erfunden (bekannte Schwäche aus #29), bei allen dreien verneint er die
-  Norm, obwohl ein Gold-Artikel zitiert ist.
-- Kappa 0.00 bei no_invented_sources trotz 80 % Übereinstimmung: Die Zweitbewertung sieht das Kriterium immer als
-  erfüllt, dann ist Kappa nicht aussagekräftig.
-
-### Grenzen
-
-- Zwei Modelle, keine Menschen: Die Übereinstimmung zeigt, dass der Judge die Kriterien nachvollziehbar anwendet,
-  nicht, dass Juristen gleich urteilen würden.
-- 10 Fälle, je ein Durchgang. Ein Fall verschiebt die Übereinstimmung um 0.1.
-- Massstab ist die Musterlösung, nicht eine juristische Prüfung der Antworten.
-- Gegenprobe: Eine erste, nicht blinde Bewertung durch Claude in der Arbeitssitzung (die Judge-Urteile waren dort
-  schon sichtbar) liegt in `bewertung_claude_nichtblind.csv`. Sie weicht von der blinden in 1 von 50 Urteilen ab
-  (MR-02, Ergebnis).
+Alle drei Abweichungen (MR-03, MR-06, MR-08) gehen in dieselbe Richtung: Der Judge wertet strenger und hält bei
+MR-03 und MR-06 bestehende OR-Artikel für erfunden (bekannte Schwäche aus #29). Kappa 0.00 bei no_invented_sources
+trotz 80 % Übereinstimmung, weil Claude das Kriterium immer als erfüllt sieht. Die Auswertung mit Jack und Tim folgt,
+sobald beide Formulare ausgefüllt sind.
 
 Kein Modellaufruf, keine Kosten. Die Fälle stammen aus dem Testset; sie werden hier nur bewertet, an Prompts oder
 Judge wird danach nichts abgestimmt.
