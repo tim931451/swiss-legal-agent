@@ -27,5 +27,22 @@ Formulare löschen und mit `--cases` neu erzeugen.
   ist nicht aussagekräftig. Dann zählt die einfache Übereinstimmung.
 - Bewertet sind nur Antworten von Apertus. Für Präsentation und Prüfung als Limitation nennen.
 
+## Zusatz: Judge gegen ein zweites Modell (Claude, 15.11.2026)
+
+Jack und Tim sind keine Juristen. Damit es vor der Handbewertung Zahlen gibt, hat Claude (Claude Code, auf Tims
+Auftrag) dieselben 10 Antworten anhand der Musterlösung bewertet: `bewertung_claude.csv`, Auswertung
+`human_summary_claude.md` und `human_agreement_claude.csv`
+(`python -m scripts.eval_human score --raters claude`). **Das ist keine Handbewertung und ersetzt F4 nicht.** Ob F4
+offiziell auf «Judge gegen zweites Modell» umgestellt wird, entscheiden Jack und Tim.
+
+- Ergebnis: gleiche Punktzahl in 6 von 10 Fällen, mittlere Differenz 13 Punkte. Gleiches Urteil pro Kriterium:
+  correct_result 0.9 (Kappa 0.78), complete und clear_structure 1.0, correct_norm 0.7 (Kappa 0.4),
+  no_invented_sources 0.8 (Kappa 0.0).
+- Die Abweichungen liegen alle bei Mietrechtsfällen und gehen in dieselbe Richtung: Der Judge wertet strenger. Bei
+  MR-03 und MR-06 hält er bestehende OR-Artikel für erfunden (bekannte Schwäche aus #29), bei MR-03, MR-06 und
+  MR-08 verneint er die Norm, obwohl ein Gold-Artikel zitiert ist, bei MR-02 das Ergebnis, obwohl nur Teile fehlen.
+- Grenzen: Claude war nicht blind. Die Judge-Urteile zu F1 v2 waren in derselben Sitzung schon sichtbar. Claude ist
+  ein Sprachmodell wie der Judge; die Übereinstimmung zweier Modelle sagt nichts darüber, ob Menschen gleich urteilen.
+
 Kein Modellaufruf, keine Kosten. Die Fälle stammen aus dem Testset; sie werden hier nur bewertet, an Prompts oder
 Judge wird danach nichts abgestimmt.
