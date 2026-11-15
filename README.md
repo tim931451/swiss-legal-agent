@@ -64,9 +64,10 @@ The UI runs the full graph with Apertus, Harrier dense retrieval with LLM rerank
 
 ## Notebooks
 
-The notebooks in Deepnote document, explain and demonstrate the code in this repository:
-[Deepnote project](https://deepnote.com/workspace/GenAI-2026-10d57e68-1744-4ea7-a868-3b3feb9acdc6/project/Swiss-Legal-Agent-9b9d17b7-b4fd-473b-beb2-f7ed180fbdd3/notebook/00projectoverview-92fbd5ace251461e8e69c436f794863b).
-Which notebook feeds which module: [notebooks/README.md](notebooks/README.md).
+The Deepnote project with the notebooks was suspended on 9 Nov 2026 by Deepnote's automated abuse detection
+(support request open), so the notebooks are not available. As agreed with A. Martin on 10 Nov 2026, this repository
+is the runnable solution: start the demo with `python -m lexgraph.ui.app` (see [Run](#run)). Code, data and results
+of all notebooks are in this repository; which notebook fed which module: [notebooks/README.md](notebooks/README.md).
 
 ## Way of working
 
