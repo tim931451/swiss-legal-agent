@@ -69,13 +69,15 @@ def make_embedding_retriever(articles=None, mode=GRAPH_MODE, rerank=GRAPH_RERANK
     return retrieve
 
 
-def make_graph_answer(articles=None, retrieve=None, retriever="embedding"):
+def make_graph_answer(articles=None, retrieve=None, retriever="embedding", lookup=None, tag="eval_f1"):
     """answer_fn for run_experiment that runs the full graph (guard, router, specialist, reviewer) with one model.
 
     retriever: "embedding" (default) uses `retrieve()` of T12 through make_embedding_retriever, "keyword" the keyword
     search of notebook 04 over data/or_articles.jsonl. Either way the retrieval is the same for every model. The
     lookup of T13 stays off (`lookup=None`). The graph is built without a checkpointer, so the human-in-the-loop step
     does not pause (decision T14) and the run never blocks.
+    lookup: optional T13 lookup for cited articles the retriever missed (F2 uses make_mcp_lookup); default off.
+    tag: LangSmith tag of the runs.
     """
     from lexgraph.agents.graph import build_graph, make_keyword_retriever
     from lexgraph.guardrails.citation_check import citation_check
@@ -92,9 +94,9 @@ def make_graph_answer(articles=None, retrieve=None, retriever="embedding"):
 
     def graph_answer(model, question):
         llm = CountingLLM(make_llm(model))
-        graph = build_graph(llm, retrieve, lookup=None)
+        graph = build_graph(llm, retrieve, lookup=lookup)
         start = time.perf_counter()
-        state = graph.invoke({"question": question}, run_config(tags=("eval_f1",), model=model))
+        state = graph.invoke({"question": question}, run_config(tags=(tag,), model=model))
         seconds = time.perf_counter() - start
         ids = [s["id"] for s in state.get("sources") or []]
         answer = state.get("answer") or ""
@@ -104,6 +106,7 @@ def make_graph_answer(articles=None, retrieve=None, retriever="embedding"):
             "output_tokens": usage["output_tokens"], "model_calls": usage["model_calls"], "area": state.get("area"),
             "sources": ids, "revisions": state.get("revisions"), "needs_human": state.get("needs_human"),
             "citations_backed": citation_check(answer, ids)["ok"] if ids else None,
+            "looked_up": len(state.get("looked_up") or []),
         }
 
     return graph_answer
@@ -147,6 +150,8 @@ def run_experiment(models, cases, answer_fn=baseline_answer, judge=None, progres
                 "cost_usd": cost(model, t_in, t_out), "revisions": out.get("revisions"),
                 "needs_human": out.get("needs_human"), "error": None,
             })
+            if "looked_up" in out:  # graph runs: articles loaded by the T13 lookup
+                row["looked_up"] = out["looked_up"]
             try:
                 judge = judge if judge is not None else make_llm(JUDGE_MODEL)
                 verdict = judge_answer(case, out["answer"], judge=judge)
