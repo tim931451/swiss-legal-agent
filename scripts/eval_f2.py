@@ -34,9 +34,9 @@ from lexgraph.eval.experiment import (
 )
 
 VARIANTS = {
-    "prompt": "Nur Prompt (ohne Quellen)",
-    "rag": "RAG (Graph mit Retrieval)",
-    "mcp": "Agentisch (RAG plus get_article über MCP)",
+    "prompt": "Nur Prompt (ohne Graph, Guard, Prüfer)",
+    "rag": "RAG",
+    "mcp": "RAG mit MCP-Nachladen bei Zitierfehler",
 }
 COLUMNS = {
     "model": "Variante", "cases": "Fälle", "judge_score": "Judge-Punkte", "citation_precision": "Zitat-Precision",
