@@ -1,0 +1,80 @@
+case,question,gold_articles,expected_answer,answer,correct_norm,correct_result,no_invented_sources,complete,clear_structure,notes
+AR-01,"Wie lange ist die Kündigungsfrist im dritten Dienstjahr, wenn nichts vereinbart ist?",Art. 335c OR,Zwei Monate auf das Ende eines Monats.,"Sachverhalt: Eine Person fragt nach der gesetzlichen Kündigungsfrist im dritten Dienstjahr, wenn im Arbeitsvertrag keine abweichende Vereinbarung getroffen wurde.
+Rechtsfrage: Wie lange beträgt die gesetzliche Kündigungsfrist im dritten Dienstjahr nach Schweizer Obligationenrecht, wenn keine abweichende Vereinbarung besteht?
+Normwahl: OR-335c
+Subsumtion: Gemäss Art. 335c OR beträgt die Kündigungsfrist nach Ablauf der Probezeit im zweiten bis und mit dem neunten Dienstjahr zwei Monate. Das dritte Dienstjahr fällt in diesen Zeitraum.
+Ergebnis: Die gesetzliche Kündigungsfrist beträgt zwei Monate auf das Ende eines Monats.
+Quellen: OR-335c",,,,,,
+AR-02,Ich bin im dritten Dienstjahr und seit zwei Wochen krank. Mein Chef kündigt mir. Ist das gültig?,Art. 336c OR,"Nein. Im zweiten bis fünften Dienstjahr gilt bei Krankheit eine Sperrfrist von 90 Tagen, eine Kündigung in dieser Zeit ist nichtig.","Sachverhalt: Eine Arbeitnehmerin im dritten Dienstjahr ist seit zwei Wochen krank. Der Arbeitgeber kündigt das Arbeitsverhältnis.
+Rechtsfrage: Ist die Kündigung während der Krankheit im dritten Dienstjahr gültig?
+Normwahl: OR-336c
+Subsumtion: Im dritten Dienstjahr beträgt die Sperrfrist bei Krankheit ohne eigenes Verschulden 90 Tage. Da die Arbeitnehmerin erst zwei Wochen krank ist, befindet sie sich innerhalb der Sperrfrist. Kündigungen während dieser Sperrfrist sind nach Art. 336c Abs. 1 OR nichtig.
+Ergebnis: Die Kündigung ist ungültig.
+Quellen: OR-336c
+Rückfrage: Wann genau hat der Arbeitgeber gekündigt? (Datum der Kündigung)
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]",,,,,,
+AR-05,Ich arbeite seit drei Jahren in Basel. Mein Arbeitgeber will mir mit vier Wochen zum 15. oder zum Monatsende kündigen. Stimmt diese Frist?,Art. 335c OR,"Nein. Vier Wochen zum 15. oder zum Monatsende ist eine Regel des deutschen Rechts (§ 622 BGB), die hier nicht gilt. Nach Schweizer Recht beträgt die Frist im zweiten bis und mit neunten Dienstjahr zwei Monate auf das Ende eines Monats, ausser es ist schriftlich etwas anderes vereinbart.","Sachverhalt: Eine Person arbeitet seit drei Jahren in Basel. Der Arbeitgeber möchte das Arbeitsverhältnis mit einer Frist von vier Wochen zum 15. oder zum Monatsende kündigen.
+Rechtsfrage: Ist die vom Arbeitgeber gewählte Kündigungsfrist von vier Wochen rechtlich zulässig?
+Normwahl: Art. 335c OR
+Subsumtion: Nach Art. 335c OR beträgt die Kündigungsfrist nach Ablauf der Probezeit im zweiten bis und mit dem neunten Dienstjahr zwei Monate auf das Ende eines Monats. Eine Frist von vier Wochen entspricht nicht den gesetzlichen Mindestvorgaben.
+Ergebnis: Die vom Arbeitgeber gewählte Kündigungsfrist von vier Wochen ist zu kurz und damit nicht zulässig.
+Quellen: OR-335c
+Rückfrage: Wie lange arbeiten Sie genau bei diesem Arbeitgeber? (genaues Dienstjahr)
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]",,,,,,
+AR-08,"Mein Arbeitgeber will mir dieses Jahr zwei Wochen Ferien auszahlen, statt dass ich sie beziehe. Ich bleibe weiterhin bei ihm angestellt. Ist das erlaubt?",Art. 329d OR,Nein. Während der Dauer des Arbeitsverhältnisses dürfen die Ferien nicht durch Geldleistungen oder andere Vergünstigungen abgegolten werden.,"Sachverhalt: Der Arbeitgeber möchte dem Arbeitnehmer zwei Wochen Ferien auszahlen, anstatt dass dieser sie bezieht, während das Arbeitsverhältnis fortbesteht.
+Rechtsfrage: Ist es erlaubt, Ferien auszuzahlen, anstatt sie zu beziehen, wenn das Arbeitsverhältnis weiterbesteht?
+Normwahl: OR-329a, OR-329c
+Subsumtion: Nach Art. 329a OR hat der Arbeitnehmer Anspruch auf Ferienbezug. Art. 329c OR verlangt, dass Ferien in der Regel im Verlauf des Dienstjahres gewährt werden und wenigstens zwei Wochen zusammenhängen müssen. Eine Auszahlung anstelle des Bezugs ist grundsätzlich nicht vorgesehen, da der Zweck der Ferien im Erholungsrecht liegt.
+Ergebnis: Der Arbeitgeber darf die Ferien in der Regel nicht auszahlen, sondern muss sie gewähren. Eine Auszahlung ist nur unter bestimmten, engen Voraussetzungen möglich, die hier nicht erfüllt sind.
+Quellen: OR-329a, OR-329c
+Rückfrage: Wie lange sind Sie bereits bei Ihrem Arbeitgeber angestellt? (Diese Information ist wichtig, um zu prüfen, ob es sich um ein unvollständiges Dienstjahr handelt.)
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]",,,,,,
+AR-12,Mir wurde gekündigt und ich arbeite noch bis zum Ende der Kündigungsfrist. Muss mir der Arbeitgeber Zeit für Vorstellungsgespräche geben?,Art. 329 OR,Ja. Nach erfolgter Kündigung muss der Arbeitgeber die für das Aufsuchen einer anderen Arbeitsstelle erforderliche Zeit gewähren. Dabei ist auf die Interessen des Arbeitgebers wie des Arbeitnehmers angemessen Rücksicht zu nehmen.,"Sachverhalt: Eine Person wurde gekündigt und arbeitet noch bis zum Ende der Kündigungsfrist. Die Person fragt, ob der Arbeitgeber verpflichtet ist, Zeit für Vorstellungsgespräche während dieser Zeit zu gewähren.
+Rechtsfrage: Ist der Arbeitgeber verpflichtet, dem gekündigten Arbeitnehmer während der Kündigungsfrist Zeit für Vorstellungsgespräche freizugeben?
+Normwahl: OR-335c, OR-336c
+Subsumtion: Das Obligationenrecht regelt in Art. 335c OR die Kündigungsfristen und in Art. 336c OR die Sperrfristen für Kündigungen zur Unzeit. Es enthält jedoch keine explizite Bestimmung, die den Arbeitgeber verpflichtet, dem Arbeitnehmer während der Kündigungsfrist Zeit für Vorstellungsgespräche freizugeben. Eine solche Pflicht ergibt sich auch nicht aus den genannten Normen.
+Ergebnis: Der Arbeitgeber ist nach Schweizer Obligationenrecht nicht verpflichtet, dem gekündigten Arbeitnehmer während der Kündigungsfrist automatisch Zeit für Vorstellungsgespräche zu gewähren.
+Quellen: OR-335c, OR-336c
+Rückfrage: Gibt es im Arbeitsvertrag, einem Gesamtarbeitsvertrag oder einer betrieblichen Praxis eine Regelung bezüglich Freizeit für Vorstellungsgespräche während der Kündigungsfrist?
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]",,,,,,
+MR-01,Ich habe zwei Monatsmieten nicht bezahlt. Was kann der Vermieter tun?,Art. 257d OR,Er kann schriftlich eine Zahlungsfrist von mindestens 30 Tagen mit Kündigungsandrohung setzen und danach mit mindestens 30 Tagen auf Ende eines Monats kündigen.,"Sachverhalt: Der Mieter hat zwei Monatsmieten nicht bezahlt. Es ist zu prüfen, welche rechtlichen Schritte der Vermieter unternehmen kann.
+Rechtsfrage: Welche Möglichkeiten hat der Vermieter, wenn der Mieter zwei Monatsmieten nicht bezahlt hat, insbesondere hinsichtlich Kündigung und Fristen?
+Normwahl: Art. 257d OR
+Subsumtion: Gemäss Art. 257d OR kann der Vermieter bei Zahlungsrückstand eine schriftliche Zahlungsfrist von mindestens 30 Tagen setzen. Bezahlt der Mieter nicht fristgerecht, kann der Vermieter bei Wohn- und Geschäftsräumen mit einer Frist von mindestens 30 Tagen auf Ende eines Monats kündigen.
+Ergebnis: Der Vermieter kann nach unbenütztem Ablauf der Zahlungsfrist schriftlich kündigen. Die Kündigungsfrist beträgt mindestens 30 Tage auf Ende eines Monats.
+Quellen: OR-257d
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]",,,,,,
+MR-02,"In meinem Schlafzimmer hat sich Schimmel gebildet, den ich nicht verursacht habe. Was kann ich vom Vermieter verlangen?","Art. 259a OR, Art. 259d OR","Der Mieter kann verlangen, dass der Vermieter den Mangel beseitigt, den Mietzins verhältnismässig herabsetzt (ab dem Zeitpunkt, in dem der Vermieter vom Mangel erfahren hat, bis zur Behebung) und Schadenersatz leistet. Zudem kann er den Mietzins hinterlegen.","Sachverhalt: Im Schlafzimmer des Mieters hat sich Schimmel gebildet, den der Mieter nicht verursacht hat. Der Mieter fragt, welche Rechte er gegenüber dem Vermieter hat.
+Rechtsfrage: Welche Ansprüche stehen dem Mieter zu, wenn sich in der Mietwohnung Schimmel bildet, den er nicht verursacht hat?
+Normwahl: OR-259a, OR-257g, OR-259d
+Subsumtion: Schimmel in der Wohnung stellt einen Mangel dar, den der Mieter nicht zu verantworten hat. Gemäss Art. 259a OR muss der Vermieter den Mangel beseitigen. Der Mieter muss den Mangel dem Vermieter melden (Art. 257g OR), sonst haftet er für den daraus entstehenden Schaden. Zudem kann der Mieter eine angemessene Mietzinsherabsetzung verlangen, solange der Mangel besteht (Art. 259d OR).
+Ergebnis: Der Mieter kann vom Vermieter verlangen, dass dieser den Schimmel beseitigt, den Mietzins angemessen herabsetzt und den Mangel behebt. Der Mieter muss den Mangel dem Vermieter melden.
+Quellen: OR-259a, OR-257g, OR-259d",,,,,,
+MR-03,Ich möchte meine Mietwohnung kündigen. Welche Frist gilt und welche Form muss ich einhalten?,"Art. 266c OR, Art. 266l OR","Ohne andere Vereinbarung gilt eine Frist von drei Monaten auf einen ortsüblichen Termin, ohne Ortsgebrauch auf Ende einer dreimonatigen Mietdauer. Die Kündigung muss schriftlich erfolgen.","Sachverhalt: Eine Person möchte ihre Mietwohnung kündigen und fragt nach der geltenden Kündigungsfrist und der erforderlichen Form der Kündigung.
+Rechtsfrage: Welche Kündigungsfrist und welche Form gelten für die Kündigung einer Mietwohnung nach Schweizer Mietrecht?
+Normwahl: OR-266a, OR-266l
+Subsumtion: Für die Kündigung von Wohnräumen gilt nach Art. 266a OR die vertraglich vereinbarte oder gesetzliche Frist. Fehlt eine Vereinbarung, richtet sich die Frist nach Art. 266c OR (nicht in den Quellen enthalten, aber allgemein bekannt). Die Form der Kündigung ist in Art. 266l OR geregelt: Vermieter müssen schriftlich kündigen, und zwar mit einem vom Kanton genehmigten Formular, das Hinweise zur Anfechtung und Erstreckung enthält.
+Ergebnis: Für die Kündigung einer Mietwohnung müssen Sie schriftlich kündigen, und zwar mit einem vom Kanton genehmigten Formular (Art. 266l OR). Die konkrete Frist hängt davon ab, was Sie mit dem Vermieter vereinbart haben oder was das Gesetz vorsieht (Art. 266a OR). Ohne Vereinbarung beträgt die Frist in der Regel drei Monate auf einen ortsüblichen Termin.
+Quellen: OR-266a, OR-266l
+Rückfrage: Haben Sie mit Ihrem Vermieter eine bestimmte Kündigungsfrist vereinbart, zum Beispiel im Mietvertrag?
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]",,,,,,
+MR-06,"Mein Vermieter hat mir die Wohnung gekündigt, das Mietverhältnis ist unbefristet. Ich halte die Kündigung für ungerechtfertigt und brauche ausserdem mehr Zeit für die Wohnungssuche. Wo und bis wann muss ich das geltend machen?",Art. 273 OR,"Die Anfechtung der Kündigung muss innert 30 Tagen nach Empfang der Kündigung bei der Schlichtungsbehörde eingereicht werden. Auch das Begehren um Erstreckung des Mietverhältnisses ist bei einem unbefristeten Mietverhältnis innert 30 Tagen nach Empfang der Kündigung bei der Schlichtungsbehörde einzureichen. Weist die Behörde die Anfechtung ab, prüft sie von Amtes wegen, ob das Mietverhältnis erstreckt werden kann.","Sachverhalt: Der Mieter eines unbefristeten Mietverhältnisses hat eine Kündigung erhalten, hält diese für ungerechtfertigt und benötigt mehr Zeit für die Wohnungssuche.
+Rechtsfrage: Wo und bis wann muss der Mieter die Anfechtung der Kündigung und das Erstreckungsbegehren einreichen?
+Normwahl: OR-266l, OR-273
+Subsumtion: Gemäss Art. 266l OR muss die Kündigung schriftlich erfolgen. Will der Mieter die Kündigung anfechten oder eine Erstreckung verlangen, muss er das Begehren innert 30 Tagen nach Empfang der Kündigung bei der Schlichtungsbehörde einreichen (Art. 273 OR).
+Ergebnis: Sie müssen das Begehren um Anfechtung der Kündigung und Erstreckung des Mietverhältnisses schriftlich innert 30 Tagen nach Erhalt der Kündigung bei der zuständigen Schlichtungsbehörde einreichen.
+Quellen: OR-266l, OR-273",,,,,,
+MR-08,"Ich bin verheiratet und habe die Wohnung, in der wir als Familie leben, allein auf meinen Namen gemietet. Ich möchte den Mietvertrag kündigen, meine Frau ist dagegen. Kann ich trotzdem allein kündigen?","Art. 266m OR, Art. 266o OR","Nein. Dient die gemietete Wohnung als Wohnung der Familie, kann ein Ehegatte den Mietvertrag nur mit der ausdrücklichen Zustimmung des anderen kündigen. Eine Kündigung ohne diese Zustimmung ist nichtig. Wird die Zustimmung ohne triftigen Grund verweigert, kann der Ehegatte den Richter anrufen.","Sachverhalt: Der Mieter ist verheiratet und hat die Familienwohnung allein auf seinen Namen gemietet. Er möchte den Mietvertrag kündigen, seine Ehefrau ist damit jedoch nicht einverstanden.
+Rechtsfrage: Kann der Mieter die Familienwohnung allein kündigen, obwohl seine Ehefrau damit nicht einverstanden ist?
+Normwahl: Art. 266m OR
+Subsumtion: Art. 266m OR regelt die Kündigung durch den Mieter selbst. Gemäss Absatz 1 dieser Bestimmung kann ein Ehegatte den Mietvertrag nur mit der ausdrücklichen Zustimmung des anderen kündigen, wenn die Wohnung der Familie dient. Da der Mieter selbst kündigt und nicht seine Ehefrau, ist die Zustimmung der Ehefrau nicht erforderlich.
+Ergebnis: Der Mieter kann die Familienwohnung allein kündigen, auch wenn seine Ehefrau damit nicht einverstanden ist.
+Quellen: OR-266m
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]",,,,,,
