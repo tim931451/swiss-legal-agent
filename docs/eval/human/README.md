@@ -19,5 +19,13 @@ Formulare löschen und mit `--cases` neu erzeugen.
 2. Auswertung: `python -m scripts.eval_human score --out docs/eval/human` schreibt `human_agreement.csv` und
    `human_summary.md` (Übereinstimmung und Cohen's Kappa für Judge–Jack, Judge–Tim und Jack–Tim).
 
+## Grenzen
+
+- 10 Fälle sind eine kleine Stichprobe: Ein abweichender Fall verschiebt die Übereinstimmung um 0.1, Kappa schwankt
+  noch stärker. Deshalb steht in `human_summary.md` neben Kappa immer die einfache Übereinstimmung («Gleich»).
+- Ist ein Kriterium fast immer erfüllt (z. B. `clear_structure`), wird Kappa trotz hoher Übereinstimmung klein oder
+  ist nicht aussagekräftig. Dann zählt die einfache Übereinstimmung.
+- Bewertet sind nur Antworten von Apertus. Für Präsentation und Prüfung als Limitation nennen.
+
 Kein Modellaufruf, keine Kosten. Die Fälle stammen aus dem Testset; sie werden hier nur bewertet, an Prompts oder
 Judge wird danach nichts abgestimmt.
