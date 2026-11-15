@@ -27,22 +27,43 @@ Formulare löschen und mit `--cases` neu erzeugen.
   ist nicht aussagekräftig. Dann zählt die einfache Übereinstimmung.
 - Bewertet sind nur Antworten von Apertus. Für Präsentation und Prüfung als Limitation nennen.
 
-## Zusatz: Judge gegen ein zweites Modell (Claude, 15.11.2026)
+## F4 neu: Judge gegen ein zweites Modell (Entscheid Tim, 15.11.2026)
 
-Jack und Tim sind keine Juristen. Damit es vor der Handbewertung Zahlen gibt, hat Claude (Claude Code, auf Tims
-Auftrag) dieselben 10 Antworten anhand der Musterlösung bewertet: `bewertung_claude.csv`, Auswertung
-`human_summary_claude.md` und `human_agreement_claude.csv`
-(`python -m scripts.eval_human score --raters claude`). **Das ist keine Handbewertung und ersetzt F4 nicht.** Ob F4
-offiziell auf «Judge gegen zweites Modell» umgestellt wird, entscheiden Jack und Tim.
+Jack und Tim sind keine Juristen. F4 vergleicht deshalb den Judge mit einer **blinden Zweitbewertung durch ein
+anderes Modell** (Claude, in einer frischen Sitzung ohne Zugang zu den Judge-Urteilen, nur mit Frage,
+Gold-Artikeln, Musterlösung und Antwort). Das ist keine Handbewertung. Die Formulare für Jack und Tim bleiben, falls
+doch noch von Hand bewertet wird. Entscheid in `docs/decisions.md`; Jack (Owner T21) muss zustimmen.
 
-- Ergebnis: gleiche Punktzahl in 6 von 10 Fällen, mittlere Differenz 13 Punkte. Gleiches Urteil pro Kriterium:
-  correct_result 0.9 (Kappa 0.78), complete und clear_structure 1.0, correct_norm 0.7 (Kappa 0.4),
-  no_invented_sources 0.8 (Kappa 0.0).
-- Die Abweichungen liegen alle bei Mietrechtsfällen und gehen in dieselbe Richtung: Der Judge wertet strenger. Bei
-  MR-03 und MR-06 hält er bestehende OR-Artikel für erfunden (bekannte Schwäche aus #29), bei MR-03, MR-06 und
-  MR-08 verneint er die Norm, obwohl ein Gold-Artikel zitiert ist, bei MR-02 das Ergebnis, obwohl nur Teile fehlen.
-- Grenzen: Claude war nicht blind. Die Judge-Urteile zu F1 v2 waren in derselben Sitzung schon sichtbar. Claude ist
-  ein Sprachmodell wie der Judge; die Übereinstimmung zweier Modelle sagt nichts darüber, ob Menschen gleich urteilen.
+Dateien: `bewertung_claude.csv` (blind), Auswertung `human_summary_claude.md` und `human_agreement_claude.csv`
+(`python -m scripts.eval_human score --raters claude`).
+
+### Ergebnis
+
+| Kriterium | Punkte | Gleiches Urteil | Kappa |
+|---|---|---|---|
+| correct_result | 30 | 1.0 | 1.00 |
+| correct_norm | 20 | 0.7 | 0.40 |
+| no_invented_sources | 20 | 0.8 | 0.00 |
+| complete | 20 | 1.0 | 1.00 |
+| clear_structure | 10 | 1.0 | 1.00 |
+| Punktzahl | 100 | 7 von 10 Fällen gleich | Ø Differenz 10 Punkte |
+
+- Beim wichtigsten Kriterium, dem Ergebnis (30 Punkte), urteilen Judge und Zweitbewertung in allen 10 Fällen gleich.
+- Die drei Abweichungen (MR-03, MR-06, MR-08) gehen alle in dieselbe Richtung: Der Judge wertet strenger. Bei MR-03
+  und MR-06 hält er bestehende OR-Artikel für erfunden (bekannte Schwäche aus #29), bei allen dreien verneint er die
+  Norm, obwohl ein Gold-Artikel zitiert ist.
+- Kappa 0.00 bei no_invented_sources trotz 80 % Übereinstimmung: Die Zweitbewertung sieht das Kriterium immer als
+  erfüllt, dann ist Kappa nicht aussagekräftig.
+
+### Grenzen
+
+- Zwei Modelle, keine Menschen: Die Übereinstimmung zeigt, dass der Judge die Kriterien nachvollziehbar anwendet,
+  nicht, dass Juristen gleich urteilen würden.
+- 10 Fälle, je ein Durchgang. Ein Fall verschiebt die Übereinstimmung um 0.1.
+- Massstab ist die Musterlösung, nicht eine juristische Prüfung der Antworten.
+- Gegenprobe: Eine erste, nicht blinde Bewertung durch Claude in der Arbeitssitzung (die Judge-Urteile waren dort
+  schon sichtbar) liegt in `bewertung_claude_nichtblind.csv`. Sie weicht von der blinden in 1 von 50 Urteilen ab
+  (MR-02, Ergebnis).
 
 Kein Modellaufruf, keine Kosten. Die Fälle stammen aus dem Testset; sie werden hier nur bewertet, an Prompts oder
 Judge wird danach nichts abgestimmt.
