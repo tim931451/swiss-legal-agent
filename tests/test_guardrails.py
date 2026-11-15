@@ -53,6 +53,49 @@ CITATION_CASES = [
     ("Nach Art. 335b und 335c OR gilt ...", ["OR-335b"], False),
     ("Nach Art. 336c Abs. 1 und 2 OR ist sie nichtig.", ["OR-336c"], True),
     ("Siehe BGE 124 III 346.", ["OR-336c", "BGE 124 III 346"], True),
+    # Live test PR #36 (10.11.): the short form in the Normwahl line was not read, the check said "bestanden"
+    ("Normwahl: OR-335c, OR-336c\nErgebnis: Nichtig.\nQuellen: OR-336c", ["OR-336c"], False),
+    ("Normwahl: OR-336c\nErgebnis: Nichtig.\nQuellen: OR-336c", ["OR-336c"], True),
+    # A source listed in the Quellen line that the retriever did not return is not backed either
+    ("Normwahl: Art. 336c OR\nQuellen: OR-336c, OR-337", ["OR-336c"], False),
+    # Issue #30: articles only mentioned as missing from the sources are not citations (F1 v2, gpt-5.6-luna)
+    ("Es gilt Art. 335c OR. Die Quellen enthalten keine Regel zu Art. 335b OR.", ["OR-335c"], True),
+    # Review Jack on PR #37 (15 Nov 2026): three sentences the first version of the fix wrongly let through
+    ("Die Quellen enthalten keine Ausnahme und somit gilt Art. 337 OR.", ["OR-336c"], False),
+    ("Die Kündigung ist nach Art. 337 OR gültig und Art. 335b OR wurde nicht als Quelle bereitgestellt.",
+     ["OR-336c"], False),
+    ("Normwahl: Art. 336c OR\nQuellen: Art. 336c OR, Art. 337 OR", ["OR-336c"], False),
+    # Regression: sentences the check before #37 rejected and that must still be rejected
+    ("Die Quellen enthalten keine weitere Regel, deshalb gilt Art. 337 OR.", ["OR-336c"], False),
+    ("Die Quellen enthalten keine Regel zur Probezeit, es gilt Art. 335b OR.", ["OR-336c"], False),
+    ("Nach Art. 337 OR ist die Kündigung gültig. Die Quellen enthalten keine Regel dazu.", ["OR-336c"], False),
+    ("Die Quellen enthalten keine Ausnahme, aber Art. 337 OR erlaubt die fristlose Kündigung.", ["OR-336c"], False),
+    ("Die Quellen enthalten keinen Hinweis darauf, dass Art. 337 OR nicht gilt.", ["OR-336c"], False),
+    ("Normwahl: OR-337\nDie Quellen enthalten keine Regel zu Art. 335b OR.", ["OR-336c"], False),
+    # ... and the direct mentions still pass
+    ("Die Kündigung ist nichtig (Art. 336c OR). Art. 337 OR wurde nicht als Quelle bereitgestellt.", ["OR-336c"],
+     True),
+    ("Normwahl: Art. 336c OR\nQuellen: Art. 336c OR", ["OR-336c"], True),
+    # ... but an article applied although it is not in the sources stays unbacked (F1 v2, Apertus, MR-03)
+    ("Fehlt eine Vereinbarung, richtet sich die Frist nach Art. 266c OR (nicht in den Quellen enthalten, aber "
+     "allgemein bekannt).", ["OR-266a"], False),
+]
+ABSENT = [
+    # Sentences of gpt-5.6-luna from F1 v2 (issue #30)
+    ("Die Quellen enthalten keine Regelung zu Art. 337 OR. Eine fristlose Kündigung ...", set()),
+    ("Die Quellen enthalten keine Regel zur Probezeit nach Art. 335b OR und keine Regel zur fristlosen Auflösung "
+     "nach Art. 337 OR. Eine Sperrfrist nach Art. 336c OR ist nicht erwähnt.", {"OR-336c"}),
+    ("Die mitgeteilten Quellen enthalten keine Regel zur Form der Kündigung nach Art. 266l OR.", set()),
+    # The marker after the articles is not direct (review Jack on PR #37): in doubt the articles count as cited
+    ("Art. 335b OR zur Probezeit und Art. 337 OR zur fristlosen Auflösung sind für die konkrete Frage nicht "
+     "entscheidend und wurden zudem nicht als Quellen bereitgestellt.", {"OR-335b", "OR-337"}),
+    # Direct marker after the article
+    ("Art. 335b OR wurde nicht als Quelle bereitgestellt.", set()),
+    ("Art. 335b und 335c OR wurden nicht als Quellen bereitgestellt.", set()),
+    # Short form with a direct marker
+    ("Die Quellen enthalten keine Regel zu OR-335b.", set()),
+    # Only the clause with the marker is left out, an article after a comma still counts
+    ("Die Quellen enthalten keine Regel zu Art. 335b OR, es gilt aber Art. 335c OR.", {"OR-335c"}),
 ]
 CITED = [
     ("Art. 335b und 335c OR", {"OR-335b", "OR-335c"}),
@@ -64,6 +107,10 @@ CITED = [
     ("Art. 8 EMRK und Art. 336c OR", {"OR-336c"}),
     ("Art. 335b und 335c OR sowie Art. 2 ZGB", {"OR-335b", "OR-335c", "ZGB-2"}),
     ("Nach Art. 336c schützt 30 Tage lang die Sperrfrist (OR).", {"OR-336c"}),
+    # Short form as in the source ids, e.g. in the Normwahl line
+    ("Normwahl: OR-266a, OR-266l, ZGB-2", {"OR-266a", "OR-266l", "ZGB-2"}),
+    # The Quellen line lists sources, not applied law: it is not counted as a citation
+    ("Normwahl: Art. 335c OR\nQuellen: OR-335c, OR-336c", {"OR-335c"}),
 ]
 
 
@@ -85,4 +132,9 @@ def test_citation_check(answer, sources, ok):
 
 @pytest.mark.parametrize(("answer", "expected"), CITED)
 def test_cited_articles(answer, expected):
+    assert cited_articles(answer) == expected
+
+
+@pytest.mark.parametrize(("answer", "expected"), ABSENT)
+def test_articles_mentioned_as_missing_are_not_cited(answer, expected):
     assert cited_articles(answer) == expected
