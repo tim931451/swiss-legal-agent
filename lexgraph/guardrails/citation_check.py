@@ -18,14 +18,25 @@ OTHER_LAW = re.compile(r"(?:[A-Z][A-Za-z]{0,5}[A-Z]|BV|SchKG|StGB|StPO|ZPO|DSG|A
 SHORT = re.compile(r"\b(OR|ZGB)-(\d+[a-z]?)\b")
 # The line of the rendered answer that lists the sources (render_answer in lexgraph/agents/schema.py).
 SOURCES_LINE = re.compile(r"^\s*Quellen\s*:(.*)$", re.MULTILINE | re.IGNORECASE)
-# Issue #30: articles only mentioned as missing from the sources. Only the clause with the marker is left out (up to
-# the next comma, semicolon, colon, bracket or sentence end), so "..., es gilt aber Art. 335c OR" still counts.
+# Issue #30: articles only mentioned as missing from the sources ("Die Quellen enthalten keine Regel zu Art. 335b OR")
+# are not citations. Review Jack on PR #37 (15 Nov 2026): the marker must concern the article directly, in the same
+# clause. Before the article: "Quellen enthalten kein..." (or a following "und kein..." in the same clause), then at
+# most MAX_GAP_WORDS words without a verb or connective and without clause punctuation. After the article: only
+# "wurde/ist/sind ... nicht als Quelle bereitgestellt". In doubt the article counts as cited and must be in the sources:
+# a wrong rejection costs a revision round, a wrong "belegt" lets an unbacked citation through.
 # "nach Art. 266c OR (nicht in den Quellen enthalten, aber allgemein bekannt)" applies the article and stays a citation.
 ABBREVIATION = re.compile(r"\b(?:Art|Abs|lit|Ziff|Nr)\.")
-CLAUSE = r"[^.;,:()\n]*"
-ABSENT = re.compile(
-    rf"Quellen\s+enthalten\s+kein\w*{CLAUSE}|{CLAUSE}\bnicht\s+als\s+Quellen?\s+(?:bereitgestellt|mitgeteilt|geliefert)",
+MARKER_BEFORE = re.compile(r"Quellen\s+enthalten\s+kein\w*", re.IGNORECASE)
+MARKER_REPEAT = re.compile(r"\bund\s+kein\w*", re.IGNORECASE)  # "... und keine Regel zu Art. 337 OR"
+MARKER_AFTER = re.compile(
+    r"\s*(?:wurden?|wird|ist|sind|werden|war|waren)?\s*nicht\s+als\s+Quellen?\s+(?:bereitgestellt|mitgeteilt|geliefert)",
     re.IGNORECASE)
+MAX_GAP_WORDS = 7
+GAP_STOP = {"und", "oder", "aber", "sondern", "jedoch", "doch", "somit", "daher", "deshalb", "deswegen", "also",
+            "trotzdem", "dennoch", "gilt", "gelten", "galt", "ist", "sind", "war", "waren", "wird", "werden", "wurde",
+            "wurden", "folgt", "ergibt", "bleibt", "regelt", "bestimmt", "sieht", "kann", "muss", "darf", "weil",
+            "da", "denn", "wenn", "falls", "obwohl"}
+CLAUSE_BREAK = re.compile(r"[.;,:()\n]")
 BGE = re.compile(r"\bBGE\s+\d{3}\s+[IV]+\s+\d+\b")
 # Foreign law: paragraph signs and German or Austrian codes. StGB and ZPO are left out because Switzerland has them too.
 FOREIGN = re.compile(r"§+\s*\d+[a-z]?|\b(?:BGB|ABGB|HGB)\b")
@@ -56,28 +67,55 @@ def _blank(text, pattern):
     return pattern.sub(lambda m: re.sub(r"[^\n]", " ", m.group(0)), text)
 
 
-def _without_absent_mentions(text):
-    # Dots of abbreviations ("Art.") do not end a clause: mask them while searching, blank the spans in the original.
-    masked = ABBREVIATION.sub(lambda m: m.group(0)[:-1] + "\0", text)
-    chars = list(text)
-    for m in ABSENT.finditer(masked):
-        chars[m.start():m.end()] = re.sub(r"[^\n]", " ", m.group(0))
-    return "".join(chars)
+def _directly_after_marker(masked, start):
+    """True if a marker in the same clause directly governs the citation that starts at `start`."""
+    clause_start = max((m.end() for m in CLAUSE_BREAK.finditer(masked, 0, start)), default=0)
+    clause = masked[clause_start:start]
+    first = MARKER_BEFORE.search(clause)
+    if not first:
+        return False
+    markers = [first, *MARKER_REPEAT.finditer(clause, first.end())]
+    gap = clause[markers[-1].end():]
+    words = [w.lower() for w in gap.split()]
+    return len(words) <= MAX_GAP_WORDS and not set(words) & GAP_STOP
+
+
+def _absent(masked, start, end):
+    """True if the citation masked[start:end] is only mentioned as missing from the sources (issue #30)."""
+    return _directly_after_marker(masked, start) or bool(MARKER_AFTER.match(masked, end))
+
+
+def _mask(text):
+    """Dots of abbreviations ("Art.") do not end a clause: mask them, keeping positions."""
+    return ABBREVIATION.sub(lambda m: m.group(0)[:-1] + "\0", text)
+
+
+def _long_form(text, masked=None, skip_absent=False):
+    ids = set()
+    for m in CITATION.finditer(text):
+        if skip_absent and _absent(masked, m.start(), m.end()):
+            continue
+        ids |= {f"{m.group(1)}-{art}" for art in _articles(m.group(0), m.group(1))}
+    return ids
 
 
 def cited_articles(answer):
     """Cited articles as ids in the format of the sources (OR-336c), in the long form "Art. 336c OR" and in the short
-    form "OR-336c". Not counted: the Quellen line (a list of sources, not applied law) and articles only mentioned as
-    missing from the sources (issue #30)."""
-    text = _without_absent_mentions(_blank(answer or "", SOURCES_LINE))
-    long_form = {f"{m.group(1)}-{art}" for m in CITATION.finditer(text) for art in _articles(m.group(0), m.group(1))}
-    return long_form | {f"{m.group(1)}-{m.group(2).lower()}" for m in SHORT.finditer(text)}
+    form "OR-336c". Not counted: the Quellen line (a list of sources, not applied law, checked by listed_sources) and
+    articles only mentioned as missing from the sources (issue #30, see MARKER_BEFORE)."""
+    text = _blank(answer or "", SOURCES_LINE)
+    masked = _mask(text)
+    short = {f"{m.group(1)}-{m.group(2).lower()}" for m in SHORT.finditer(text)
+             if not _absent(masked, m.start(), m.end())}
+    return _long_form(text, masked, skip_absent=True) | short
 
 
 def listed_sources(answer):
-    """Source ids in the Quellen line of a rendered answer."""
-    return {f"{m.group(1)}-{m.group(2).lower()}" for line in SOURCES_LINE.findall(answer or "")
-            for m in SHORT.finditer(line)}
+    """Source ids in the Quellen line of a rendered answer, in short and long form."""
+    lines = SOURCES_LINE.findall(answer or "")
+    # Short form ("OR-336c") and long form ("Art. 337 OR", review Jack on PR #37)
+    return {f"{m.group(1)}-{m.group(2).lower()}" for line in lines for m in SHORT.finditer(line)} | {
+        i for line in lines for i in _long_form(line)}
 
 
 def _norm_bge(ref):
