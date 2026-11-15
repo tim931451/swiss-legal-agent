@@ -56,3 +56,21 @@ def test_invalid_rating_is_rejected(tmp_path):
     eval_human.write_forms(["AR-01"], tmp_path)
     with pytest.raises(SystemExit):
         eval_human.read_form(tmp_path / "bewertung_tim.csv", "tim")
+
+
+def test_score_with_a_single_second_model_rater(tmp_path):
+    cases = ["AR-01", "MR-01"]
+    eval_human.write_forms(cases, tmp_path)
+    judge = eval_human.judge_verdicts(cases)
+    rows = list(csv.DictReader(open(tmp_path / "bewertung_tim.csv", encoding="utf-8")))
+    for r in rows:
+        for name in CRITERIA:
+            r[name] = str(int(judge[r["case"]][name]))
+    with open(tmp_path / "bewertung_claude.csv", "w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=eval_human.FORM_FIELDS)
+        w.writeheader()
+        w.writerows(rows)
+    eval_human.score_forms(tmp_path, ("claude",))
+    summary = (tmp_path / "human_summary_claude.md").read_text(encoding="utf-8")
+    assert "Claude (zweites Modell, keine Handbewertung)" in summary
+    assert not (tmp_path / "human_summary.md").exists()

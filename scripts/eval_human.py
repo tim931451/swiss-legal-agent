@@ -95,9 +95,13 @@ def compare(ratings):
     return rows
 
 
+NAMES = {"jack": "Jack", "tim": "Tim", "claude": "Claude (zweites Modell, keine Handbewertung)"}
+
+
 def summary_md(rows, ratings):
     case_ids = list(next(iter(ratings.values())))
-    lines = ["# F4: Judge gegen Jack und Tim (T21)", "",
+    raters = " und ".join(NAMES.get(r, r) for r in ratings if r != "judge")
+    lines = [f"# F4: Judge gegen {raters} (T21)", "",
              f"Antworten: Apertus v1.5-70B aus F1 v2 (`{F1_RESULTS}`), Fälle: {', '.join(case_ids)}.", "",
              "| Paar | Kriterium | Punkte | Gleich | Kappa |", "|---|---|---|---|---|"]
     for r in rows:
@@ -114,20 +118,22 @@ def summary_md(rows, ratings):
     return "\n".join(lines)
 
 
-def score_forms(out):
-    humans = {r: read_form(out / f"bewertung_{r}.csv", r) for r in RATERS}
-    case_ids = list(humans[RATERS[0]])
+def score_forms(out, raters=RATERS):
+    """raters: the filled-in forms to compare with the judge, e.g. ("jack", "tim") or ("claude",)."""
+    humans = {r: read_form(out / f"bewertung_{r}.csv", r) for r in raters}
+    case_ids = list(humans[raters[0]])
     if any(list(h) != case_ids for h in humans.values()):
-        raise SystemExit("the forms of Jack and Tim must contain the same cases in the same order")
+        raise SystemExit("all forms must contain the same cases in the same order")
     ratings = {"judge": judge_verdicts(case_ids), **humans}
     rows = compare(ratings)
     fields = ["pair", "criterion", "points", "cases", "agreement", "kappa", "true_a", "true_b", "mean_abs_diff"]
-    with open(out / "human_agreement.csv", "w", encoding="utf-8", newline="") as f:
+    suffix = "" if tuple(raters) == RATERS else "_" + "_".join(raters)
+    with open(out / f"human_agreement{suffix}.csv", "w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fields)
         writer.writeheader()
         writer.writerows(rows)
-    (out / "human_summary.md").write_text(summary_md(rows, ratings), encoding="utf-8")
-    print(out / "human_summary.md")
+    (out / f"human_summary{suffix}.md").write_text(summary_md(rows, ratings), encoding="utf-8")
+    print(out / f"human_summary{suffix}.md")
 
 
 if __name__ == "__main__":
@@ -135,9 +141,11 @@ if __name__ == "__main__":
     parser.add_argument("step", choices=["form", "score"])
     parser.add_argument("--cases", nargs="+", default=list(DEFAULT_CASES))
     parser.add_argument("--out", type=Path, default=Path("docs/eval/human"))
+    parser.add_argument("--raters", nargs="+", default=list(RATERS),
+                        help="forms bewertung_<rater>.csv to score, e.g. claude for the second-model rating")
     args = parser.parse_args()
     if args.step == "form":
         write_forms(args.cases, args.out)
     else:
-        score_forms(args.out)
+        score_forms(args.out, tuple(args.raters))
     sys.exit(0)
