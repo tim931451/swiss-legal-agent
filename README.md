@@ -64,10 +64,11 @@ The UI runs the full graph with Apertus, Harrier dense retrieval with LLM rerank
 
 ## Notebooks
 
-The notebooks were written in Deepnote and are in [notebooks/](notebooks/) as exported on 16 Nov 2026. The Deepnote
-project was suspended on 9 Nov 2026 by Deepnote's automated abuse detection and released again on 16 Nov 2026. As agreed
-with A. Martin on 10 Nov 2026, this repository is the runnable solution: start the demo with `python -m lexgraph.ui.app`
-(see [Run](#run)). Which notebook fed which module: [notebooks/README.md](notebooks/README.md).
+The notebooks were written in Deepnote. [notebooks/](notebooks/) holds frozen copies of the Deepnote export from 16 Nov
+2026; they are no longer maintained. The Deepnote project was suspended on 9 Nov 2026 by Deepnote's automated abuse
+detection and released again on 16 Nov 2026. As agreed with A. Martin on 10 Nov 2026, the runnable solution is this
+repository only: start the demo with `python -m lexgraph.ui.app` (see [Run](#run)). Which notebook fed which module:
+[notebooks/README.md](notebooks/README.md).
 
 ## Way of working
 
