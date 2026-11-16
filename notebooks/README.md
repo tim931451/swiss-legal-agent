@@ -1,9 +1,13 @@
 # Notebooks
 
-The notebooks lived in Deepnote and documented, explained and demonstrated the code; the code itself lives in this
-repository. The Deepnote project was suspended on 9 Nov 2026 by Deepnote's automated abuse detection (support
-request open), and the notebooks can no longer be opened or exported. As agreed with A. Martin on 10 Nov 2026, this
+The notebooks were written in Deepnote and document, explain and demonstrate the code; the code itself lives in this
+repository. This folder holds all eight notebooks as exported from Deepnote on 16 Nov 2026 (`00_project_overview.ipynb`
+to `07_demo_ui.ipynb`), including the cell outputs saved there. The Deepnote project was suspended on 9 Nov 2026 by
+Deepnote's automated abuse detection and released again on 16 Nov 2026. As agreed with A. Martin on 10 Nov 2026, this
 repository is the runnable solution: start the demo with `python -m lexgraph.ui.app` (main README, section Run).
+
+Notebook 07 still ends with `demo.launch(share=True)`. That share tunnel triggered the suspension, so do not run this
+cell in Deepnote; locally, `python -m lexgraph.ui.app` starts the UI without a share link.
 
 The table shows which module took over the code of each notebook.
 
@@ -18,6 +22,6 @@ The table shows which module took over the code of each notebook.
 | 06 | Evaluation | Jack | `lexgraph/eval/metrics.py`: `citation_scores`, `cohens_kappa`; `lexgraph/eval/judge.py`: `CRITERIA`, `JUDGE_PROMPT`, `parse_judge`, `judge_answer`; `lexgraph/eval/experiment.py`: `baseline_answer`, `cost`, `run_experiment`; `data/testset.jsonl`; `tests/test_metrics.py` |
 | 07 | Demo UI | Jack | `lexgraph/ui/app.py`: `run_pipeline` (placeholder), `answer_case`, `demo` |
 
-Not moved into the repository and lost with the suspension: `list_models`, `ask` and `check_tool_calling` (01), the
-`create_agent` demo (03), the real-case runs (04), and the explanatory text and cell outputs of all notebooks. The F1
-chart is in `docs/eval/f1-v2/f1_chart.png`.
+Not moved into the repository (demonstration code that stays in the notebooks): `list_models`, `ask` and
+`check_tool_calling` (01), the `create_agent` demo (03), the real-case runs (04). The F1 chart is in
+`docs/eval/f1-v2/f1_chart.png`.
