@@ -4,8 +4,8 @@ The notebooks were written in Deepnote and document, explain and demonstrate the
 repository. This folder holds all eight notebooks (`00_project_overview.ipynb` to `07_demo_ui.ipynb`) as frozen copies
 of the Deepnote export from 16 Nov 2026, including the cell outputs saved there; they are no longer maintained. The
 Deepnote project was suspended on 9 Nov 2026 by Deepnote's automated abuse detection and released again on 16 Nov 2026.
-As agreed with A. Martin on 10 Nov 2026, the runnable solution is this repository only: start the demo with `python -m
-lexgraph.ui.app` (main README, section Run).
+As agreed with A. Martin on 10 Nov 2026, the runnable solution is this repository only: start the demo with
+`python -m lexgraph.ui.app` (main README, section Run).
 
 Notebook 07 still ends with `demo.launch(share=True)`. That share tunnel triggered the suspension, so do not run this
 cell in Deepnote; locally, `python -m lexgraph.ui.app` starts the UI without a share link.
