@@ -1,11 +1,16 @@
 # Notebooks
 
-The notebooks live in Deepnote. They document, explain and demonstrate the code; the code itself lives in this
-repository.
+The notebooks were written in Deepnote and document, explain and demonstrate the code; the code itself lives in this
+repository. This folder holds all eight notebooks (`00_project_overview.ipynb` to `07_demo_ui.ipynb`) as frozen copies
+of the Deepnote export from 16 Nov 2026, including the cell outputs saved there; they are no longer maintained. The
+Deepnote project was suspended on 9 Nov 2026 by Deepnote's automated abuse detection and released again on 16 Nov 2026.
+As agreed with A. Martin on 10 Nov 2026, the runnable solution is this repository only: start the demo with
+`python -m lexgraph.ui.app` (main README, section Run).
 
-Deepnote project: <https://deepnote.com/workspace/GenAI-2026-10d57e68-1744-4ea7-a868-3b3feb9acdc6/project/Swiss-Legal-Agent-9b9d17b7-b4fd-473b-beb2-f7ed180fbdd3/notebook/00projectoverview-92fbd5ace251461e8e69c436f794863b>
+Notebook 07 still ends with `demo.launch(share=True)`. That share tunnel triggered the suspension, so do not run this
+cell in Deepnote; locally, `python -m lexgraph.ui.app` starts the UI without a share link.
 
-Run order: 01 checks the keys. 02 writes `data/or_articles.jsonl`, which 03 and 04 read.
+The table shows which module took over the code of each notebook.
 
 | # | Notebook | Owner | Code in this repository |
 |---|---|---|---|
@@ -19,4 +24,5 @@ Run order: 01 checks the keys. 02 writes `data/or_articles.jsonl`, which 03 and 
 | 07 | Demo UI | Jack | `lexgraph/ui/app.py`: `run_pipeline` (placeholder), `answer_case`, `demo` |
 
 Not moved into the repository (demonstration code that stays in the notebooks): `list_models`, `ask` and
-`check_tool_calling` (01), the `create_agent` demo (03), the real-case runs (04), the F1 chart (06).
+`check_tool_calling` (01), the `create_agent` demo (03), the real-case runs (04). The F1 chart is in
+`docs/eval/f1-v2/f1_chart.png`.

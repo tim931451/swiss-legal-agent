@@ -108,3 +108,10 @@ python -m scripts.eval_f1 --out docs/eval/f1-v2                                 
 python -m scripts.eval_f1 --from-csv docs/eval/f1-v2/f1_results.csv --out docs/eval/f1-v2   # nur Tabelle und Chart neu
 python -m scripts.eval_hitk --methods bm25 dense_swiss dense_harrier hybrid --out docs/eval/f1-v2
 ```
+
+## Stand der Prüfungen nach dem Lauf
+
+F1 v2 wurde nach dem Lauf vom 8.11. nicht wiederholt (Entscheid 13.11., Feature Freeze 15.11.). Zwei Werte gehören deshalb zu älteren Prüfungen:
+
+- «Zitate belegt» und die Zitat-Precision kommen von der Zitierprüfung vor #30. Die Korrektur (PR #37) ergibt bei einer Offline-Neuprüfung derselben Antworten luna 20 von 20 statt 14 belegt, Apertus unverändert 18 von 20; die Tabellen oben sind nicht angepasst.
+- Die Übergabequoten (Apertus 12 von 20, luna 10 von 20) kommen vom Prüfer vor #32. Der neue Prüfer lehnt richtige Entwürfe seltener ab; eine neue Quote auf dem Testset ist nicht gemessen.
