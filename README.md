@@ -69,6 +69,22 @@ The Deepnote project with the notebooks was suspended on 9 Nov 2026 by Deepnote'
 is the runnable solution: start the demo with `python -m lexgraph.ui.app` (see [Run](#run)). Code, data and results
 of all notebooks are in this repository; which notebook fed which module: [notebooks/README.md](notebooks/README.md).
 
+## Known limitations
+
+- **Router with gpt-5.6-luna (#31):** luna routes the rental case MR-08 as out of scope and answers with the fixed
+  rejection, without sources and without hand-over to a person. Apertus, the project standard, routes it correctly.
+  Not fixed before the feature freeze; with luna as generator a wrong rejection can pass unnoticed.
+- **Reviewer misses wrong periods (#32):** after #32 the reviewer no longer rejects correct drafts for missing
+  follow-up questions, but it still accepts some wrong periods (test: three months instead of two in the 8th service
+  year passed with the old and the new prompt). The hand-over to a person is a safety net, not a guarantee.
+- **Missing norm in retrieval passes the reviewer:** the reviewer checks the draft against the retrieved sources only.
+  When the deciding article is not retrieved, a wrong answer usually passes without hand-over (AR-12: Art. 329 OR was
+  not retrieved in 10 of 10 live runs; hand-over in 1 of 5 runs with the new and 2 of 5 with the old reviewer
+  prompt). Chunks per paragraph would be the obvious next step and are out of scope after the feature freeze; see
+  [docs/eval/retrieval/live-suche.md](docs/eval/retrieval/live-suche.md).
+- **F1 v2 measured the old checks:** "Zitate belegt" uses the citation check before #30 (PR #37) and the hand-over
+  rate the reviewer before #32. F1 is not run again; see [docs/eval/f1-v2/README.md](docs/eval/f1-v2/README.md).
+
 ## Way of working
 
 - `main` is changed only through pull requests: 1 approving review, CI green, squash merge.

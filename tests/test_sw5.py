@@ -102,3 +102,12 @@ def test_counting_llm_records_path_and_tokens():
     build_graph(llm, lambda q, a, k=3: [], reject_with_model=True).invoke({"question": "Erbrecht?"})
     assert llm.summary() == {"model_calls": 2, "input_tokens": 200, "output_tokens": 20, "total_tokens": 220,
                              "path": ["router", "out_of_scope"]}
+
+
+def test_reviewer_prompt_limits_revise_to_errors():
+    # Issue #32: no "strict" review; a missing follow-up question alone is no reason to revise.
+    from lexgraph.agents.prompts import REVIEWER_PROMPT
+    text = REVIEWER_PROMPT.format(sources="[OR-336c] ...", question="Fall", draft="Entwurf")
+    assert "streng" not in text and "Fehlt etwas Wesentliches" not in text
+    assert "fehlende Rückfrage" in text and "jede Frist, Zahl, Form" in text
+    assert "'OK'" in text and "'REVISE: " in text

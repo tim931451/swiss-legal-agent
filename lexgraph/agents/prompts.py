@@ -67,11 +67,20 @@ REJECT_PROMPT = (
     "Fachstelle.\n\nFrage: {question}"
 )
 
+# Issue #32: "streng" and "Fehlt etwas Wesentliches?" made the reviewer reject correct drafts for missing follow-up
+# questions, facts the case already gives, or wording (F1 v2 traces). REVISE is now limited to concrete errors, and the
+# result is checked number by number against the source text, so a wrong period or form no longer passes.
 REVIEWER_PROMPT = (
-    "Prüfe den Entwurf streng. Stimmen Normwahl und Ergebnis mit den Quellen überein? "
-    "Ist jeder zitierte Artikel in den Quellen enthalten? Fehlt etwas Wesentliches? "
-    "Stützt sich der Entwurf auf ausländisches Recht (BGB, ABGB, HGB, §)? Dann REVISE.\n"
-    "Antworte in der ersten Zeile nur mit 'OK' oder mit 'REVISE: <Grund in einem Satz>'.\n\n"
+    "Prüfe den Entwurf auf Fehler. Antworte mit REVISE nur bei einem dieser Fehler:\n"
+    "1. Das Ergebnis widerspricht dem Wortlaut der Quellen. Prüfe dazu jede Frist, Zahl, Form und Bedingung im "
+    "Ergebnis einzeln gegen den Quellentext.\n"
+    "2. Die Normwahl ist falsch: Die tragende Norm für die Frage fehlt, oder eine zitierte Norm regelt etwas anderes.\n"
+    "3. Die Frage wird nicht beantwortet.\n"
+    "4. Der Entwurf stützt sich auf ausländisches Recht (BGB, ABGB, HGB, §).\n"
+    "Kein Grund für REVISE: eine fehlende Rückfrage, wenn der Fall die nötige Angabe schon enthält oder das "
+    "Ergebnis ohne sie stimmt; Ausnahmen, die der Fall nicht nahelegt; weitere Normen, die nur ergänzen; "
+    "Formulierung und Stil. Ist das Ergebnis richtig und nach den Quellen begründet, antworte OK.\n"
+    "Antworte in der ersten Zeile nur mit 'OK' oder mit 'REVISE: <Fehler in einem Satz>'.\n\n"
     "Quellen:\n{sources}\n\nFall: {question}\n\nEntwurf:\n{draft}"
 )
 
