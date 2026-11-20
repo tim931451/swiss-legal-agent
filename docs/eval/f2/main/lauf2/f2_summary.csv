@@ -1,0 +1,4 @@
+model,cases,judge_score,citation_precision,citation_recall,citations_backed,gold_in_sources,looked_up,revisions_mean,needs_human,seconds_mean,seconds_median,tokens_per_case,errors
+prompt,20,63.5,0.72,0.83,,,,,,5.0,4.8,468.0,0
+rag,20,74.5,0.7,0.88,0.95,0.95,0.0,0.4,0.1,25.6,9.2,3385.0,0
+mcp,20,74.5,0.68,0.9,1.0,0.95,0.15,0.4,0.05,28.0,8.9,3279.0,0
