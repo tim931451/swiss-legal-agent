@@ -1,0 +1,506 @@
+run_at,llm,model,case,area,difficulty,citation_precision,citation_recall,citations_backed,seconds,model_calls,input_tokens,output_tokens,cost_usd,revisions,needs_human,error,judge_score,c_correct_norm,c_correct_result,c_no_invented_sources,c_complete,c_clear_structure,answer,sources,gold_in_sources,looked_up
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,AR-01,arbeitsrecht,easy,0.5,1.0,,2.0,,104,132,,,,,50,True,False,True,False,True,"Nach Schweizer Recht richtet sich die Kündigungsfrist bei Arbeitsverhältnissen grundsätzlich nach Art. 335 ff. OR, insbesondere Art. 335c OR.
+
+Da im vorliegenden Fall nichts vereinbart ist, kommt die gesetzliche Regelung zur Anwendung. Gemäss Art. 335c Abs. 1 OR beträgt die Kündigungsfrist im ersten Dienstjahr einen Monat, im zweiten Dienstjahr zwei Monate und ab dem dritten Dienstjahr drei Monate.
+
+Folglich beträgt die Kündigungsfrist im dritten Dienstjahr **drei Monate**.
+
+Art. 335c Abs. 1 OR",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,AR-02,arbeitsrecht,medium,1.0,1.0,,3.5,,108,245,,,,,50,True,False,True,False,True,"Nach Schweizer Recht ist eine Kündigung während einer Krankheit nur unter bestimmten Umständen zulässig. Gemäss Art. 336c OR darf der Arbeitgeber das Arbeitsverhältnis nicht kündigen, wenn der Arbeitnehmer ohne eigenes Verschulden durch Krankheit oder Unfall an der Arbeitsleistung verhindert ist, und zwar während einer bestimmten Sperrfrist.
+
+Die Sperrfrist beträgt im ersten Dienstjahr 30 Tage, im zweiten Dienstjahr 90 Tage und ab dem dritten Dienstjahr 180 Tage (Art. 336c Abs. 1 lit. b OR). Da Sie sich im dritten Dienstjahr befinden, beträgt die Sperrfrist 180 Tage.
+
+Da Sie erst seit zwei Wochen krank sind, befindet sich die Kündigung Ihres Chefs eindeutig innerhalb der Sperrfrist. Eine Kündigung während dieser Zeit ist grundsätzlich nichtig (Art. 336c Abs. 2 OR). Das bedeutet, dass die Kündigung ungültig ist und das Arbeitsverhältnis weiterhin besteht.
+
+Sie sollten die Kündigung schriftlich anfechten und gegebenenfalls rechtlichen Rat einholen, um Ihre Rechte zu wahren.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,AR-03,arbeitsrecht,easy,0.33,1.0,,3.7,,112,257,,,,,30,False,False,True,False,True,"Nach Schweizer Recht richtet sich die Kündigungsfrist in erster Linie nach dem Arbeitsvertrag und subsidiär nach dem Obligationenrecht (OR).
+
+Da in Ihrem Arbeitsvertrag nichts zur Probezeit steht, gilt grundsätzlich keine Probezeit im Sinne von Art. 335b OR. Ohne eine vertragliche Vereinbarung über eine Probezeit unterliegt das Arbeitsverhältnis den ordentlichen Kündigungsfristen.
+
+Gemäss Art. 335c OR beträgt die Kündigungsfrist im ersten Dienstjahr mindestens einen Monat auf das Ende eines Monats. Da Sie erst seit drei Wochen angestellt sind, befinden Sie sich noch im ersten Dienstjahr.
+
+**Fazit:**
+Sie können das Arbeitsverhältnis unter Einhaltung einer Kündigungsfrist von mindestens einem Monat auf das Ende eines Monats kündigen. Eine kürzere Frist ist nur gültig, wenn dies vertraglich vereinbart wurde (was hier nicht der Fall ist) oder wenn eine fristlose Kündigung gemäss Art. 337 OR aus wichtigen Gründen zulässig wäre (was hier nicht geltend gemacht wird).
+
+**Rechtsgrundlagen:**
+- Art. 335c OR (Kündigungsfristen)",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,AR-04,arbeitsrecht,easy,1.0,1.0,,1.7,,109,114,,,,,50,True,False,True,False,True,"Nach Schweizer Recht, konkret dem Obligationenrecht (OR), haben Arbeitnehmende Anspruch auf mindestens vier Wochen Ferien pro Jahr, wenn sie das 20. Altersjahr überschritten haben.
+
+Für Personen unter 20 Jahren beträgt der Mindestanspruch fünf Wochen Ferien pro Jahr (Art. 329a Abs. 1 OR in Verbindung mit Art. 329a Abs. 2 OR).
+
+Da Sie 19 Jahre alt sind, stehen Ihnen **mindestens fünf Wochen Ferien pro Jahr** zu.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,AR-05,arbeitsrecht,hard,1.0,1.0,,3.6,,120,248,,,,,50,True,False,True,False,True,"Nach Schweizer Recht, konkret dem Obligationenrecht (OR), hängt die Kündigungsfrist von der Dauer des Arbeitsverhältnisses ab.
+
+Gemäss Art. 335c OR beträgt die Kündigungsfrist im ersten Dienstjahr einen Monat, im zweiten bis und mit dem neunten Dienstjahr zwei Monate und ab dem zehnten Dienstjahr drei Monate.
+
+Da Sie bereits seit drei Jahren bei Ihrem Arbeitgeber in Basel beschäftigt sind, liegt die Kündigungsfrist bei zwei Monaten.
+
+Die Kündigung per Monatsende oder per 15. des Monats ist grundsätzlich zulässig, sofern die Kündigung unter Einhaltung der gesetzlichen Frist erfolgt. Das bedeutet, dass Ihr Arbeitgeber Ihnen mit einer Frist von zwei Monaten kündigen darf, wobei das Arbeitsverhältnis entweder per Monatsende oder per 15. eines Monats enden kann.
+
+Zusammenfassend: Die Kündigungsfrist von zwei Monaten ist korrekt. Die Kündigung per Monatsende oder per 15. ist rechtlich zulässig, sofern die Frist eingehalten wird.
+
+Art. 335c OR (Kündigungsfristen)",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,AR-06,arbeitsrecht,hard,1.0,1.0,,5.1,,117,354,,,,,80,True,True,False,True,True,"Nach Schweizer Recht regelt Art. 336c OR den Kündigungsschutz bei Krankheit. Gemäss Art. 336c Abs. 1 lit. b OR darf der Arbeitgeber das Arbeitsverhältnis nicht kündigen, während der Arbeitnehmer ohne eigenes Verschulden durch Krankheit ganz oder teilweise an der Arbeitsleistung verhindert ist, und zwar während einer bestimmten Sperrfrist.
+
+Die Dauer der Sperrfrist hängt von der Dauer des Arbeitsverhältnisses ab:
+
+- Im ersten Dienstjahr: 30 Tage
+- Ab dem zweiten bis und mit dem fünften Dienstjahr: 90 Tage
+- Ab dem sechsten Dienstjahr: 180 Tage
+
+Während dieser Sperrfrist ist eine Kündigung durch den Arbeitgeber nichtig (Art. 336c Abs. 2 OR).
+
+**Bundesgerichtsentscheid:**
+
+Ein prägnanter Entscheid, der die Anwendung von Art. 336c OR bestätigt, ist:
+
+BGE 123 III 246 (Urteil vom 22. Mai 1997)
+
+In diesem Entscheid hat das Bundesgericht die Berechnung der Sperrfristen und die Nichtigkeit einer während der Sperrfrist ausgesprochenen Kündigung bestätigt.
+
+Zusammenfassend: Der Arbeitgeber darf Ihnen während der in Art. 336c OR festgelegten Sperrfristen nicht kündigen. Die konkrete Dauer richtet sich nach der Dauer des Arbeitsverhältnisses. Eine Kündigung während dieser Zeit ist nichtig (Art. 336c Abs. 2 OR). Für die Details verweisen wir auf BGE 123 III 246.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,MR-01,mietrecht,medium,1.0,1.0,,5.2,,104,359,,,,,100,True,True,True,True,True,"Nach Schweizer Recht, insbesondere dem Obligationenrecht (OR), hat der Vermieter bei ausstehenden Mietzinsen verschiedene Möglichkeiten:
+
+1. **Mahnung und Fristsetzung**: Der Vermieter kann den Mieter zunächst mahnen und ihm eine angemessene Frist zur Zahlung der ausstehenden Mieten setzen (Art. 257d Abs. 1 OR). Diese Frist beträgt in der Regel mindestens 30 Tage.
+
+2. **Kündigung bei Nichtzahlung**: Wenn der Mieter die ausstehenden Mieten auch nach Ablauf der gesetzten Frist nicht bezahlt, kann der Vermieter das Mietverhältnis ausserordentlich kündigen (Art. 257d Abs. 2 OR). Die Kündigungsfrist beträgt in diesem Fall mindestens 30 Tage auf Ende eines Monats.
+
+3. **Ausweisung**: Nach erfolgter Kündigung kann der Vermieter, falls der Mieter die Wohnung nicht freiwillig verlässt, ein Ausweisungsverfahren einleiten. Dies erfolgt in der Regel über das zuständige Zivilgericht, welches die Ausweisung anordnet.
+
+**Zusammenfassend**: Bei zwei unbezahlten Monatsmieten kann der Vermieter den Mieter mahnen, eine Zahlungsfrist von mindestens 30 Tagen setzen und bei Nichtzahlung das Mietverhältnis unter Einhaltung einer Kündigungsfrist von mindestens 30 Tagen auf Ende eines Monats kündigen. Im Anschluss kann der Vermieter die Ausweisung des Mieters verlangen.
+
+**Relevante Artikel**:
+- **Art. 257d OR**: Kündigung wegen Zahlungsrückstand des Mieters.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,MR-02,mietrecht,medium,0.4,1.0,,6.8,,111,477,,,,,40,False,True,False,False,True,"Nach Schweizer Recht, insbesondere nach dem Obligationenrecht (OR), hat der Vermieter die Pflicht, die Mietsache in einem zum vertragsgemässen Gebrauch tauglichen Zustand zu erhalten und sie während der Mietdauer in diesem Zustand zu erhalten (Art. 256 OR).
+
+Da sich in Ihrem Schlafzimmer Schimmel gebildet hat, den Sie nicht verursacht haben, liegt ein Mangel an der Mietsache vor. Der Vermieter ist verpflichtet, diesen Mangel zu beheben, sobald er davon Kenntnis erhält oder bei gehöriger Aufmerksamkeit hätte Kenntnis davon erhalten müssen (Art. 259a OR).
+
+Sie können vom Vermieter folgendes verlangen:
+
+1. **Behebung des Mangels**: Der Vermieter muss den Schimmel entfernen und die Ursache beseitigen, damit sich der Schimmel nicht erneut bildet. Dies kann beispielsweise die Verbesserung der Lüftung, die Reparatur von undichten Stellen oder die Isolierung betreffen.
+
+2. **Mietzinsreduktion**: Solange der Mangel besteht und die Tauglichkeit der Mietsache beeinträchtigt ist, können Sie eine angemessene Reduktion des Mietzinses verlangen (Art. 259d OR).
+
+3. **Schadenersatz**: Falls Ihnen durch den Schimmel oder die verzögerte Behebung des Mangels Schäden entstanden sind (z. B. beschädigte Möbel, Gesundheitsprobleme), können Sie Schadenersatz vom Vermieter fordern (Art. 259e OR).
+
+4. **Selbstbehebung und Kostenvorschuss**: In dringenden Fällen oder wenn der Vermieter den Mangel trotz Aufforderung nicht behebt, können Sie den Mangel auf Kosten des Vermieters selbst beheben lassen oder einen Kostenvorschuss verlangen (Art. 259b OR).
+
+Es ist ratsam, den Vermieter zunächst schriftlich auf den Mangel aufmerksam zu machen und ihm eine angemessene Frist zur Behebung zu setzen. Sollte der Vermieter nicht reagieren, können Sie die oben genannten Rechte geltend machen, gegebenenfalls mit Unterstützung einer Mieterorganisation oder eines Anwalts.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,MR-03,mietrecht,medium,0.67,1.0,,4.9,,107,342,,,,,30,True,False,False,False,True,"Nach Schweizer Recht, insbesondere dem Obligationenrecht (OR), gelten für die Kündigung einer Mietwohnung folgende Bestimmungen:
+
+**1. Kündigungsfrist:**
+Die ordentliche Kündigungsfrist für Wohnräume beträgt in der Regel drei Monate (Art. 266c OR). Diese Frist beginnt am Ende des Monats, in dem die Kündigung erfolgt, zu laufen. Es ist jedoch zu beachten, dass vertraglich abweichende Fristen vereinbart werden können, wobei diese für den Mieter nicht kürzer sein dürfen als die gesetzliche Mindestfrist (Art. 266d OR).
+
+**2. Kündigungsform:**
+Die Kündigung muss schriftlich erfolgen (Art. 266l OR). Eine mündliche Kündigung ist grundsätzlich nicht gültig. Das Kündigungsschreiben muss eindeutig sein und den Willen zur Beendigung des Mietverhältnisses zum Ausdruck bringen. Es empfiehlt sich, das Schreiben per Einschreiben zu versenden, um den Nachweis der Zustellung zu sichern.
+
+**Zusammenfassung:**
+Um Ihre Mietwohnung ordentlich zu kündigen, müssen Sie ein schriftliches Kündigungsschreiben verfassen und dieses mindestens drei Monate vor dem gewünschten Auszugstermin einreichen. Achten Sie darauf, dass das Schreiben eindeutig formuliert ist und die gesetzlichen Fristen eingehalten werden. Bei Unsicherheiten bezüglich der vertraglichen Vereinbarungen oder der korrekten Formulierung empfiehlt sich die Konsultation einer Fachperson oder eines Mieterverbands.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,MR-04,mietrecht,easy,1.0,1.0,,2.9,,115,202,,,,,100,True,True,True,True,True,"Nach Schweizer Recht ist die Kaution grundsätzlich zulässig, jedoch unterliegt sie bestimmten gesetzlichen Vorgaben, insbesondere im Obligationenrecht (OR).
+
+Gemäss Art. 257e OR kann der Vermieter eine Kaution verlangen, die höchstens drei Monatsmieten betragen darf. Eine Kaution in Höhe von vier Monatsmieten überschreitet diese gesetzliche Obergrenze und wäre daher unzulässig.
+
+Zudem schreibt Art. 257e Abs. 1 OR vor, dass die Kaution auf einem Sparkonto oder in einer anderen Form angelegt werden muss, die dem Mieter Zinsen einbringt. Das Geld darf nicht einfach auf das private Konto des Vermieters überwiesen werden, da dies die Anlagevorschrift verletzen würde.
+
+Zusammenfassend ist die Forderung nach vier Monatsmieten Kaution sowie die Überweisung auf das private Konto des Vermieters nach Schweizer Recht nicht zulässig.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,AR-07,arbeitsrecht,easy,1.0,1.0,,7.0,,110,491,,,,,80,True,True,True,False,True,"Ja, nach Schweizer Recht haben Arbeitnehmer das Recht auf ein Arbeitszeugnis, wenn das Arbeitsverhältnis endet. Dieses Recht ist in Art. 330a Abs. 1 des Obligationenrechts (OR) verankert.
+
+**Recht auf ein Arbeitszeugnis:**
+Gemäss Art. 330a Abs. 1 OR hat der Arbeitnehmer bei Beendigung des Arbeitsverhältnisses Anspruch auf ein Zeugnis, das sich über die Art und Dauer des Arbeitsverhältnisses sowie über seine Leistungen und sein Verhalten ausspricht.
+
+**Inhalt des Arbeitszeugnisses:**
+Das Arbeitszeugnis muss wahrheitsgemäss und vollständig sein. Es soll dem Arbeitnehmer ermöglichen, sich gegenüber zukünftigen Arbeitgebern angemessen zu präsentieren. Typischerweise enthält ein Arbeitszeugnis folgende Elemente:
+
+1. **Einleitung:** Angaben zur Person des Arbeitnehmers (Name, Geburtsdatum, Funktion, Dauer der Anstellung).
+2. **Tätigkeitsbeschreibung:** Beschreibung der ausgeübten Tätigkeiten und Verantwortlichkeiten.
+3. **Bewertung der Leistungen:** Beurteilung der fachlichen und persönlichen Leistungen des Arbeitnehmers.
+4. **Bewertung des Verhaltens:** Beurteilung des Verhaltens gegenüber Vorgesetzten, Kollegen und Dritten.
+5. **Abschlussformel:** Dank für die geleistete Arbeit, Bedauern über das Ausscheiden und gute Wünsche für die Zukunft.
+
+**Form und Zeitpunkt:**
+Der Arbeitnehmer kann das Arbeitszeugnis jederzeit verlangen, in der Regel jedoch spätestens bei Beendigung des Arbeitsverhältnisses. Der Arbeitgeber muss das Zeugnis ohne unangemessene Verzögerung ausstellen (Art. 330a Abs. 2 OR).
+
+**Falls der Arbeitgeber das Zeugnis verweigert oder ungenügend ausstellt:**
+Der Arbeitnehmer kann den Arbeitgeber abmahnen und eine angemessene Frist zur Ausstellung setzen. Leistet der Arbeitgeber auch nach Fristablauf nicht, kann der Arbeitnehmer auf Ausstellung des Zeugnisses klagen (Art. 330a Abs. 2 OR).
+
+Zusammenfassend haben Sie als Arbeitnehmer das Recht, ein Arbeitszeugnis zu verlangen, das wahrheitsgemäss, vollständig und wohlwollend formuliert ist.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,AR-08,arbeitsrecht,easy,1.0,1.0,,3.3,,119,232,,,,,100,True,True,True,True,True,"Nach Schweizer Recht ist es grundsätzlich nicht zulässig, Ferienansprüche in Geld abzugelten, wenn das Arbeitsverhältnis fortbesteht. Der Zweck der Ferien besteht darin, der arbeitnehmenden Person eine Erholungszeit zu gewähren, die nicht durch Geldleistungen ersetzt werden kann.
+
+Gemäss Art. 329d Abs. 2 OR dürfen Ferien während der Dauer des Arbeitsverhältnisses nicht durch Geldleistungen oder andere Vergütungen ersetzt werden. Eine Abgeltung in Geld ist nur zulässig, wenn die Ferien nicht mehr bezogen werden können, weil das Arbeitsverhältnis beendet ist (Art. 329d Abs. 1 OR).
+
+Da Sie weiterhin bei Ihrem Arbeitgeber angestellt bleiben, ist die Auszahlung der Ferien anstelle des Bezugs unzulässig. Ihr Arbeitgeber muss Ihnen die Ferien als Freizeit gewähren.
+
+**Fazit:** Nein, Ihr Arbeitgeber darf Ihnen die Ferien nicht auszahlen, wenn das Arbeitsverhältnis fortbesteht. Sie haben Anspruch auf den tatsächlichen Bezug der Ferien.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,AR-09,arbeitsrecht,medium,1.0,1.0,,5.3,,134,370,,,,,50,True,False,True,False,True,"Nach Schweizer Recht richtet sich die Lohnfortzahlung im Krankheitsfall primär nach dem Obligationenrecht (OR).
+
+Gemäss Art. 324a OR ist der Arbeitgeber verpflichtet, dem Arbeitnehmer für eine beschränkte Zeit den Lohn zu entrichten, wenn das Arbeitsverhältnis ununterbrochen mehr als drei Monate gedauert hat und keine andere Abrede oder kein Gesamtarbeitsvertrag besteht.
+
+Da Sie seit fünf Monaten unbefristet angestellt sind und somit die Voraussetzung der ununterbrochenen Dauer von mehr als drei Monaten erfüllt ist, greift die gesetzliche Regelung des OR.
+
+Die gesetzliche Mindestdauer der Lohnfortzahlung beträgt in der Regel **3 Wochen** ab Beginn der Arbeitsunfähigkeit, sofern nichts anderes vereinbart wurde (Art. 324a Abs. 2 OR).
+
+Da Sie seit vier Wochen krank sind, hat Ihr Arbeitgeber Ihnen den Lohn für diese vier Wochen bereits zu entrichten. Für die weitere Dauer hängt es davon ab, ob Ihr Arbeitgeber eine über das gesetzliche Minimum hinausgehende Regelung vorsieht (z. B. durch eine individuelle Vereinbarung oder eine branchenspezifische Übung), da das Gesetz nur eine Mindestpflicht statuiert.
+
+Zusammenfassend gilt: Der Arbeitgeber muss Ihnen den Lohn für die ersten drei Wochen der Krankheit zahlen. Für die darüber hinausgehende Zeit (in Ihrem Fall die vierte und weitere Wochen) ist zu prüfen, ob eine vertragliche oder übliche Regelung eine längere Lohnfortzahlung vorsieht. Ohne solche Abrede endet die Pflicht zur Lohnzahlung nach den ersten drei Wochen, es sei denn, der Arbeitgeber gewährt freiwillig eine längere Leistung.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,AR-10,arbeitsrecht,medium,1.0,0.5,,3.5,,132,244,,,,,100,True,True,True,True,True,"Nach Schweizer Recht ist ein Konkurrenzverbot im Arbeitsvertrag nur unter bestimmten Voraussetzungen zulässig und verbindlich. Gemäss Art. 340 Abs. 1 OR kann der Arbeitgeber ein Konkurrenzverbot nur dann wirksam vereinbaren, wenn:
+
+1. das Arbeitsverhältnis dem Arbeitnehmer Einblick in den Kundenkreis oder in Fabrikations- oder Geschäftsgeheimnisse gewährt und die Möglichkeit bietet, die Kunden des Arbeitgebers zu konkurrenzieren;
+2. das Konkurrenzverbot nach Ort, Zeit und Gegenstand angemessen begrenzt ist;
+3. das Konkurrenzverbot schriftlich vereinbart wurde.
+
+Im von Ihnen beschriebenen Fall arbeiten Sie im Lager und haben weder Kundenkontakt noch Einblick in Geschäftsgeheimnisse. Da die erste Voraussetzung (Einblick in Kundenkreis oder Geschäftsgeheimnisse) nicht erfüllt ist, fehlt es an einer wesentlichen Grundlage für ein Konkurrenzverbot. Ein solches wäre daher nach Art. 340 Abs. 1 OR nichtig und damit nicht verbindlich.
+
+Zusammenfassend ist das im Arbeitsvertrag enthaltene Konkurrenzverbot in Ihrem Fall unwirksam.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,AR-11,arbeitsrecht,hard,0.67,0.67,,8.0,,132,562,,,,,50,True,False,True,False,True,"Nach Schweizer Recht, insbesondere nach dem Obligationenrecht (OR), haben Sie in dieser Situation mehrere Möglichkeiten, um Ihre Rechte zu wahren.
+
+1. **Unzulässige Kündigung (Art. 336 OR):**
+   - Wenn die Kündigung als Rachekündigung wegen Ihrer Forderung auf Lohnzahlung zu werten ist, könnte es sich um eine missbräuchliche Kündigung handeln. Gemäss Art. 336 OR ist eine Kündigung missbräuchlich, wenn sie aus einem Grund ausgesprochen wird, der in Art. 336 OR aufgeführt ist. Ein solcher Grund könnte beispielsweise die Ausübung eines verfassungsmässigen Rechts (wie das Recht auf Lohnzahlung) sein (Art. 336 Abs. 1 lit. b OR).
+
+2. **Anspruch auf Lohnzahlung:**
+   - Ihr Anspruch auf den ausstehenden Lohn bleibt bestehen, unabhängig von der Kündigung. Der Arbeitgeber ist verpflichtet, Ihnen den Lohn für die geleistete Arbeit zu bezahlen (Art. 322 OR). Sie können den ausstehenden Lohn weiterhin geltend machen, sei es durch eine schriftliche Mahnung, eine Betreibung oder eine Klage vor dem Arbeitsgericht.
+
+3. **Entschädigung wegen missbräuchlicher Kündigung (Art. 336a OR):**
+   - Sollte die Kündigung tatsächlich missbräuchlich sein, haben Sie Anspruch auf eine Entschädigung. Diese Entschädigung wird vom Gericht nach freiem Ermessen festgesetzt und beträgt in der Regel mindestens einen Monatslohn, kann aber auch höher ausfallen, abhängig von den Umständen des Einzelfalls (Art. 336a OR).
+
+4. **Rechtsschutz:**
+   - Sie können eine Klage vor dem zuständigen Arbeitsgericht einreichen, um sowohl den ausstehenden Lohn als auch eine allfällige Entschädigung wegen missbräuchlicher Kündigung geltend zu machen. Es ist ratsam, sich vor einer Klage rechtlich beraten zu lassen, um die Erfolgsaussichten und die Vorgehensweise zu klären.
+
+Zusammenfassend können Sie:
+- Den ausstehenden Lohn weiterhin einfordern.
+- Bei missbräuchlicher Kündigung eine Entschädigung verlangen.
+- Sich rechtlich beraten lassen und gegebenenfalls eine Klage einreichen.
+
+Es ist wichtig, alle relevanten Dokumente (wie die schriftliche Aufforderung zur Lohnzahlung und die Kündigung) aufzubewahren, um Ihre Ansprüche zu untermauern.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,AR-12,arbeitsrecht,easy,0.0,0.0,,9.8,,119,689,,,,,30,False,False,True,False,True,"Nach Schweizer Recht ist die Frage, ob der Arbeitgeber dem gekündigten Arbeitnehmer während der Kündigungsfrist Zeit für Vorstellungsgespräche gewähren muss, nicht explizit im Obligationenrecht (OR) geregelt. Es gibt jedoch gewisse Grundsätze, die aus der Treuepflicht des Arbeitnehmers (Art. 321a OR) und dem allgemeinen Gebot der schonenden Rechtsausübung abgeleitet werden können.
+
+**Rechtliche Grundlagen und Praxis:**
+
+1. **Treuepflicht (Art. 321a OR):** Während des bestehenden Arbeitsverhältnisses ist der Arbeitnehmer verpflichtet, die berechtigten Interessen des Arbeitgebers zu wahren. Dies beinhaltet, dass der Arbeitnehmer seine Arbeitskraft weiterhin zur Verfügung stellen und seine Arbeit sorgfältig verrichten muss. Die aktive Suche nach einer neuen Stelle ist grundsätzlich erlaubt, solange sie die Arbeitsleistung und die Treuepflicht gegenüber dem aktuellen Arbeitgeber nicht beeinträchtigt.
+
+2. **Schonungspflicht und Verhältnismässigkeit:** Der Arbeitgeber ist verpflichtet, bei der Ausübung seiner Rechte, wie beispielsweise der Kündigung, nach Treu und Glauben zu handeln (Art. 2 Abs. 1 ZGB). Dies kann in bestimmten Fällen bedeuten, dass der Arbeitgeber dem Arbeitnehmer eine gewisse Flexibilität bei der Vereinbarung von Terminen für Vorstellungsgespräche gewähren sollte, insbesondere wenn diese Gespräche für die berufliche Zukunft des Arbeitnehmers von grosser Bedeutung sind und die Arbeitsleistung nicht beeinträchtigen.
+
+3. **Fehlzeit und Lohnfortzahlung:** Wichtig ist zu beachten, dass der Arbeitnehmer während der Kündigungsfrist grundsätzlich zur Arbeit verpflichtet ist. Zeit für Vorstellungsgespräche muss daher entweder in die Arbeitszeit fallen oder als unbezahlte Freistellung gewährt werden. Der Arbeitgeber ist nicht verpflichtet, dem Arbeitnehmer bezahlte Freizeit für Vorstellungsgespräche zu gewähren, es sei denn, dies wurde vertraglich vereinbart oder es besteht eine entsprechende betriebliche Übung.
+
+**Fazit:**
+
+Der Arbeitgeber ist **nicht gesetzlich verpflichtet**, dem gekündigten Arbeitnehmer explizit Zeit für Vorstellungsgespräche zu gewähren. Es liegt im Ermessen des Arbeitgebers, ob und in welchem Umfang er dem Arbeitnehmer entgegenkommt. In der Praxis wird jedoch oft eine gewisse Flexibilität gezeigt, insbesondere wenn die Vorstellungsgespräche für die berufliche Zukunft des Arbeitnehmers wichtig sind und die Arbeitsleistung nicht beeinträchtigt wird. Es empfiehlt sich, eine einvernehmliche Lösung mit dem Arbeitgeber zu suchen, um Konflikte zu vermeiden.
+
+**Empfehlung:**
+
+- Klären Sie frühzeitig mit Ihrem Arbeitgeber, ob und wie Sie Zeit für Vorstellungsgespräche erhalten können.
+- Versuchen Sie, Vorstellungsgespräche in Ihre Arbeitszeit zu legen oder um unbezahlte Freistellung zu bitten.
+- Dokumentieren Sie Absprachen schriftlich, um Missverständnisse zu vermeiden.
+
+*Hinweis: Diese Antwort stellt keine Rechtsberatung dar und ersetzt nicht die Konsultation einer Fachperson.*",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,MR-05,mietrecht,easy,0.0,0.0,,4.6,,132,323,,,,,40,False,True,False,False,True,"Nach Schweizer Recht, insbesondere nach dem Obligationenrecht (OR), ist die Frage der Nachzahlung von Nebenkosten abhängig davon, ob diese im Mietvertrag ausdrücklich vereinbart wurden.
+
+Gemäss Art. 256 OR umfasst der Mietzins grundsätzlich alle Leistungen des Vermieters, die im Zusammenhang mit der Gebrauchsüberlassung der Mietsache stehen. Wenn im Mietvertrag keine Nebenkosten separat aufgeführt sind, dürfen diese grundsätzlich nicht nachträglich eingefordert werden, es sei denn, es liegt eine gültige Vereinbarung vor, die eine Nachzahlung vorsieht.
+
+Da in Ihrem Mietvertrag nur ein Mietzins genannt ist und Nebenkosten nirgends erwähnt werden, fehlt es an einer vertraglichen Grundlage für eine Nachzahlung. Der Vermieter kann daher in der Regel keine Nachzahlung für Heizung und Warmwasser verlangen, sofern diese Kosten nicht bereits im vereinbarten Mietzins enthalten sind.
+
+Es ist jedoch ratsam, den Mietvertrag genau zu prüfen und gegebenenfalls eine schriftliche Bestätigung des Vermieters einzufordern, aus der hervorgeht, dass die Nebenkosten nicht im Mietzins enthalten sind. Sollte der Vermieter dennoch eine Nachzahlung verlangen, können Sie sich auf Art. 256 OR berufen und die Forderung ablehnen. Bei Unklarheiten oder Streitigkeiten empfiehlt sich die Konsultation einer Fachperson oder einer Schlichtungsbehörde.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,MR-06,mietrecht,medium,0.5,1.0,,4.2,,146,293,,,,,80,True,True,True,False,True,"Nach Schweizer Recht, insbesondere dem Obligationenrecht (OR), müssen Sie wie folgt vorgehen:
+
+1. **Anfechtung der Kündigung**: Wenn Sie die Kündigung für ungerechtfertigt halten, können Sie diese innert 30 Tagen nach Empfang bei der zuständigen Schlichtungsbehörde anfechten (Art. 273 OR). Die Schlichtungsbehörde versucht, eine Einigung zwischen den Parteien herbeizuführen.
+
+2. **Verlängerung des Mietverhältnisses**: Zusätzlich können Sie um eine Erstreckung des Mietverhältnisses ersuchen, wenn die Kündigung für Sie eine Härte bedeutet und eine angemessene Lösung auf dem Wohnungsmarkt nicht gefunden werden kann (Art. 272 OR). Das Gesuch um Erstreckung muss ebenfalls innert 30 Tagen nach Empfang der Kündigung bei der Schlichtungsbehörde eingereicht werden.
+
+**Zusammenfassend**:
+- **Wo**: Bei der zuständigen Schlichtungsbehörde für Mietangelegenheiten.
+- **Bis wann**: Innerhalb von 30 Tagen nach Empfang der Kündigung.
+
+Es ist ratsam, sich vor der Einreichung von einer Fachperson oder einer Mieterorganisation beraten zu lassen, um die Chancen und die Formulierung Ihrer Eingaben zu optimieren.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,MR-07,mietrecht,medium,0.33,1.0,,7.9,,139,551,,,,,80,True,True,True,False,True,"Nach Schweizer Recht, insbesondere nach dem Obligationenrecht (OR), ist die Beurteilung dieses Falls wie folgt:
+
+**Grundsatz:** Der Mieter ist verpflichtet, die Sache in dem Zustand zurückzugeben, der sich aus dem vertragsgemässen Gebrauch ergibt (Art. 267 OR). Er haftet für alle Schäden, die über die normale Abnutzung hinausgehen.
+
+**Wesentliche Punkte in Ihrem Fall:**
+
+1.  **Beanstandung bei der Rückgabe:** Der Vermieter hat bei der Übergabe der Wohnung nichts beanstandet. Gemäss Art. 267a OR verliert der Vermieter sein Recht, Mängel geltend zu machen, wenn er diese bei der Rückgabe kennt und nicht sofort rügt. Eine verspätete Geltendmachung von Mängeln, die bei der Übergabe offensichtlich waren, ist grundsätzlich ausgeschlossen.
+2.  **Offensichtlichkeit der Kratzer:** Da Sie vorbringen, die Kratzer seien bei der Abnahme ohne Weiteres sichtbar gewesen, handelt es sich um einen offensichtlichen Mangel. Offensichtliche Mängel müssen vom Vermieter sofort bei der Rücknahme gerügt werden, ansonsten gilt die Sache als genehmigt (Art. 267a OR).
+3.  **Haftung des Mieters:** Der Mieter haftet nur für Schäden, die nicht auf normale Abnutzung zurückzuführen sind. Kratzer im Parkett können je nach Tiefe und Ausmass als übermässige Abnutzung oder als vorsätzlich verursachter Schaden gelten. Wenn die Kratzer jedoch bei der Übergabe bereits vorhanden waren und nicht beanstandet wurden, kann der Vermieter diese nicht nachträglich dem Mieter in Rechnung stellen.
+
+**Fazit:**
+Da der Vermieter die Kratzer bei der Rückgabe nicht beanstandet hat, obwohl sie offensichtlich waren, können Sie in der Regel nicht zur Zahlung verpflichtet werden. Der Vermieter hat sein Recht verwirkt, diese Mängel nachträglich geltend zu machen.
+
+**Empfehlung:**
+Sie sollten dem Vermieter schriftlich mitteilen, dass bei der Rückgabe keine Beanstandungen erfolgt sind und die Kratzer bereits vorhanden waren. Falls der Vermieter dennoch eine Forderung stellt, können Sie diese ablehnen und gegebenenfalls rechtliche Schritte erwägen. Es empfiehlt sich jedoch, vor einer Eskalation das Gespräch zu suchen und gegebenenfalls einen Schlichtungsversuch zu unternehmen (Art. 274a OR).",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,prompt,MR-08,mietrecht,hard,1.0,0.5,,6.9,,127,486,,,,,80,True,True,True,False,True,"Nach Schweizer Recht ist die Frage, ob ein Ehegatte allein einen Mietvertrag kündigen kann, der die Familienwohnung betrifft, komplex und hängt von verschiedenen Faktoren ab, insbesondere davon, ob die Wohnung als Familienwohnung im Sinne von Art. 266m OR gilt.
+
+**Rechtliche Grundlagen:**
+
+1. **Familienwohnung (Art. 266m OR):**  
+   Gemäss Art. 266m OR ist eine Kündigung des Mietvertrags über die Familienwohnung nur wirksam, wenn sie von beiden Ehegatten ausgesprochen wird. Die Familienwohnung ist die Wohnung, die die Ehegatten zusammen bewohnen oder in der sie ihren gemeinsamen Haushalt führen. Ziel dieser Bestimmung ist der Schutz der Familie vor einer einseitigen Kündigung durch einen Ehegatten.
+
+2. **Vertragspartei und Vertretung:**  
+   Der Mietvertrag wurde allein auf Ihren Namen abgeschlossen. Dies bedeutet, dass Sie rechtlich als Mieter gelten. Allerdings ändert dies nichts an der speziellen Regelung für die Familienwohnung, da Art. 266m OR unabhängig von der vertraglichen Partei-Zugehörigkeit anwendbar ist, sobald die Wohnung als Familienwohnung qualifiziert wird.
+
+**Fazit:**
+
+Da Sie verheiratet sind und die Wohnung als Familienwohnung dient, können Sie den Mietvertrag **nicht allein kündigen**. Eine wirksame Kündigung erfordert die Zustimmung und Mitwirkung Ihrer Ehefrau. Ohne ihre Zustimmung wäre eine einseitige Kündigung durch Sie unwirksam.
+
+**Empfehlung:**
+
+- Klären Sie das weitere Vorgehen mit Ihrer Ehefrau.  
+- Falls keine Einigung erzielt werden kann, besteht die Möglichkeit, eine Mediation oder eine rechtliche Beratung in Anspruch zu nehmen.  
+- Im Extremfall kann das Gericht angerufen werden, um über die Auflösung des Mietverhältnisses zu entscheiden, wobei jedoch die Schutzbestimmungen für die Familienwohnung zu beachten sind.
+
+**Zusammenfassung:**  
+Nach Art. 266m OR ist eine Kündigung der Familienwohnung nur gemeinsam durch beide Ehegatten wirksam. Daher können Sie den Mietvertrag nicht allein kündigen, solange Ihre Ehefrau dagegen ist.",,,
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,AR-01,arbeitsrecht,easy,1.0,1.0,True,6.8,3,1942,197,,0,False,,100,True,True,True,True,True,"Sachverhalt: Eine Person fragt nach der gesetzlichen Kündigungsfrist im dritten Dienstjahr, wenn im Arbeitsvertrag keine abweichende Vereinbarung getroffen wurde.
+Rechtsfrage: Wie lange ist die gesetzliche Kündigungsfrist im dritten Dienstjahr nach Schweizer Obligationenrecht, wenn keine abweichende Vereinbarung besteht?
+Normwahl: OR-335c
+Subsumtion: Nach Art. 335c OR beträgt die Kündigungsfrist nach Ablauf der Probezeit im zweiten bis und mit dem neunten Dienstjahr zwei Monate. Das dritte Dienstjahr fällt in diesen Zeitraum.
+Ergebnis: Die gesetzliche Kündigungsfrist beträgt zwei Monate auf das Ende eines Monats.
+Quellen: OR-335c",OR-335c OR-335a OR-335,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,AR-02,arbeitsrecht,medium,0.5,1.0,True,16.9,7,9200,840,,2,False,,100,True,True,True,True,True,"Sachverhalt: Eine Arbeitnehmerin im dritten Dienstjahr ist seit zwei Wochen krank. Während dieser Zeit kündigt der Arbeitgeber das Arbeitsverhältnis.
+Rechtsfrage: Ist die Kündigung während einer krankheitsbedingten Arbeitsverhinderung gültig?
+Normwahl: OR-336c, OR-335c
+Subsumtion: Nach Art. 336c OR darf der Arbeitgeber das Arbeitsverhältnis nicht kündigen, solange der Arbeitnehmer ohne eigenes Verschulden durch Krankheit an der Arbeitsleistung verhindert ist. Im zweiten bis fünften Dienstjahr beträgt die Sperrfrist 90 Tage. Da die Arbeitnehmerin erst zwei Wochen krank ist, befindet sie sich innerhalb der Sperrfrist. Die Kündigung ist daher nichtig.
+Ergebnis: Die Kündigung ist ungültig.
+Quellen: OR-336c",OR-336c OR-335c OR-324a,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,AR-03,arbeitsrecht,easy,0.5,1.0,True,70.5,3,2073,254,,0,False,,100,True,True,True,True,True,"Sachverhalt: Eine Person hat vor drei Wochen eine neue Stelle angetreten. Im Arbeitsvertrag ist nichts zur Probezeit vereinbart. Die Person möchte wissen, mit welcher Frist sie kündigen kann.
+Rechtsfrage: Welche Kündigungsfrist gilt, wenn im Arbeitsvertrag keine Probezeit vereinbart ist und das Arbeitsverhältnis vor drei Wochen begonnen hat?
+Normwahl: OR-335b, OR-335c
+Subsumtion: Da im Vertrag keine Probezeit vereinbart ist, gilt die Probezeit nach Art. 335b OR als der erste Monat des Arbeitsverhältnisses. Da das Arbeitsverhältnis erst vor drei Wochen begonnen hat, befindet sich die Person noch innerhalb der ersten Monatsfrist. Nach Art. 335b OR kann während der Probezeit jederzeit mit einer Kündigungsfrist von sieben Tagen gekündigt werden.
+Ergebnis: Du kannst das Arbeitsverhältnis mit einer Kündigungsfrist von sieben Tagen kündigen.
+Quellen: OR-335b",OR-335b OR-335c OR-335,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,AR-04,arbeitsrecht,easy,1.0,1.0,True,6.6,3,2307,205,,0,False,,100,True,True,True,True,True,"Sachverhalt: Eine 19-jährige Person arbeitet Vollzeit in der Schweiz und möchte wissen, wie viele Wochen Ferien ihr pro Jahr mindestens zustehen.
+Rechtsfrage: Wie viele Wochen Ferien stehen einer 19-jährigen Person in einem Vollzeit-Arbeitsverhältnis pro Jahr mindestens zu?
+Normwahl: OR-329a
+Subsumtion: Gemäss Art. 329a Abs. 1 OR muss der Arbeitgeber dem Arbeitnehmer bis zum vollendeten 20. Altersjahr mindestens fünf Wochen Ferien gewähren. Da die Person 19 Jahre alt ist, fällt sie unter diese Bestimmung.
+Ergebnis: Eine 19-jährige Person hat Anspruch auf mindestens fünf Wochen Ferien pro Jahr.
+Quellen: OR-329a",OR-329a OR-329c OR-329b,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,AR-05,arbeitsrecht,hard,1.0,1.0,True,10.1,5,3880,521,,1,False,,80,True,True,True,False,True,"Sachverhalt: Eine Arbeitnehmerin arbeitet seit drei Jahren in Basel. Der Arbeitgeber möchte das Arbeitsverhältnis mit einer Frist von vier Wochen zum 15. oder zum Monatsende kündigen.
+Rechtsfrage: Ist eine Kündigungsfrist von vier Wochen rechtlich zulässig?
+Normwahl: OR-335c
+Subsumtion: Nach Art. 335c OR beträgt die Kündigungsfrist im zweiten bis neunten Dienstjahr zwei Monate. Vier Wochen entsprechen einem Monat, was kürzer ist als die gesetzlich vorgeschriebene Frist von zwei Monaten.
+Ergebnis: Die Kündigungsfrist von vier Wochen ist zu kurz und damit nicht zulässig.
+Quellen: OR-335c",OR-335c OR-335a OR-335,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,AR-06,arbeitsrecht,hard,1.0,1.0,True,8.9,3,3106,277,,0,False,,100,True,True,True,True,True,"Sachverhalt: Eine Person erkundigt sich nach der Dauer des Kündigungsschutzes bei Krankheit nach Ablauf der Probezeit.
+Rechtsfrage: Wie lange darf der Arbeitgeber nach Ablauf der Probezeit nicht kündigen, wenn der Arbeitnehmer krankheitsbedingt an der Arbeitsleistung verhindert ist?
+Normwahl: OR-336c
+Subsumtion: Gemäss Art. 336c OR ist die Kündigung zur Unzeit nichtig, wenn sie während einer Sperrfrist erfolgt. Die Dauer der Sperrfrist bei Krankheit hängt vom Dienstjahr ab: Im ersten Dienstjahr sind es 30 Tage, ab dem zweiten bis fünften Dienstjahr 90 Tage und ab dem sechsten Dienstjahr 180 Tage.
+Ergebnis: Der Arbeitgeber darf während der Sperrfrist bei Krankheit nicht kündigen. Die Dauer beträgt im ersten Dienstjahr 30 Tage, ab dem zweiten bis fünften Dienstjahr 90 Tage und ab dem sechsten Dienstjahr 180 Tage.
+Quellen: OR-336c
+Rückfrage: Wie viele Jahre sind Sie bereits bei Ihrem aktuellen Arbeitgeber beschäftigt?",OR-336c OR-324a OR-336d,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,MR-01,mietrecht,medium,0.5,1.0,True,88.1,3,2058,297,,0,False,,50,True,False,True,False,True,"Sachverhalt: Der Mieter hat zwei Monatsmieten nicht bezahlt. Der Vermieter möchte wissen, welche rechtlichen Schritte er unternehmen kann.
+Rechtsfrage: Welche Möglichkeiten hat der Vermieter bei Zahlungsrückstand des Mieters für Wohn- oder Geschäftsräume?
+Normwahl: OR-257d, OR-257c
+Subsumtion: Da der Mieter zwei Monatsmieten im Rückstand ist, liegt ein Zahlungsrückstand vor. Der Vermieter kann dem Mieter schriftlich eine Zahlungsfrist setzen. Bei Wohn- oder Geschäftsräumen muss diese Frist mindestens 30 Tage betragen. Bezahlt der Mieter nicht fristgerecht, kann der Vermieter das Mietverhältnis fristlos kündigen, jedoch mit einer Kündigungsfrist von mindestens 30 Tagen auf Ende eines Monats.
+Ergebnis: Der Vermieter kann dem Mieter eine 30-tägige Zahlungsfrist setzen. Bei Nichtzahlung kann er das Mietverhältnis mit einer Frist von mindestens 30 Tagen auf Ende eines Monats kündigen.
+Quellen: OR-257d, OR-257c",OR-257d OR-257c OR-268,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,MR-02,mietrecht,medium,0.33,0.5,True,7.6,3,2040,313,,0,False,,10,False,False,False,False,True,"Sachverhalt: Im Schlafzimmer des Mieters hat sich Schimmel gebildet, den der Mieter nicht verursacht hat.
+Rechtsfrage: Welche Rechte stehen dem Mieter gegenüber dem Vermieter bei einem nicht selbst verursachten Mangel wie Schimmelbildung zu?
+Normwahl: OR-259a, OR-259b
+Subsumtion: Schimmelbildung ist ein Mangel an der Sache, den der Mieter nicht zu verantworten hat. Gemäss Art. 259a OR kann der Mieter vom Vermieter die Beseitigung des Mangels verlangen. Wenn der Vermieter den Schimmel nicht innert angemessener Frist beseitigt, kann der Mieter unter bestimmten Voraussetzungen auch fristlos kündigen (Art. 259b OR). Zudem besteht ein Anspruch auf Schadenersatz, falls durch den Schimmel ein Schaden entstanden ist (Art. 259e OR).
+Ergebnis: Der Mieter kann vom Vermieter die Beseitigung des Schimmels verlangen. Bleibt der Vermieter untätig, kann der Mieter unter Umständen fristlos kündigen oder Schadenersatz fordern.
+Quellen: OR-259a, OR-259b",OR-259a OR-259b OR-259e,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,MR-03,mietrecht,medium,0.67,1.0,True,9.4,3,1883,362,,0,False,,50,True,False,True,False,True,"Sachverhalt: Eine Person möchte ihre Mietwohnung kündigen und fragt nach der geltenden Kündigungsfrist und der erforderlichen Form der Kündigung.
+Rechtsfrage: Welche Kündigungsfrist und welche Form sind bei der Kündigung einer Mietwohnung in der Schweiz einzuhalten?
+Normwahl: OR-266c, OR-266a, OR-266l
+Subsumtion: Für die Miete von Wohnungen gilt gemäss Art. 266c OR eine Kündigungsfrist von drei Monaten auf einen ortsüblichen Termin oder, falls kein Ortsgebrauch besteht, auf Ende einer dreimonatigen Mietdauer. Das unbefristete Mietverhältnis kann grundsätzlich unter Einhaltung der gesetzlichen Fristen und Termine gekündigt werden (Art. 266a OR). Die Kündigung muss schriftlich erfolgen und der Vermieter muss mit einem vom Kanton genehmigten Formular kündigen, das Hinweise zur Anfechtung und Erstreckung enthält (Art. 266l OR).
+Ergebnis: Für die Kündigung einer Mietwohnung gilt eine Frist von drei Monaten auf einen ortsüblichen Termin oder auf Ende einer dreimonatigen Mietdauer. Die Kündigung muss schriftlich und mit einem vom Kanton genehmigten Formular erfolgen.
+Quellen: OR-266c, OR-266a, OR-266l",OR-266c OR-266l OR-266a,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,MR-04,mietrecht,easy,1.0,1.0,True,7.5,3,2019,252,,0,False,,100,True,True,True,True,True,"Sachverhalt: Der Vermieter verlangt eine Kaution in Höhe von vier Monatsmieten und möchte das Geld auf sein eigenes Konto überwiesen bekommen.
+Rechtsfrage: Ist die Forderung einer Kaution von vier Monatsmieten und die Überweisung auf das Konto des Vermieters zulässig?
+Normwahl: OR-257e
+Subsumtion: Nach Art. 257e OR darf bei der Miete von Wohnräumen höchstens der Betrag von drei Monatsmieten als Kaution verlangt werden. Zudem muss die Sicherheit bei einer Bank auf ein Konto oder Depot lautend auf den Namen des Mieters hinterlegt werden. Eine Überweisung auf das Konto des Vermieters ist nicht zulässig.
+Ergebnis: Die Forderung des Vermieters ist unzulässig. Er darf höchstens drei Monatsmieten als Kaution verlangen und muss diese auf ein Konto des Mieters bei einer Bank hinterlegen.
+Quellen: OR-257e",OR-257e OR-273c OR-254,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,AR-07,arbeitsrecht,easy,1.0,1.0,True,8.0,3,1874,241,,0,False,,100,True,True,True,True,True,"Sachverhalt: Eine Person beendet ihr Arbeitsverhältnis Ende Monat und möchte wissen, ob sie ein Arbeitszeugnis vom Arbeitgeber verlangen kann und welche Inhalte dieses Zeugnis aufweisen muss.
+Rechtsfrage: Hat die Person Anspruch auf ein Arbeitszeugnis und welche Angaben muss dieses enthalten?
+Normwahl: OR-330a
+Subsumtion: Gemäss Art. 330a OR hat die arbeitnehmende Person jederzeit Anspruch auf ein Zeugnis, das sich über die Art und Dauer des Arbeitsverhältnisses sowie über ihre Leistungen und ihr Verhalten ausspricht. Auf besonderes Verlangen kann sich das Zeugnis auf die Art und Dauer des Arbeitsverhältnisses beschränken.
+Ergebnis: Ja, du kannst vom Arbeitgeber ein Arbeitszeugnis verlangen. Es muss mindestens die Art und Dauer des Arbeitsverhältnisses enthalten. Auf dein Verlangen hin muss es zusätzlich deine Leistungen und dein Verhalten beschreiben.
+Quellen: OR-330a",OR-330a OR-346a OR-341,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,AR-08,arbeitsrecht,easy,1.0,1.0,True,117.0,3,1909,208,,0,False,,100,True,True,True,True,True,"Sachverhalt: Der Arbeitgeber möchte dem Arbeitnehmer zwei Wochen Ferien auszahlen, anstatt dass dieser die Ferien bezieht, während das Arbeitsverhältnis fortgesetzt wird.
+Rechtsfrage: Ist es erlaubt, Ferien während eines bestehenden Arbeitsverhältnisses durch Geldleistungen abzugelten?
+Normwahl: OR-329d
+Subsumtion: Gemäss Art. 329d Abs. 2 OR dürfen Ferien während der Dauer des Arbeitsverhältnisses nicht durch Geldleistungen abgegolten werden. Der Zweck der Ferien ist die Erholung, die nur durch den tatsächlichen Bezug gewährleistet werden kann.
+Ergebnis: Nein, der Arbeitgeber darf die Ferien nicht auszahlen, wenn das Arbeitsverhältnis weiterbesteht.
+Quellen: OR-329d",OR-329d OR-329a OR-329c,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,AR-09,arbeitsrecht,medium,1.0,1.0,True,8.1,3,2477,246,,0,False,,100,True,True,True,True,True,"Sachverhalt: Eine Person ist seit fünf Monaten unbefristet angestellt und seit vier Wochen ohne eigenes Verschulden krank. Es existieren weder ein Gesamtarbeitsvertrag noch eine besondere Abrede zur Lohnfortzahlung im Krankheitsfall.
+Rechtsfrage: Wie lange muss der Arbeitgeber bei unverschuldeter Krankheit den Lohn weiterzahlen, wenn das Arbeitsverhältnis mehr als drei Monate, aber weniger als ein Jahr gedauert hat und keine abweichende Regelung besteht?
+Normwahl: OR-324a
+Subsumtion: Da das Arbeitsverhältnis mehr als drei Monate, aber weniger als ein Jahr gedauert hat, greift Art. 324a Abs. 2 OR. Es gibt keine abweichende Regelung durch Gesamtarbeitsvertrag oder besondere Abrede. Der Arbeitgeber muss daher den Lohn für drei Wochen entrichten.
+Ergebnis: Der Arbeitgeber muss den Lohn für drei Wochen weiterzahlen.
+Quellen: OR-324a",OR-324a OR-324b OR-324,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,AR-10,arbeitsrecht,medium,1.0,0.5,True,6.4,3,2100,275,,0,False,,80,True,True,True,False,True,"Sachverhalt: Der Arbeitnehmer hat einen Arbeitsvertrag mit einem schriftlichen Konkurrenzverbot für fünf Jahre in der ganzen Schweiz. Er arbeitet im Lager und hat weder Kundenkontakt noch Einblick in Geschäftsgeheimnisse.
+Rechtsfrage: Ist das schriftliche Konkurrenzverbot für fünf Jahre in der ganzen Schweiz verbindlich, wenn der Arbeitnehmer keinen Einblick in den Kundenkreis oder in Geschäftsgeheimnisse hat?
+Normwahl: OR-340
+Subsumtion: Gemäss Art. 340 OR ist ein Konkurrenzverbot nur verbindlich, wenn das Arbeitsverhältnis dem Arbeitnehmer Einblick in den Kundenkreis oder in Fabrikations- und Geschäftsgeheimnisse gewährt und die Verwendung dieser Kenntnisse den Arbeitgeber erheblich schädigen könnte. Da der Arbeitnehmer im Lager arbeitet und keinen Kundenkontakt oder Einblick in Geschäftsgeheimnisse hat, fehlt eine wesentliche Voraussetzung für die Verbindlichkeit des Verbots.
+Ergebnis: Das Konkurrenzverbot ist nicht verbindlich, da die Voraussetzungen von Art. 340 OR nicht erfüllt sind.
+Quellen: OR-340",OR-340 OR-340a OR-340c,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,AR-11,arbeitsrecht,hard,0.75,1.0,False,20.5,4,3596,1071,,3,True,,50,True,False,True,False,True,"Sachverhalt: Der Arbeitnehmer forderte schriftlich die Zahlung des ausstehenden Lohns. Eine Woche später kündigte der Arbeitgeber ordentlich. Der Arbeitnehmer vermutet, die Kündigung erfolgte als Reaktion auf die Lohnforderung.
+Rechtsfrage: Ist die Kündigung missbräuchlich? Welche Ansprüche bestehen und wie sind sie geltend zu machen?
+Normwahl: Art. 336 OR, Art. 336a OR, Art. 336b OR
+Subsumtion: Eine Kündigung wegen der Geltendmachung ausstehender Löhne kann als missbräuchlich im Sinne von Art. 336 OR gelten. Der Arbeitnehmer kann schriftlich Einsprache gegen die Kündigung erheben. Danach kann er eine Entschädigung verlangen, sofern die Einsprache gültig war und er rechtzeitig klagt.
+Ergebnis: Der Arbeitnehmer kann die Kündigung als missbräuchlich anfechten und eine Entschädigung fordern. Diese beträgt maximal sechs Monatslöhne, kann aber bei Kündigung wegen Lohnforderung auf maximal zwei Monatslöhne beschränkt sein.
+Quellen: OR-336a, OR-336b, OR-336
+Rückfrage: Wie viele Dienstjahre hatten Sie bei diesem Arbeitgeber? Das beeinflusst die Kündigungsfrist nach Art. 335c OR.
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]",OR-336a OR-336b OR-339c,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,AR-12,arbeitsrecht,easy,0.0,0.0,True,22.1,7,8533,1141,,3,True,,30,False,False,True,False,True,"Sachverhalt: Eine Person wurde gekündigt und arbeitet noch bis zum Ende der Kündigungsfrist. Sie fragt, ob der Arbeitgeber verpflichtet ist, ihr Zeit für Vorstellungsgespräche während dieser Frist zu gewähren.
+Rechtsfrage: Besteht eine Pflicht des Arbeitgebers, dem gekündigten Arbeitnehmer während der Kündigungsfrist Zeit für Vorstellungsgespräche freizugeben?
+Normwahl: 
+Subsumtion: Die vorliegenden Quellen regeln ausschliesslich Kündigungsfristen (Art. 335c OR), Missbräuchlichkeit der Kündigung (Art. 336 OR) und das Einspracheverfahren (Art. 336b OR). Eine Norm, die eine Pflicht des Arbeitgebers zur Freigabe von Zeit für Vorstellungsgespräche während der Kündigungsfrist vorsieht, ist nicht enthalten.
+Ergebnis: Die Quellenlage reicht nicht aus, um die Frage zu beantworten. Es fehlt eine einschlägige Norm.
+Quellen: 
+Rückfrage: Wie lange arbeiten Sie bereits bei diesem Arbeitgeber (Dienstjahr)?
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]",OR-336 OR-336b OR-335c,False,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,MR-05,mietrecht,easy,0.5,1.0,True,13.8,3,2029,268,,0,False,,80,True,True,True,False,True,"Sachverhalt: Der Mietvertrag enthält keinen Hinweis auf Nebenkosten. Der Vermieter fordert nun eine Nachzahlung für Heizung und Warmwasser.
+Rechtsfrage: Muss der Mieter eine Nachzahlung für Heizung und Warmwasser leisten, wenn im Mietvertrag keine Nebenkosten vereinbart sind?
+Normwahl: OR-257a, OR-257b
+Subsumtion: Nach Art. 257a OR muss der Mieter Nebenkosten nur bezahlen, wenn dies besonders vereinbart wurde. Art. 257b OR regelt, dass bei Wohn- und Geschäftsräumen Nebenkosten nur anfallen, wenn sie explizit vereinbart sind. Da im Vertrag keine Nebenkosten erwähnt sind, fehlt die vertragliche Grundlage für eine Nachzahlung.
+Ergebnis: Sie müssen die Nachzahlung für Heizung und Warmwasser nicht leisten, da keine Vereinbarung über Nebenkosten im Mietvertrag besteht.
+Quellen: OR-257a, OR-257b",OR-257a OR-257b OR-270b,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,MR-06,mietrecht,medium,0.33,1.0,True,68.2,3,2301,328,,0,False,,40,False,True,False,False,True,"Sachverhalt: Der Mieter eines unbefristeten Mietverhältnisses hält die Kündigung für ungerechtfertigt und benötigt mehr Zeit für die Wohnungssuche. Er möchte wissen, wo und bis wann er dies geltend machen muss.
+Rechtsfrage: Wo und bis wann muss der Mieter eine Anfechtung der Kündigung und ein Erstreckungsbegehren einreichen?
+Normwahl: OR-266l, OR-273
+Subsumtion: Für die Kündigung von Wohnungen gilt eine dreimonatige Frist auf einen ortsüblichen Termin oder auf Ende einer dreimonatigen Mietdauer (Art. 266c OR). Will der Mieter die Kündigung anfechten oder eine Erstreckung verlangen, muss er dies schriftlich tun. Das Begehren muss innert 30 Tagen nach Empfang der Kündigung bei der Schlichtungsbehörde eingereicht werden (Art. 273 OR).
+Ergebnis: Sie müssen das Begehren um Anfechtung der Kündigung und Erstreckung des Mietverhältnisses innert 30 Tagen nach Erhalt der Kündigung schriftlich bei der zuständigen Schlichtungsbehörde einreichen.
+Quellen: OR-266l, OR-273",OR-273 OR-266l OR-266c,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,MR-07,mietrecht,medium,0.33,1.0,True,7.7,3,2450,332,,0,False,,80,True,True,False,True,True,"Sachverhalt: Der Mieter hat die Wohnung vor zwei Monaten zurückgegeben. Bei der Übergabe hat der Vermieter keine Mängel am Parkett beanstandet. Nun fordert der Vermieter Geld für Kratzer, die bei der Abnahme ohne Weiteres erkennbar gewesen wären.
+Rechtsfrage: Muss der Mieter für die Kratzer im Parkett zahlen, obwohl der Vermieter diese bei der Rückgabe nicht bemängelt hat?
+Normwahl: OR-267a, OR-267, OR-258
+Subsumtion: Nach Art. 267a OR muss der Vermieter bei der Rückgabe den Zustand prüfen und Mängel sofort melden. Versäumt er dies, verliert er seine Ansprüche, es sei denn, es handelt sich um Mängel, die bei übungsgemässer Untersuchung nicht erkennbar waren. Die Kratzer waren bei der Abnahme ohne Weiteres sichtbar, also hätte der Vermieter sie melden müssen. Da er dies unterlassen hat, kann er keine Forderung geltend machen.
+Ergebnis: Der Mieter muss für die Kratzer im Parkett nicht zahlen, da der Vermieter seine Pflicht zur sofortigen Mängelmeldung verletzt hat.
+Quellen: OR-267a, OR-267, OR-258",OR-267a OR-267 OR-258,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,rag,MR-08,mietrecht,hard,0.5,0.5,True,8.6,3,2027,277,,0,False,,40,False,True,False,False,True,"Sachverhalt: Eine verheiratete Person hat eine Familienwohnung allein auf ihren Namen gemietet und möchte den Mietvertrag kündigen, obwohl die Ehefrau damit nicht einverstanden ist.
+Rechtsfrage: Kann der Mieter einer Familienwohnung den Mietvertrag allein kündigen, wenn der andere Ehegatte nicht zustimmt?
+Normwahl: OR-266m, OR-273a
+Subsumtion: Gemäss Art. 266m OR kann ein Ehegatte den Mietvertrag für eine Familienwohnung nur mit der ausdrücklichen Zustimmung des anderen Ehegatten kündigen. Ohne diese Zustimmung ist die Kündigung ungültig. Zudem sieht Art. 273a OR vor, dass der andere Ehegatte die Kündigung anfechten und eine Erstreckung verlangen kann.
+Ergebnis: Der Mieter kann die Wohnung nicht allein kündigen, solange die Ehefrau nicht zustimmt.
+Quellen: OR-266m, OR-273a
+Rückfrage: Hat Ihre Ehefrau bereits versucht, die Kündigung anzufechten oder eine Erstreckung zu verlangen?",OR-266m OR-273a OR-266l,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,AR-01,arbeitsrecht,easy,1.0,1.0,True,6.7,3,1942,197,,0,False,,100,True,True,True,True,True,"Sachverhalt: Eine Person fragt nach der gesetzlichen Kündigungsfrist im dritten Dienstjahr, wenn im Arbeitsvertrag keine abweichende Vereinbarung getroffen wurde.
+Rechtsfrage: Wie lange ist die gesetzliche Kündigungsfrist im dritten Dienstjahr nach Schweizer Obligationenrecht, wenn keine abweichende Vereinbarung besteht?
+Normwahl: OR-335c
+Subsumtion: Nach Art. 335c OR beträgt die Kündigungsfrist nach Ablauf der Probezeit im zweiten bis und mit dem neunten Dienstjahr zwei Monate. Das dritte Dienstjahr fällt in diesen Zeitraum.
+Ergebnis: Die gesetzliche Kündigungsfrist beträgt zwei Monate auf das Ende eines Monats.
+Quellen: OR-335c",OR-335c OR-335a OR-335,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,AR-02,arbeitsrecht,medium,0.5,1.0,True,82.0,3,3058,202,,0,False,,80,True,True,True,False,True,"Sachverhalt: Eine Arbeitnehmerin befindet sich im dritten Dienstjahr und ist seit zwei Wochen krank. Der Arbeitgeber kündigt das Arbeitsverhältnis.
+Rechtsfrage: Ist die Kündigung während der Krankheit im dritten Dienstjahr gültig?
+Normwahl: OR-336c, OR-324a
+Subsumtion: Im dritten Dienstjahr besteht gemäss Art. 336c OR ein Kündigungsschutz von 90 Tagen bei Krankheit ohne Verschulden. Die Kündigung während dieser Sperrfrist ist nichtig.
+Ergebnis: Die Kündigung ist ungültig.
+Quellen: OR-336c, OR-324a
+Rückfrage: Wie lange sind Sie bereits bei diesem Arbeitgeber beschäftigt (Dienstjahr)?",OR-336c OR-336a OR-324a,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,AR-03,arbeitsrecht,easy,0.5,1.0,True,8.0,3,2073,254,,0,False,,100,True,True,True,True,True,"Sachverhalt: Eine Person hat vor drei Wochen eine neue Stelle angetreten. Im Arbeitsvertrag ist nichts zur Probezeit vereinbart. Die Person möchte wissen, mit welcher Frist sie kündigen kann.
+Rechtsfrage: Welche Kündigungsfrist gilt, wenn im Arbeitsvertrag keine Probezeit vereinbart ist und das Arbeitsverhältnis vor drei Wochen begonnen hat?
+Normwahl: OR-335b, OR-335c
+Subsumtion: Da im Vertrag keine Probezeit vereinbart ist, gilt die Probezeit nach Art. 335b OR als der erste Monat des Arbeitsverhältnisses. Da das Arbeitsverhältnis erst vor drei Wochen begonnen hat, befindet sich die Person noch innerhalb der ersten Monatsfrist. Nach Art. 335b OR kann während der Probezeit jederzeit mit einer Kündigungsfrist von sieben Tagen gekündigt werden.
+Ergebnis: Du kannst das Arbeitsverhältnis mit einer Kündigungsfrist von sieben Tagen kündigen.
+Quellen: OR-335b",OR-335b OR-335c OR-335,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,AR-04,arbeitsrecht,easy,1.0,1.0,True,6.1,3,2307,205,,0,False,,100,True,True,True,True,True,"Sachverhalt: Eine 19-jährige Person arbeitet Vollzeit in der Schweiz und möchte wissen, wie viele Wochen Ferien ihr pro Jahr mindestens zustehen.
+Rechtsfrage: Wie viele Wochen Ferien stehen einer 19-jährigen Person in einem Vollzeit-Arbeitsverhältnis pro Jahr mindestens zu?
+Normwahl: OR-329a
+Subsumtion: Gemäss Art. 329a Abs. 1 OR muss der Arbeitgeber dem Arbeitnehmer bis zum vollendeten 20. Altersjahr mindestens fünf Wochen Ferien gewähren. Da die Person 19 Jahre alt ist, fällt sie unter diese Bestimmung.
+Ergebnis: Eine 19-jährige Person hat Anspruch auf mindestens fünf Wochen Ferien pro Jahr.
+Quellen: OR-329a",OR-329a OR-329c OR-329b,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,AR-05,arbeitsrecht,hard,1.0,1.0,True,14.4,5,3880,521,,1,False,,80,True,True,True,False,True,"Sachverhalt: Eine Arbeitnehmerin arbeitet seit drei Jahren in Basel. Der Arbeitgeber möchte das Arbeitsverhältnis mit einer Frist von vier Wochen zum 15. oder zum Monatsende kündigen.
+Rechtsfrage: Ist eine Kündigungsfrist von vier Wochen rechtlich zulässig?
+Normwahl: OR-335c
+Subsumtion: Nach Art. 335c OR beträgt die Kündigungsfrist im zweiten bis neunten Dienstjahr zwei Monate. Vier Wochen entsprechen einem Monat, was kürzer ist als die gesetzlich vorgeschriebene Frist von zwei Monaten.
+Ergebnis: Die Kündigungsfrist von vier Wochen ist zu kurz und damit nicht zulässig.
+Quellen: OR-335c",OR-335c OR-335a OR-335,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,AR-06,arbeitsrecht,hard,0.5,1.0,True,80.3,3,3208,325,,0,False,,80,True,True,True,False,True,"Sachverhalt: Eine Arbeitnehmerin erkrankt während des Arbeitsverhältnisses und fragt, wie lange der Arbeitgeber ihr aufgrund ihrer Krankheit nicht kündigen darf.
+Rechtsfrage: Wie lange ist eine Kündigung durch den Arbeitgeber während einer Krankheit des Arbeitnehmers nach Schweizer Obligationenrecht unzulässig?
+Normwahl: OR-336c, OR-324a
+Subsumtion: Nach Art. 336c OR darf der Arbeitgeber das Arbeitsverhältnis nicht kündigen, wenn der Arbeitnehmer ohne eigenes Verschulden durch Krankheit an der Arbeitsleistung verhindert ist. Die Dauer der Sperrfrist hängt vom Dienstjahr ab: im ersten Dienstjahr während 30 Tagen, ab zweitem bis fünftem Dienstjahr während 90 Tagen und ab sechstem Dienstjahr während 180 Tagen. Art. 324a OR regelt zudem den Lohnfortzahlungsanspruch während dieser Zeit.
+Ergebnis: Der Arbeitgeber darf dir während deiner Krankheit nicht kündigen, und zwar mindestens 30 Tage im ersten Dienstjahr, 90 Tage ab zweitem bis fünftem Dienstjahr und 180 Tage ab sechstem Dienstjahr.
+Quellen: OR-336c, OR-324a
+Rückfrage: Wie viele Jahre bist du bereits bei deinem aktuellen Arbeitgeber beschäftigt?",OR-336c OR-324a OR-328a,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,MR-01,mietrecht,medium,0.5,1.0,True,8.8,3,2058,297,,0,False,,50,True,False,True,False,True,"Sachverhalt: Der Mieter hat zwei Monatsmieten nicht bezahlt. Der Vermieter möchte wissen, welche rechtlichen Schritte er unternehmen kann.
+Rechtsfrage: Welche Möglichkeiten hat der Vermieter bei Zahlungsrückstand des Mieters für Wohn- oder Geschäftsräume?
+Normwahl: OR-257d, OR-257c
+Subsumtion: Da der Mieter zwei Monatsmieten im Rückstand ist, liegt ein Zahlungsrückstand vor. Der Vermieter kann dem Mieter schriftlich eine Zahlungsfrist setzen. Bei Wohn- oder Geschäftsräumen muss diese Frist mindestens 30 Tage betragen. Bezahlt der Mieter nicht fristgerecht, kann der Vermieter das Mietverhältnis fristlos kündigen, jedoch mit einer Kündigungsfrist von mindestens 30 Tagen auf Ende eines Monats.
+Ergebnis: Der Vermieter kann dem Mieter eine 30-tägige Zahlungsfrist setzen. Bei Nichtzahlung kann er das Mietverhältnis mit einer Frist von mindestens 30 Tagen auf Ende eines Monats kündigen.
+Quellen: OR-257d, OR-257c",OR-257d OR-257c OR-268,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,MR-02,mietrecht,medium,0.33,0.5,True,8.7,3,2166,405,,0,False,,30,False,False,True,False,True,"Sachverhalt: Im Schlafzimmer des Mieters hat sich Schimmel gebildet, den der Mieter nicht verursacht hat. Der Mieter fragt, welche Rechte er gegenüber dem Vermieter hat.
+Rechtsfrage: Welche Rechte stehen dem Mieter zu, wenn sich in der Mietwohnung Schimmel bildet, den er nicht verursacht hat?
+Normwahl: Art. 259a OR, Art. 259b OR, Art. 257g OR
+Subsumtion: Schimmel in der Wohnung stellt einen Mangel dar, den der Mieter nicht zu verantworten hat. Der Mieter muss den Mangel dem Vermieter melden (Art. 257g OR). Danach kann der Mieter vom Vermieter verlangen, dass dieser den Schimmel beseitigt (Art. 259a OR lit. a). Zudem kann der Mieter eine Mietzinsreduktion verlangen, wenn der Schimmel die Gebrauchstauglichkeit der Wohnung beeinträchtigt (Art. 259a OR lit. b). Bei unterlassener Meldung haftet der Mieter für daraus entstehenden Schaden (Art. 257g OR).
+Ergebnis: Der Mieter kann vom Vermieter die Beseitigung des Schimmels und gegebenenfalls eine angemessene Mietzinsreduktion verlangen. Er muss den Mangel zuerst dem Vermieter melden, sonst riskiert er Schadenersatz.
+Quellen: OR-259a, OR-259b, OR-257g
+Rückfrage: Haben Sie den Schimmel bereits dem Vermieter gemeldet und, falls ja, wann und wie?",OR-259a OR-259b OR-257g,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,MR-03,mietrecht,medium,0.67,1.0,True,9.0,3,1883,362,,0,False,,50,True,False,True,False,True,"Sachverhalt: Eine Person möchte ihre Mietwohnung kündigen und fragt nach der geltenden Kündigungsfrist und der erforderlichen Form der Kündigung.
+Rechtsfrage: Welche Kündigungsfrist und welche Form sind bei der Kündigung einer Mietwohnung in der Schweiz einzuhalten?
+Normwahl: OR-266c, OR-266a, OR-266l
+Subsumtion: Für die Miete von Wohnungen gilt gemäss Art. 266c OR eine Kündigungsfrist von drei Monaten auf einen ortsüblichen Termin oder, falls kein Ortsgebrauch besteht, auf Ende einer dreimonatigen Mietdauer. Das unbefristete Mietverhältnis kann grundsätzlich unter Einhaltung der gesetzlichen Fristen und Termine gekündigt werden (Art. 266a OR). Die Kündigung muss schriftlich erfolgen und der Vermieter muss mit einem vom Kanton genehmigten Formular kündigen, das Hinweise zur Anfechtung und Erstreckung enthält (Art. 266l OR).
+Ergebnis: Für die Kündigung einer Mietwohnung gilt eine Frist von drei Monaten auf einen ortsüblichen Termin oder auf Ende einer dreimonatigen Mietdauer. Die Kündigung muss schriftlich und mit einem vom Kanton genehmigten Formular erfolgen.
+Quellen: OR-266c, OR-266a, OR-266l",OR-266c OR-266l OR-266a,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,MR-04,mietrecht,easy,1.0,1.0,True,7.8,3,2021,254,,0,False,,100,True,True,True,True,True,"Sachverhalt: Der Vermieter verlangt eine Kaution in Höhe von vier Monatsmieten und möchte das Geld auf sein eigenes Konto überwiesen bekommen.
+Rechtsfrage: Ist die Forderung einer Kaution von vier Monatsmieten und die Überweisung auf das Konto des Vermieters zulässig?
+Normwahl: OR-257e
+Subsumtion: Nach Art. 257e OR darf bei der Miete von Wohnräumen höchstens der Betrag von drei Monatszinsen als Kaution verlangt werden. Zudem muss die Sicherheit bei einer Bank auf ein Konto oder Depot lautend auf den Namen des Mieters hinterlegt werden. Eine Überweisung auf das Konto des Vermieters ist nicht zulässig.
+Ergebnis: Die Forderung des Vermieters ist unzulässig. Er darf höchstens drei Monatsmieten als Kaution verlangen und muss diese auf ein Bankkonto oder Depot lautend auf den Mieter hinterlegen.
+Quellen: OR-257e",OR-257e OR-254 OR-273c,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,AR-07,arbeitsrecht,easy,1.0,1.0,True,81.5,3,1882,249,,0,False,,100,True,True,True,True,True,"Sachverhalt: Eine Person beendet ihr Arbeitsverhältnis und möchte wissen, ob sie ein Arbeitszeugnis verlangen kann und welche Inhalte dieses aufweisen muss.
+Rechtsfrage: Hat die arbeitnehmende Person das Recht, ein Arbeitszeugnis zu verlangen, und welche Inhalte muss dieses zwingend enthalten?
+Normwahl: OR-330a
+Subsumtion: Gemäss Art. 330a OR kann die arbeitnehmende Person jederzeit vom Arbeitgeber ein Zeugnis verlangen. Dieses muss sich über die Art und Dauer des Arbeitsverhältnisses sowie über die Leistungen und das Verhalten der arbeitnehmenden Person aussprechen. Auf besonderes Verlangen beschränkt sich das Zeugnis auf die Art und Dauer des Arbeitsverhältnisses.
+Ergebnis: Ja, du kannst vom Arbeitgeber ein Arbeitszeugnis verlangen. Es muss mindestens die Art und Dauer deines Arbeitsverhältnisses enthalten. Auf Wunsch kann es auch deine Leistungen und dein Verhalten beschreiben.
+Quellen: OR-330a",OR-330a OR-341 OR-346a,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,AR-08,arbeitsrecht,easy,1.0,1.0,True,9.5,3,1909,208,,0,False,,100,True,True,True,True,True,"Sachverhalt: Der Arbeitgeber möchte dem Arbeitnehmer zwei Wochen Ferien auszahlen, anstatt dass dieser die Ferien bezieht, während das Arbeitsverhältnis fortgesetzt wird.
+Rechtsfrage: Ist es erlaubt, Ferien während eines bestehenden Arbeitsverhältnisses durch Geldleistungen abzugelten?
+Normwahl: OR-329d
+Subsumtion: Gemäss Art. 329d Abs. 2 OR dürfen Ferien während der Dauer des Arbeitsverhältnisses nicht durch Geldleistungen abgegolten werden. Der Zweck der Ferien ist die Erholung, die nur durch den tatsächlichen Bezug gewährleistet werden kann.
+Ergebnis: Nein, der Arbeitgeber darf die Ferien nicht auszahlen, wenn das Arbeitsverhältnis weiterbesteht.
+Quellen: OR-329d",OR-329d OR-329a OR-329c,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,AR-09,arbeitsrecht,medium,1.0,1.0,True,7.6,3,2477,246,,0,False,,100,True,True,True,True,True,"Sachverhalt: Eine Person ist seit fünf Monaten unbefristet angestellt und seit vier Wochen ohne eigenes Verschulden krank. Es existieren weder ein Gesamtarbeitsvertrag noch eine besondere Abrede zur Lohnfortzahlung im Krankheitsfall.
+Rechtsfrage: Wie lange muss der Arbeitgeber bei unverschuldeter Krankheit den Lohn weiterzahlen, wenn das Arbeitsverhältnis mehr als drei Monate, aber weniger als ein Jahr gedauert hat und keine abweichende Regelung besteht?
+Normwahl: OR-324a
+Subsumtion: Da das Arbeitsverhältnis mehr als drei Monate, aber weniger als ein Jahr gedauert hat, greift Art. 324a Abs. 2 OR. Es gibt keine abweichende Regelung durch Gesamtarbeitsvertrag oder besondere Abrede. Der Arbeitgeber muss daher den Lohn für drei Wochen entrichten.
+Ergebnis: Der Arbeitgeber muss den Lohn für drei Wochen weiterzahlen.
+Quellen: OR-324a",OR-324a OR-324b OR-324,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,AR-10,arbeitsrecht,medium,0.67,1.0,True,7.3,3,2077,256,,0,False,,60,True,True,False,False,True,"Sachverhalt: Der Arbeitnehmer hat einen Arbeitsvertrag mit einem schriftlichen Konkurrenzverbot für fünf Jahre in der ganzen Schweiz. Er arbeitet im Lager und hat weder Kundenkontakt noch Einblick in Geschäftsgeheimnisse.
+Rechtsfrage: Ist das Konkurrenzverbot im Arbeitsvertrag verbindlich?
+Normwahl: OR-340, OR-340a, OR-340c
+Subsumtion: Ein Konkurrenzverbot ist nur verbindlich, wenn das Arbeitsverhältnis dem Arbeitnehmer Einblick in den Kundenkreis oder in Fabrikations- und Geschäftsgeheimnisse gewährt und die Verwendung dieser Kenntnisse den Arbeitgeber erheblich schädigen könnte. Da der Arbeitnehmer im Lager arbeitet und keinen Kundenkontakt oder Einblick in Geschäftsgeheimnisse hat, fehlt eine wesentliche Voraussetzung für die Verbindlichkeit des Verbots.
+Ergebnis: Das Konkurrenzverbot ist nicht verbindlich.
+Quellen: OR-340, OR-340a, OR-340c",OR-340 OR-340a OR-340c,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,AR-11,arbeitsrecht,hard,0.75,1.0,True,89.3,5,6408,808,,1,False,,10,False,False,False,False,True,"Sachverhalt: Der Arbeitnehmer forderte schriftlich die Zahlung des ausstehenden Lohns. Eine Woche später kündigte der Arbeitgeber das Arbeitsverhältnis ordentlich. Der Arbeitnehmer vermutet, die Kündigung erfolgte als Reaktion auf die Lohnforderung.
+Rechtsfrage: Ist die Kündigung missbräuchlich? Welche Schritte kann der Arbeitnehmer unternehmen, um eine Entschädigung zu erhalten, und welche Fristen gelten?
+Normwahl: OR-336, OR-336b, OR-335c
+Subsumtion: Die Geltendmachung des Lohns ist ein verfassungsmässiges Recht (Art. 336 OR lit. d). Eine Kündigung als Reaktion darauf ist grundsätzlich missbräuchlich. Der Arbeitnehmer muss schriftlich Einsprache gegen die Kündigung erheben (OR-336b). Die Höhe einer allfälligen Entschädigung hängt von den Umständen ab und beträgt maximal sechs Monatslöhne (OR-336a). Die konkrete Kündigungsfrist richtet sich nach dem Dienstjahr gemäss Art. 335c OR.
+Ergebnis: Die Kündigung könnte missbräuchlich sein, wenn sie wegen der Lohnforderung erfolgte. Der Arbeitnehmer sollte schriftlich Einsprache erheben und innerhalb von 180 Tagen nach Beendigung des Arbeitsverhältnisses eine Klage auf Entschädigung einreichen, um seinen Anspruch nicht zu verwirken.
+Quellen: OR-336, OR-336b, OR-335c
+Rückfrage: Wie viele Dienstjahre haben Sie bereits bei diesem Arbeitgeber absolviert?",OR-336a OR-336b OR-323b OR-335c OR-336,True,2.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,AR-12,arbeitsrecht,easy,0.0,0.0,True,20.9,7,6136,1172,,3,True,,30,False,False,True,False,True,"Sachverhalt: Eine Arbeitnehmerin oder ein Arbeitnehmer wurde gekündigt und arbeitet noch bis zum Ende der Kündigungsfrist. Die Person fragt, ob der Arbeitgeber verpflichtet ist, Zeit für Vorstellungsgespräche freizugeben.
+Rechtsfrage: Ist der Arbeitgeber verpflichtet, dem gekündigten Arbeitnehmer während der Kündigungsfrist Zeit für Vorstellungsgespräche zu gewähren?
+Normwahl: 
+Subsumtion: Die angegebenen Quellen regeln ausschliesslich die Kündigungsfristen (Art. 335c OR), die Probezeit (Art. 335b OR) und die Gleichbehandlung bei Kündigungsfristen (Art. 335a OR). Sie enthalten keine Bestimmung zur Pflicht des Arbeitgebers, dem Arbeitnehmer während der Kündigungsfrist Zeit für Vorstellungsgespräche freizugeben.
+Ergebnis: Die Frage lässt sich gestützt auf die vorliegenden Quellen nicht beantworten, da keine Normen zur Freistellung für Vorstellungsgespräche vorhanden sind.
+Quellen: 
+Rückfrage: Gibt es einen anwendbaren Gesamtarbeitsvertrag oder eine vertragliche Vereinbarung, die eine Freistellung für Vorstellungsgespräche vorsieht?
+
+[An eine Fachperson übergeben: Der Prüfer war nach zwei Runden nicht zufrieden.]",OR-335c OR-335 OR-335a OR-335b,False,1.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,MR-05,mietrecht,easy,0.5,1.0,True,7.6,3,2029,268,,0,False,,80,True,True,True,False,True,"Sachverhalt: Der Mietvertrag enthält keinen Hinweis auf Nebenkosten. Der Vermieter fordert nun eine Nachzahlung für Heizung und Warmwasser.
+Rechtsfrage: Muss der Mieter eine Nachzahlung für Heizung und Warmwasser leisten, wenn im Mietvertrag keine Nebenkosten vereinbart sind?
+Normwahl: OR-257a, OR-257b
+Subsumtion: Nach Art. 257a OR muss der Mieter Nebenkosten nur bezahlen, wenn dies besonders vereinbart wurde. Art. 257b OR regelt, dass bei Wohn- und Geschäftsräumen Nebenkosten nur anfallen, wenn sie explizit vereinbart sind. Da im Vertrag keine Nebenkosten erwähnt sind, fehlt die vertragliche Grundlage für eine Nachzahlung.
+Ergebnis: Sie müssen die Nachzahlung für Heizung und Warmwasser nicht leisten, da keine Vereinbarung über Nebenkosten im Mietvertrag besteht.
+Quellen: OR-257a, OR-257b",OR-257a OR-257b OR-270b,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,MR-06,mietrecht,medium,0.33,1.0,True,78.1,3,2479,418,,0,False,,80,True,True,True,False,True,"Sachverhalt: Der Mieter eines unbefristeten Mietverhältnisses hält die Kündigung für ungerechtfertigt und benötigt mehr Zeit für die Wohnungssuche. Er möchte wissen, wo und bis wann er dies geltend machen muss.
+Rechtsfrage: Wo und bis wann muss der Mieter eine ungerechtfertigte Kündigung anfechten und eine Erstreckung des Mietverhältnisses verlangen?
+Normwahl: OR-273, OR-266l, OR-272d
+Subsumtion: Bei einer Kündigung eines unbefristeten Mietverhältnisses muss der Mieter, der die Kündigung anfechten oder eine Erstreckung verlangen will, dies schriftlich bei der Schlichtungsbehörde einreichen. Das Begehren muss innert 30 Tagen nach Empfang der Kündigung eingereicht werden (Art. 273 OR). Die Kündigung selbst muss schriftlich und mit einem genehmigten Formular erfolgen (Art. 266l OR). Falls eine Erstreckung gewährt wird, gelten besondere Kündigungsfristen während der Erstreckungsdauer (Art. 272d OR).
+Ergebnis: Sie müssen Ihr Begehren um Anfechtung der Kündigung und Erstreckung des Mietverhältnisses innert 30 Tagen nach Erhalt der Kündigung schriftlich bei der Schlichtungsbehörde einreichen.
+Quellen: OR-273, OR-266l, OR-272d
+Rückfrage: Haben Sie bereits die Kündigung erhalten und wissen Sie, wann Sie diese erhalten haben? Dies ist wichtig, um die 30-tägige Frist zu berechnen.",OR-273 OR-266l OR-272d,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,MR-07,mietrecht,medium,0.33,1.0,True,7.7,3,2048,332,,0,False,,80,True,True,False,True,True,"Sachverhalt: Der Mieter hat die Wohnung vor zwei Monaten zurückgegeben. Bei der Übergabe hat der Vermieter nichts beanstandet. Nun fordert der Vermieter Geld für Kratzer im Parkett, die bei der Abnahme ohne Weiteres erkennbar gewesen wären.
+Rechtsfrage: Muss der Mieter für die Kratzer im Parkett zahlen, obwohl der Vermieter bei der Rückgabe keine Mängel gerügt hat?
+Normwahl: OR-267a, OR-267, OR-259
+Subsumtion: Nach Art. 267a OR muss der Vermieter bei der Rückgabe den Zustand prüfen und Mängel sofort melden. Hat er dies unterlassen, verliert er seine Ansprüche, es sei denn, es handelt sich um Mängel, die bei übungsgemässer Untersuchung nicht erkennbar waren. Die Kratzer im Parkett waren bei der Abnahme ohne Weiteres sichtbar, also hätte der Vermieter sie melden müssen. Da er dies nicht tat, kann er keine Forderung geltend machen.
+Ergebnis: Der Mieter muss für die Kratzer im Parkett nicht zahlen, da der Vermieter seine Pflicht zur sofortigen Mängelrüge verletzt hat.
+Quellen: OR-267a, OR-267, OR-259",OR-267a OR-267 OR-259,True,0.0
+17.11.2026 15:06,CSCS-Inference/swiss-ai/Apertus-v1.5-70B,mcp,MR-08,mietrecht,hard,1.0,0.5,True,18.0,7,5621,935,,2,False,,80,True,True,True,False,True,"Sachverhalt: Der Mieter ist verheiratet und hat die Familienwohnung allein auf seinen Namen gemietet. Er möchte den Mietvertrag kündigen, seine Ehefrau ist damit jedoch nicht einverstanden.
+Rechtsfrage: Kann der Mieter die Familienwohnung allein kündigen, obwohl seine Ehefrau damit nicht einverstanden ist?
+Normwahl: OR-266m
+Subsumtion: Gemäss Art. 266m OR dient die gemietete Sache als Wohnung der Familie. Ein Ehegatte kann den Mietvertrag nur mit der ausdrücklichen Zustimmung des anderen kündigen. Ohne diese Zustimmung ist die Kündigung durch einen Ehegatten allein nicht gültig.
+Ergebnis: Der Mieter kann die Wohnung nicht allein kündigen, da seine Ehefrau der Kündigung nicht zugestimmt hat.
+Quellen: OR-266m
+Rückfrage: Hat Ihre Ehefrau der Kündigung schriftlich zugestimmt oder wurde sie ohne triftigen Grund verweigert?",OR-266m OR-273a OR-266n,True,0.0

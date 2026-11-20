@@ -23,15 +23,14 @@ T18 (`azure_ai/mistral-large-3`), Temperatur 0, je ein Durchlauf:
 ## Ergebnis auf main (17.11.2026)
 
 Gemessen von Tim am 17.11.2026 auf einem lokalen Stand von `main` mit #38 (neuer Prüfer) und #41, die beide danach
-unverändert gemergt wurden. Alle drei Varianten je dreimal, dieselben 20 Fälle, derselbe Judge, 0 Fehler. **Die
-Rohdaten sind noch nicht im Repo** und folgen per PR (Bitte in #41); bis dahin stammen die Zahlen aus Tims Auswertung
-vom 17.11.
+unverändert gemergt wurden. Alle drei Varianten je dreimal, dieselben 20 Fälle, derselbe Judge, 0 Fehler in 180
+Läufen. Rohdaten, Codestand und Tabelle pro Lauf: [`main/`](main/README.md) (#47).
 
 | Variante | Läufe | Judge-Punkte Mittel | Spannweite | Ergebnis richtig | An Mensch übergeben |
 |---|---|---|---|---|---|
-| Nur Prompt (ohne Graph, Guard, Prüfer) | 3 | 65.7 | 63.5 bis 67.5 | 12 von 20 | – (kein Prüfer) |
-| RAG | 3 | 73.2 | 71.5 bis 74.5 | 15 von 20 in allen drei Läufen | 1 bis 2 von 20 |
-| RAG mit MCP-Nachladen bei Zitierfehler | 3 | 73.5 | folgt mit den Rohdaten | folgt | folgt |
+| Nur Prompt (ohne Graph, Guard, Prüfer) | 3 | 65.7 | 63.5 bis 67.5 | 12 von 20 im Mittel (11 bis 13) | – (kein Prüfer) |
+| RAG | 3 | 73.2 | 71.5 bis 74.5 | 15 von 20 in allen drei Läufen | 1 bis 2 von 20 (1 / 2 / 2) |
+| RAG mit MCP-Nachladen bei Zitierfehler | 3 | 73.5 | 72.5 bis 74.5 | 15 von 20 in allen drei Läufen | 1 bis 2 von 20 (2 / 1 / 2) |
 
 Fall für Fall (Mittel über die Läufe) ist RAG in 9 Fällen besser und in 8 schlechter als nur Prompt, der Rest ist
 gleich. Der Gewinn kommt vor allem aus dem Arbeitsrecht.
@@ -50,9 +49,10 @@ gleich. Der Gewinn kommt vor allem aus dem Arbeitsrecht.
 4. **Warum der Vorlauf anders aussah.** Der Vorlauf lief vor #38 mit dem alten, strengen Prüfer und streute stärker
    (RAG 60 bis 74). Naheliegend ist, dass der neue Prüfer weniger richtige Entwürfe verwirft (an den Menschen nur noch
    1 bis 2 von 20 statt 12 von 20 in F1 v2) und die Läufe dadurch stabiler werden. Getrennt gemessen ist das nicht.
-5. **MCP bringt in F2 nichts dazu.** 73.5 gegen 73.2 Punkte ist kein Unterschied. Das Nachladen über `get_article`
-   greift nur, wenn der Zitier-Check scheitert, im Vorlauf in 1 von 20 Fällen. Über den Nutzen von MCP sagt F2
-   deshalb wenig.
+5. **MCP bringt in F2 nichts dazu.** 73.5 gegen 73.2 Punkte und gleich viele richtige Ergebnisse (15 von 20) sind
+   kein Unterschied. Das Nachladen über `get_article` greift nur, wenn der Zitier-Check scheitert: auf main in jedem
+   Lauf in 2 von 20 Fällen (AR-11, AR-12, insgesamt 3 bis 5 nachgeladene Artikel), im Vorlauf in 1 von 20. Über den
+   Nutzen von MCP sagt F2 deshalb wenig.
 6. **Nachvollziehbarkeit misst der Judge nicht.** Mit RAG sind die Zitate an abgerufene Quellen gebunden und durch den
    Zitier-Check prüfbar. Ohne Quellen gibt es nichts, wogegen man prüfen könnte.
 
