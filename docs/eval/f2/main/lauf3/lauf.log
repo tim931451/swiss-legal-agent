@@ -1,0 +1,88 @@
+F2: 20 cases x 3 variants -> runs/f2-main-lauf3
+F2 prompt: 20 cases
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-01: 50 Punkte, 2.1 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-02: 50 Punkte, 4.1 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-03: 30 Punkte, 3.6 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-04: 80 Punkte, 1.8 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-05: 50 Punkte, 4.0 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-06: 80 Punkte, 5.2 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-01: 80 Punkte, 4.5 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-02: 10 Punkte, 7.8 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-03: 80 Punkte, 4.5 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-04: 100 Punkte, 4.1 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-07: 80 Punkte, 7.7 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-08: 100 Punkte, 3.9 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-09: 50 Punkte, 5.0 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-10: 80 Punkte, 8.4 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-11: 50 Punkte, 8.6 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-12: 30 Punkte, 9.3 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-05: 100 Punkte, 3.6 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-06: 40 Punkte, 4.4 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-07: 100 Punkte, 6.5 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-08: 80 Punkte, 6.5 s
+F2 rag: 20 cases
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-01: 100 Punkte, 6.6 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-02: 80 Punkte, 12.6 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-03: 100 Punkte, 5.9 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-04: 100 Punkte, 77.3 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-05: 80 Punkte, 21.8 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-06: 100 Punkte, 9.0 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-01: 50 Punkte, 6.1 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-02: 10 Punkte, 83.1 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-03: 30 Punkte, 7.9 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-04: 100 Punkte, 7.4 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-07: 80 Punkte, 9.9 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-08: 100 Punkte, 81.7 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-09: 100 Punkte, 6.6 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-10: 80 Punkte, 8.0 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-11: 10 Punkte, 18.9 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-12: 30 Punkte, 89.9 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-05: 80 Punkte, 6.9 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-06: 80 Punkte, 14.8 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-07: 80 Punkte, 8.3 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-08: 40 Punkte, 79.5 s
+F2 mcp: 20 cases
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-01: 100 Punkte, 6.3 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-02: 80 Punkte, 6.2 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-03: 100 Punkte, 6.8 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-04: 100 Punkte, 86.3 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-05: 80 Punkte, 17.8 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-06: 100 Punkte, 8.2 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-01: 50 Punkte, 8.1 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-02: 50 Punkte, 88.4 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-03: 30 Punkte, 10.8 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-04: 100 Punkte, 7.3 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-07: 100 Punkte, 7.7 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-08: 100 Punkte, 78.0 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-09: 100 Punkte, 8.8 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-10: 80 Punkte, 16.9 s
+[11/17/26 15:47:40] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+[11/17/26 15:47:40] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-11: 10 Punkte, 26.0 s
+[11/17/26 15:49:09] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+[11/17/26 15:49:16] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+[11/17/26 15:49:25] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B AR-12: 30 Punkte, 87.6 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-05: 80 Punkte, 16.4 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-06: 60 Punkte, 16.3 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-07: 80 Punkte, 10.8 s
+CSCS-Inference/swiss-ai/Apertus-v1.5-70B MR-08: 40 Punkte, 7.8 s
+ model  cases  judge_score  citation_precision  citation_recall  citations_backed  gold_in_sources  looked_up  revisions_mean  needs_human  seconds_mean  seconds_median  tokens_per_case  errors
+prompt     20         66.0                0.74             0.83               NaN              NaN        NaN             NaN          NaN           5.3             4.5            471.0       0
+   rag     20         71.5                0.70             0.88              0.95             0.95       0.00             0.5          0.1          28.1             9.4           3235.0       0
+   mcp     20         73.5                0.69             0.86              1.00             0.95       0.25             0.4          0.1          26.1            10.8           3711.0       0
