@@ -1,7 +1,8 @@
 # F2: RAG-Ablation mit Apertus (T22)
 
-Tabelle des ersten Laufs: `f2_summary.md`, Rohdaten mit allen Antworten, Quellen und Judge-Kriterien:
-`f2_results.csv`. Wiederholungen von nur Prompt und RAG: `wiederholung-2/` und `wiederholung-3/` (gleiche Dateien).
+Ergebnis und Deutung: Abschnitt [Ergebnis auf main](#ergebnis-auf-main-17112026). Die Dateien in diesem Ordner
+gehören zum Vorlauf: Tabelle des ersten Laufs `f2_summary.md`, Rohdaten mit allen Antworten, Quellen und
+Judge-Kriterien `f2_results.csv`, Wiederholungen von nur Prompt und RAG in `wiederholung-2/` und `wiederholung-3/`.
 
 ```bash
 python -m scripts.eval_f2 --out docs/eval/f2
@@ -18,6 +19,49 @@ T18 (`azure_ai/mistral-large-3`), Temperatur 0, je ein Durchlauf:
 | Nur Prompt (ohne Graph, Guard, Prüfer) | Ein einziger Modellaufruf mit der Frage und der Anweisung, Schweizer Recht zu zitieren (`baseline_answer`). Keine Quellen, kein Router, kein Prüfer. |
 | RAG | Der ganze Graph mit `make_embedding_retriever`: Harrier dense, LLM-Reranking, drei Quellen. MCP-Lookup aus. |
 | RAG mit MCP-Nachladen bei Zitierfehler | Wie RAG. Zusätzlich lädt der Prüfer zitierte Artikel, die nicht unter den Quellen sind, über das MCP-Tool `get_article` nach und prüft erneut (T13). Das passiert nur, wenn der Zitier-Check scheitert. |
+
+## Ergebnis auf main (17.11.2026)
+
+Gemessen von Tim am 17.11.2026 auf einem lokalen Stand von `main` mit #38 (neuer Prüfer) und #41, die beide danach
+unverändert gemergt wurden. Alle drei Varianten je dreimal, dieselben 20 Fälle, derselbe Judge, 0 Fehler. **Die
+Rohdaten sind noch nicht im Repo** und folgen per PR (Bitte in #41); bis dahin stammen die Zahlen aus Tims Auswertung
+vom 17.11.
+
+| Variante | Läufe | Judge-Punkte Mittel | Spannweite | Ergebnis richtig | An Mensch übergeben |
+|---|---|---|---|---|---|
+| Nur Prompt (ohne Graph, Guard, Prüfer) | 3 | 65.7 | 63.5 bis 67.5 | 12 von 20 | – (kein Prüfer) |
+| RAG | 3 | 73.2 | 71.5 bis 74.5 | 15 von 20 in allen drei Läufen | 1 bis 2 von 20 |
+| RAG mit MCP-Nachladen bei Zitierfehler | 3 | 73.5 | folgt mit den Rohdaten | folgt | folgt |
+
+Fall für Fall (Mittel über die Läufe) ist RAG in 9 Fällen besser und in 8 schlechter als nur Prompt, der Rest ist
+gleich. Der Gewinn kommt vor allem aus dem Arbeitsrecht.
+
+### Deutung (Jack, Owner T22)
+
+1. **RAG verbessert die Antworten auf diesen 20 Fällen messbar.** Im Mittel 7.5 Punkte und drei richtige Ergebnisse
+   mehr als nur Prompt. Anders als im Vorlauf überlappen die Spannweiten nicht: Der schlechteste RAG-Lauf (71.5)
+   liegt über dem besten Prompt-Lauf (67.5). Bei drei Läufen pro Variante ist das ein deutlicher Hinweis, kein
+   statistischer Nachweis.
+2. **Der Gewinn ist nicht in jedem Fall da.** 9 Fälle besser, 8 schlechter: Der Mittelwert hängt an wenigen Fällen
+   mit grossem Abstand, vor allem im Arbeitsrecht. Fehlt die tragende Norm schon im Retrieval (AR-12, siehe
+   `../retrieval/live-suche.md`), hilft RAG nicht.
+3. **Gemessen ist Wissensbasis plus Pipeline.** Die Prompt-Variante läuft ohne Guard, Router, Prüfer und Zitier-Check.
+   Welcher Anteil vom Retrieval und welcher vom Prüfer kommt, trennt F2 nicht.
+4. **Warum der Vorlauf anders aussah.** Der Vorlauf lief vor #38 mit dem alten, strengen Prüfer und streute stärker
+   (RAG 60 bis 74). Naheliegend ist, dass der neue Prüfer weniger richtige Entwürfe verwirft (an den Menschen nur noch
+   1 bis 2 von 20 statt 12 von 20 in F1 v2) und die Läufe dadurch stabiler werden. Getrennt gemessen ist das nicht.
+5. **MCP bringt in F2 nichts dazu.** 73.5 gegen 73.2 Punkte ist kein Unterschied. Das Nachladen über `get_article`
+   greift nur, wenn der Zitier-Check scheitert, im Vorlauf in 1 von 20 Fällen. Über den Nutzen von MCP sagt F2
+   deshalb wenig.
+6. **Nachvollziehbarkeit misst der Judge nicht.** Mit RAG sind die Zitate an abgerufene Quellen gebunden und durch den
+   Zitier-Check prüfbar. Ohne Quellen gibt es nichts, wogegen man prüfen könnte.
+
+**Kernaussage für Präsentation und Prüfung:** RAG bringt im Mittel rund 7 Punkte und drei richtige Ergebnisse mehr,
+aber nicht in jedem Fall, und gemessen ist RAG zusammen mit der Pipeline. MCP-Nachladen ist in F2 praktisch nicht
+wirksam.
+
+Grenzen wie unten: 20 Fälle nah am Modellwissen, Judge kennt die Gold-Artikel, Prompt ohne Pipeline, nicht direkt mit
+F1 v2 vergleichbar (anderes Retrieval).
 
 ## Vorlauf auf 6c519ec (nicht das Ergebnis)
 
@@ -42,8 +86,8 @@ richtig), RAG mit MCP-Nachladen 69 (14 richtig).
 
 ### Entwurf einer Deutung (Claude, nicht abgenommen)
 
-Die folgende Deutung bezieht sich nur auf den Vorlauf und ist ein Entwurf. Massgebend ist Jacks Interpretation des
-Laufs auf `main`.
+Die folgende Deutung bezieht sich nur auf den Vorlauf und ist ein Entwurf. Massgebend ist Jacks Deutung des Laufs
+auf `main` oben.
 
 
 **Der Abstand ist nicht grösser als die Streuung.** Im Mittel liegt RAG 1.7 Punkte und 1.8 richtige Ergebnisse vor
