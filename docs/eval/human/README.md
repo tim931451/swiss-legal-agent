@@ -49,6 +49,24 @@ Mit `--raters claude` nur Judge–Claude (`human_summary_claude.md`).
   als Gegenprobe in `bewertung_claude_nichtblind.csv` (1 von 50 Urteilen anders, MR-02 Ergebnis).
 - Alle drei sind keine Juristen bzw. kein Jurist; Massstab ist die Musterlösung, keine juristische Prüfung.
 
+### Ergebnis mit Jack und Tim (20.11.2026)
+
+Alle drei Formulare ausgefüllt, ausgewertet mit `python -m scripts.eval_human score` (`human_summary.md`,
+`human_agreement.csv`). Gleich = Anteil der 10 Fälle mit gleichem Urteil.
+
+| Kriterium | Punkte | Judge–Jack (blind) | Judge–Tim (nicht blind) | Jack–Tim |
+|---|---|---|---|---|
+| correct_result | 30 | 0.8, Kappa 0.55 | 0.9, Kappa 0.78 | 0.9, Kappa 0.74 |
+| correct_norm | 20 | 0.8, Kappa 0.60 | 0.8, Kappa 0.60 | 1.0, Kappa 1.00 |
+| no_invented_sources | 20 | 0.8, Kappa 0.00 | 0.8, Kappa 0.00 | 1.0, Kappa 1.00 |
+| complete | 20 | 0.4, Kappa 0.12 | 0.9, Kappa 0.74 | 0.5, Kappa 0.19 |
+| clear_structure | 10 | 1.0 | 1.0 | 1.0 |
+| Punktzahl | 100 | 3 von 10 gleich, Ø Differenz 26 | 5 von 10 gleich, Ø Differenz 13 | 5 von 10 gleich, Ø Differenz 13 |
+
+Der Judge gibt nie mehr Punkte als Jack oder Tim. Die grössten Abstände zu Jack: MR-03 (Judge 10, Jack 80),
+MR-06 (40 gegen 100) und MR-02 (50 gegen 100). Bei «complete» sind sich auch Jack und Tim nur in 5 von 10 Fällen
+einig. Tims Werte sind nicht blind (siehe oben), massgebend für F4 ist Judge–Jack. Deutung: Jack (Owner T21).
+
 ### Zwischenstand Judge gegen Claude (15.11.2026)
 
 Die Formulare von Jack und Tim sind noch nicht im Repo. Bisher ausgewertet ist nur Judge–Claude:

@@ -17,6 +17,7 @@ to produce code, text, data or slides for the project.
 | Claude (Anthropic, Claude Code) | T17 after review Jack on #37: markers only exclude directly concerned articles, Quellen line read in long form, Jack's three sentences and six regression tests, on Tim's instruction (rule "in doubt cited" set by Tim) | `lexgraph/guardrails/citation_check.py`, `tests/test_guardrails.py`, `docs/decisions.md` | Tim | Offline tests and ruff, regression cases checked against the check on main, offline re-check of the F1 v2 answers, changed luna answers checked by Tim, review by Jack |
 | | | | | |
 | Claude (Anthropic, Claude Code, Opus 5.5) | #32: analysis of the reviewer verdicts in the F1 v2 traces, new reviewer prompt, prompt test and documentation of #31 and #32 as known limitations, from Tim's task | `lexgraph/agents/prompts.py` (`REVIEWER_PROMPT`), `tests/test_sw5.py`, `README.md` (Known limitations), `docs/decisions.md`, `docs/eval/f1-v2/README.md` | Tim | Offline tests and ruff; live run with Apertus on 5 correct cases outside the test set and 3 deliberately wrong drafts, old against new prompt; review by Jack before merge |
+| Claude (Anthropic, Claude Code, Opus 5.5) | T21: F4 scored with all three forms (`scripts/eval_human.py score`), result table in the README, on Tim's instruction | `docs/eval/human/README.md`, `human_summary.md`, `human_agreement.csv` | Tim | Numbers taken from the script output unchanged, review by Jack |
 
 ## Statement
 
