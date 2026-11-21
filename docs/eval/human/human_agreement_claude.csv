@@ -1,0 +1,7 @@
+pair,criterion,points,cases,agreement,kappa,true_a,true_b,mean_abs_diff
+judge-claude,correct_norm,20,10,0.7,0.4,5,8,
+judge-claude,correct_result,30,10,1.0,1.0,6,6,
+judge-claude,no_invented_sources,20,10,0.8,0.0,8,10,
+judge-claude,complete,20,10,1.0,1.0,2,2,
+judge-claude,clear_structure,10,10,1.0,1.0,10,10,
+judge-claude,score,100,10,0.7,,,,10.0
