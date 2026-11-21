@@ -48,7 +48,7 @@ request (`.github/workflows/ci.yml`).
 
 ## Run
 
-MCP server `fedlex-mcp` (stdio transport, tools `get_article`, `search_law`, `search_decisions`):
+MCP server `fedlex-mcp` (stdio transport, tools `get_article`, `search_law`, `notice_period`, `search_decisions`):
 
 ```bash
 python mcp_server/fedlex_server.py

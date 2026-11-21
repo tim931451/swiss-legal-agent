@@ -20,6 +20,7 @@ to produce code, text, data or slides for the project.
 | Claude (Anthropic, Claude Code, Opus 5.5) | T22: F2 raw data of 17 Nov 2026 copied into the repository, README with code state and counts of the MCP lookup, on Tim's instruction after Jack's request in #41 | `docs/eval/f2/main/` | Tim | Code state of the probe compared with `main` by `git diff`, numbers recomputed from `f2_results.csv`, review by Jack |
 | Claude (Anthropic, Claude Code, Opus 5.5) | T22: F2 section "Ergebnis auf main" with table and interpretation, written from Jack's points and Tim's evaluation of 17 Nov 2026, on Jack's instruction | `docs/eval/f2/README.md` | Jack | Numbers checked against Tim's work log entry of 17 Nov 2026 and slide 8; raw data in docs/eval/f2/main/ (#47); review by Tim |
 | Claude (Anthropic, Claude Code, Opus 5.5) | T21: F4 scored with all three forms (`scripts/eval_human.py score`), result table in the README, on Tim's instruction | `docs/eval/human/README.md`, `human_summary.md`, `human_agreement.csv` | Tim | Numbers taken from the script output unchanged, review by Jack |
+| Claude (Anthropic, Claude Code) | Documentation fixes after the review of #38 and #39: outdated F4 interim status, F1 v2 note on the corrected citation count (luna 18 of 19), `notice_period` added to the MCP tool lists, on Jack's instruction | `docs/eval/human/README.md`, `docs/eval/f1-v2/README.md`, `README.md`, `docs/architecture.md` | Jack | Checked against `docs/decisions.md`, `mcp_server/fedlex_server.py` and `human_summary.md`; review by Tim |
 
 ## Statement
 
