@@ -17,7 +17,7 @@ flowchart TD
     R -- arbeitsrecht --> EA[Employment law agent]
     R -- mietrecht --> TA[Tenancy law agent]
     R -- out of scope --> OOS([out-of-scope answer])
-    EA <--> MCP[(MCP server fedlex-mcp<br/>get_article, search_law, search_decisions)]
+    EA <--> MCP[(MCP server fedlex-mcp<br/>get_article, search_law, notice_period, search_decisions)]
     TA <--> MCP
     MCP --- KB[(Knowledge base<br/>FAISS + BM25, RRF, optional reranking)]
     EA --> RV{Reviewer}
