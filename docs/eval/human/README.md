@@ -67,9 +67,9 @@ Der Judge gibt nie mehr Punkte als Jack oder Tim. Die grössten Abstände zu Jac
 MR-06 (40 gegen 100) und MR-02 (50 gegen 100). Bei «complete» sind sich auch Jack und Tim nur in 5 von 10 Fällen
 einig. Tims Werte sind nicht blind (siehe oben), massgebend für F4 ist Judge–Jack. Deutung: Jack (Owner T21).
 
-### Zwischenstand Judge gegen Claude (15.11.2026)
+### Judge gegen Claude (Modell, 15.11.2026)
 
-Die Formulare von Jack und Tim sind noch nicht im Repo. Bisher ausgewertet ist nur Judge–Claude:
+Auswertung Judge–Claude vor den Formularen von Jack und Tim. Die Zahlen sind unverändert in `human_summary.md` enthalten:
 
 | Kriterium | Punkte | Gleiches Urteil | Kappa |
 |---|---|---|---|
@@ -82,8 +82,8 @@ Die Formulare von Jack und Tim sind noch nicht im Repo. Bisher ausgewertet ist n
 
 Alle drei Abweichungen (MR-03, MR-06, MR-08) gehen in dieselbe Richtung: Der Judge wertet strenger und hält bei
 MR-03 und MR-06 bestehende OR-Artikel für erfunden (bekannte Schwäche aus #29). Kappa 0.00 bei no_invented_sources
-trotz 80 % Übereinstimmung, weil Claude das Kriterium immer als erfüllt sieht. Die Auswertung mit Jack und Tim folgt,
-sobald beide Formulare ausgefüllt sind.
+trotz 80 % Übereinstimmung, weil Claude das Kriterium immer als erfüllt sieht. Die Auswertung mit Jack und Tim steht
+oben unter «Ergebnis mit Jack und Tim (20.11.2026)».
 
 Kein Modellaufruf, keine Kosten. Die Fälle stammen aus dem Testset; sie werden hier nur bewertet, an Prompts oder
 Judge wird danach nichts abgestimmt.

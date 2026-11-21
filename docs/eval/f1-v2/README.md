@@ -113,5 +113,5 @@ python -m scripts.eval_hitk --methods bm25 dense_swiss dense_harrier hybrid --ou
 
 F1 v2 wurde nach dem Lauf vom 8.11. nicht wiederholt (Entscheid 13.11., Feature Freeze 15.11.). Zwei Werte gehören deshalb zu älteren Prüfungen:
 
-- «Zitate belegt» und die Zitat-Precision kommen von der Zitierprüfung vor #30. Die Korrektur (PR #37) ergibt bei einer Offline-Neuprüfung derselben Antworten luna 20 von 20 statt 14 belegt, Apertus unverändert 18 von 20; die Tabellen oben sind nicht angepasst.
+- «Zitate belegt» und die Zitat-Precision kommen von der Zitierprüfung vor #30. Die Korrektur (PR #37) ergibt bei einer Offline-Neuprüfung derselben Antworten luna 18 von 19 Fällen mit Quellen statt 14 von 19 belegt, Apertus unverändert 18 von 20; die Tabellen oben sind nicht angepasst.
 - Die Übergabequoten (Apertus 12 von 20, luna 10 von 20) kommen vom Prüfer vor #32. Der neue Prüfer lehnt richtige Entwürfe seltener ab; eine neue Quote auf dem Testset ist nicht gemessen.
